@@ -27,12 +27,10 @@ public class Produto implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_produto")
 	private int codigo;
-	@Column(length=100,nullable=false)
+	@Column(nullable=false)
 	@NotNull(message="Nome não pode ser nulo")
 	@NotEmpty(message="Nome deve ser informado")
 	private String nome;
-	@Column(nullable=false)
-	@NotEmpty(message="Descrição do Produto deve ser informada")
 	private String descricao;
 	@ManyToOne
 	@JoinColumn(name="categoria_id",nullable=false)
