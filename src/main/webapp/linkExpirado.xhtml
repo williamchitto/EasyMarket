@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf" xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:f="http://java.sun.com/jsf/core">
+	
+	
+  <h:head>
+  
+  
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+      
+    
+     
+
+    <title>Autenticação</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="resources/css/bootstrap.css" rel="stylesheet"/>
+           
+   
+
+  
+  </h:head>
+
+  <h:body>
+  
+  <h:form>
+    
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Link Expirado!</h1>
+        <p><h:outputText rendered="true" value="Clique em recuperar conta para gerar um novo link de autenticação."></h:outputText></p>
+       
+        <h:commandButton styleClass="btn btn-primary btn-lg" action="recuperarAcesso?faces-redirect=true" value="Recuperar conta" />
+      </div> 
+    </div>
+      </h:form>
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        
+       
+      </div>
+
+      <hr/>
+
+      <footer>
+       <p class="pull-left">Copyright  Cristianoliveira 2015.
+					All right reserved.</p>
+      </footer>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="resources/js/bootstrap.min.js"></script>
+  </h:body>
+</html>

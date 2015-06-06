@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head></h:head>
+<ui:decorate template="/admin/templateAdmin.xhtml">
+	<ui:define name="centro">
+		<h:form id="form">
+		 	<p:messages id="messages" autoUpdate="true" closable="true" />
+			<p:panel id="panel" header="Incluir plano">
+				<p:panelGrid id="grid" columns="2">
+				
+					<p:outputLabel for="razaosocial" value="Razão social" />
+					<p:inputText id="razaosocial" readonly="true" size="30" value="#{planoEmpresaBean.empresa.razaoSocial}" />
+
+					<p:outputLabel for="cnpj" value="CNPJ" />
+					<p:inputText id="cnpj" readonly="true"  size="30" value="#{planoEmpresaBean.empresa.cnpj}" />
+
+					<p:outputLabel for="plano" value="Planos Easy: " />
+					<p:selectOneMenu id="plano"
+						value="#{planoEmpresaBean.plano.codigo}">
+						<f:selectItem itemLabel="---Selecione um plano---"
+							noSelectionOption="true" />
+					    	<f:selectItems value="#{planoEmpresaBean.planos}"
+										var="plano" itemValue="#{plano.codigo}"
+										itemLabel="#{plano.nome}"  />
+					</p:selectOneMenu>
+					
+					<p:outputLabel for="datainicio" value="Data Inicio do Plano"/>
+					<h:outputText id="datainicio" value="#{planoEmpresaBean.dataInicio}" converter="dataConverter" >
+					
+					</h:outputText>
+					
+					<p:outputLabel for="datafim" value="Data Encerramento"/>
+					<h:outputText id="datafim" value="#{planoEmpresaBean.dataFim}"  converter="dataConverter">
+				
+					</h:outputText>
+					
+
+				</p:panelGrid>
+				        <br />
+				        <p:commandButton  id="salvar" action="#{planoEmpresaBean.salvar()}" ajax="false" value="Confirmar"/>
+
+			</p:panel>
+
+		</h:form>
+	</ui:define>
+</ui:decorate>
+</html>

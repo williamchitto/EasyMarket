@@ -1,0 +1,70 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:decorate template="/admin/templateAdmin.xhtml">
+	<ui:define name="centro">
+		<h:form id="form">
+		<p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+ 
+                              <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+                                   <p:graphicImage library="imagens" name="ajax-loader1.gif" />
+                                 </p:dialog>
+		   	<p:growl id="messages" autoUpdate="true"  />
+     
+			<p:panel header="Cadastro de Produto">
+				<h:panelGrid columns="2" id="panel" style="margin-top:20px">
+
+					<p:outputLabel for="nome" value="Nome Produto:" />
+					<p:inputText id="nome" value="#{cadastroProdutoAdminBean.produto.nome}" size="30" />
+
+
+					<p:outputLabel for="categoria" value="Categoria: " />
+					<p:selectOneMenu id="categoria" value="#{cadastroProdutoBean.categoria}" required="true"  requiredMessage="Categoria deve ser informada" converter="categoriaConverter">
+						<f:selectItem itemLabel="Selecione uma categoria"
+							noSelectionOption="true" />
+						<f:selectItems value="#{cadastroProdutoBean.categorias}"
+							var="categoria" itemValue="#{categoria}"
+							itemLabel="#{categoria.descricao}" />
+						<p:ajax listener="#{cadastroProdutoBean.preencherSubcategoria}"
+							update="subcategoria" />
+
+					</p:selectOneMenu>
+
+
+					<p:outputLabel for="subcategoria" value="Subcategoria: " />
+					<p:selectOneMenu id="subcategoria" converter="categoriaConverter"  required="true"  requiredMessage="Subcategoria deve ser informada"
+						value="#{cadastroProdutoBean.subcategoria}">
+						<f:selectItem itemLabel="Selecione uma categoria"
+							noSelectionOption="true"  />
+						<f:selectItems value="#{cadastroProdutoBean.subCategorias}"
+							var="categoria" itemValue="#{categoria}"
+							itemLabel="#{categoria.descricao}" />
+
+					</p:selectOneMenu>
+
+					<p:outputLabel for="editor" value="Descrição do Produto: " />
+					<p:editor id="editor"  value="#{cadastroProdutoAdminBean.produto.descricao}" widgetVar="editorWidget" width="600" />
+
+					<p:outputLabel for="imagem" value="Imagem  do Produto: " />
+					<p:fileUpload id="imagem" label="Enviar"
+						fileUploadListener="#{cadastroProdutoAdminBean.handleFileUpload}" 
+						mode="advanced"  dragDropSupport="true" invalidFileMessage="Arquivo inválido."
+						invalidSizeMessage="Tamanho de arquivo inválido." update="message"
+						 sizeLimit="400000"
+						allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+					<p:growl id="message" showDetail="true" />
+
+
+					<p:commandButton style="margin-top:10px" update="@form"  process="@form" actionListener="#{cadastroProdutoAdminBean.salvarProduto()}" value="Cadastrar Produto" />
+
+				</h:panelGrid>
+				<br />
+
+			</p:panel>
+		</h:form>
+
+	</ui:define>
+</ui:decorate>
+</html>

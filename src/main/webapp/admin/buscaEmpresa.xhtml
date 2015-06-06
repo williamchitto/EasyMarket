@@ -1,0 +1,21 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <ui:decorate template="/admin/templateAdmin.xhtml">
+        <ui:define name="centro">
+           <h:form id="pesquisaUser">
+           	<p:messages id="messages" autoUpdate="true" closable="true" />
+           	
+           <p:panel header="Buscar Empresa">
+             <h:panelGrid columns="2" id="panel" style="margin-top:20px" cellpadding="10">
+               <p:inputText size="20" maxlength="14" required="true" requiredMessage="CNPJ deve ser informado" value="#{planoEmpresaBean.cnpj}" placeholder="CNPJ"/>
+               <p:commandButton value="Buscar" ajax="false" action="#{planoEmpresaBean.buscarEmpresa()}"/>
+             
+             </h:panelGrid>
+           </p:panel>
+           </h:form>
+          
+        </ui:define>
+    </ui:decorate>
+</html>

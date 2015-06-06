@@ -1,0 +1,52 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+
+
+</h:head>
+<h:body>
+<ui:composition template="/WEB-INF/restrito/TemplatePadrao.xhtml">
+
+		<ui:define name="titulo">Descrição Anuncio</ui:define>
+		<ui:define name="corpo">
+   
+ <p:accordionPanel  style="margin-top:50px">
+        <p:tab title="Produto:">
+            <p:panelGrid columns="2" columnClasses="ui-grid-col-3,ui-grid-col-7" layout="grid" styleClass="ui-panelgrid-blank">
+                <p:graphicImage height="200px" width="250px"   value="/resources/imagens/Easy400p.png"/>
+               <p:panelGrid columns="2" style="margin-top:60px">
+                 <h:outputLabel for="nome" value="Nome:" />
+               <h:outputText value="Produto" />
+               <h:outputLabel for="preco" value="Preço:" />
+               <h:outputText value="R$34.34" />
+                 <h:outputLabel for="pagamento" value="Pagamento:" />
+               <h:outputText value="tipo" />
+                <h:outputLabel for="empresa" value="Empresa:" />
+               <h:outputText value="Empresa" />
+               
+               </p:panelGrid>
+            </p:panelGrid>
+        </p:tab>
+        <p:tab title="Descrição:">
+            <p:panelGrid columns="1" columnClasses="ui-grid-col-2,ui-grid-col-10" layout="grid" styleClass="ui-panelgrid-blank">
+               
+               <h4>Descrição</h4>
+              
+            </p:panelGrid>
+        </p:tab>
+      
+    </p:accordionPanel>
+
+
+
+		</ui:define>
+	</ui:composition>
+
+
+</h:body>
+</html>

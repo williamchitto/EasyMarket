@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf" xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+	<style type="text/css">
+.user-row {
+	margin-bottom: 14px;
+}
+
+.user-row:last-child {
+	margin-bottom: 0;
+}
+
+.dropdown-user {
+	margin: 13px 0;
+	padding: 5px;
+	height: 100%;
+}
+
+.dropdown-user:hover {
+	cursor: pointer;
+}
+
+.table-user-information>tbody>tr {
+	border-top: 1px solid rgb(228, 228, 228);
+}
+
+.table-user-information>tbody>tr:first-child {
+	border-top: 0;
+}
+
+.table-user-information>tbody>tr>td {
+	border-top: 0;
+}
+
+.toppad {
+	margin-top: 20px;
+}
+</style>
+
+</h:head>
+<h:body>
+
+
+	<ui:composition template="/WEB-INF/restrito/TemplatePadrao.xhtml">
+
+		<ui:define name="titulo">Perfil</ui:define>
+		<ui:define name="corpo">
+
+			<h:form>
+				<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
+				<div class="container">
+
+					<div class="row">
+						<div class="col-md-5  toppad  pull-right col-md-offset-2 ">
+
+							<br />
+
+						</div>
+						<div
+							class="col-xs-12 col-sm-12 col-md-6 col-lg-8 col-xs-offset-0 col-sm-offset-0 col-md-offset-6 col-lg-offset-2 toppad">
+
+							<div class="panel panel-info">
+								<div class="panel-heading">
+									<h3 class="panel-title">
+										<h:outputText
+											value="#{usuarioLogadoBean.usuario.empresa.nomeFantasia}" />
+									</h3>
+								</div>
+								<div class="panel-body">
+									<div class="row">
+
+										<div class="col-md-3 col-lg-3 " align="center">
+											<h:graphicImage styleClass="img-rounded img-responsive"
+												value="/Image/#{usuarioLogadoBean.usuario.empresa.imagemEmpresa.codigo}" />
+										</div>
+										<!-- <img src="http://placehold.it/380x400" alt="" class="img-rounded img-responsive" />  -->
+										<!-- <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="http://placehold.it/380x500" class="img-circle"/> </div> -->
+
+
+										<div class=" col-md-9 col-lg-9 ">
+											<table class="table table-user-information">
+												<tbody>
+													<tr>
+														<td>Razão Social:</td>
+														<td><h:outputText
+																value="#{usuarioLogadoBean.usuario.empresa.razaoSocial}" /></td>
+													</tr>
+													<tr>
+														<td>CNPJ:</td>
+														<td><h:outputText
+																value="#{usuarioLogadoBean.usuario.empresa.cnpj}" /></td>
+													</tr>
+													<tr>
+														<td>Telefone:</td>
+														<td><h:outputText
+																value="#{usuarioLogadoBean.usuario.empresa.telefone}" /></td>
+													</tr>
+
+													<tr>
+														<td>Email:</td>
+														<td><h:outputText
+																value="#{usuarioLogadoBean.usuario.email}" /></td>
+													</tr>
+
+													<tr>
+														<td>CEP:</td>
+														<td><h:outputText
+																value="#{usuarioLogadoBean.usuario.empresa.endereco.cep}" /></td>
+													</tr>
+
+													<tr>
+														<td>Bairro:</td>
+														<td><h:outputText
+																value="#{usuarioLogadoBean.usuario.empresa.endereco.bairro}" /></td>
+													</tr>
+
+													<tr>
+														<td>Cidade:</td>
+														<td><h:outputText
+																value="#{usuarioLogadoBean.usuario.empresa.endereco.cidade}" /></td>
+													</tr>
+
+													<tr>
+														<td>Estado:</td>
+														<td><h:outputText
+																value="#{usuarioLogadoBean.usuario.empresa.endereco.uf}" /></td>
+													</tr>
+
+												</tbody>
+											</table>
+
+
+											<h:commandButton styleClass="btn btn-primary" action="alterarEmpresa?faces-redirect=true"
+												value="Alterar perfil usuário" />
+												
+											
+										</div>
+									</div>
+								</div>
+								<div class="panel-footer">
+									<a data-original-title="Broadcast Message"
+										data-toggle="tooltip" type="button"
+										class="btn btn-sm btn-primary"><i
+										class="glyphicon glyphicon-envelope"></i></a> <span
+										class="pull-right"> <a href=""
+										data-original-title="Edit this user" data-toggle="tooltip"
+										type="button" class="btn btn-sm btn-warning"><i
+											class="glyphicon glyphicon-edit"></i></a> <a
+										data-original-title="Remove this user" data-toggle="tooltip"
+										type="button" class="btn btn-sm btn-danger"><i
+											class="glyphicon glyphicon-remove"></i></a>
+									</span>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</h:form>
+
+		</ui:define>
+	</ui:composition>
+	<script type="text/javascript">
+$(document).ready(function() {
+    var panels = $('.user-infos');
+    var panelsButton = $('.dropdown-user');
+    panels.hide();
+
+    //Click dropdown
+    panelsButton.click(function() {
+        //get data-for attribute
+        var dataFor = $(this).attr('data-for');
+        var idFor = $(dataFor);
+
+        //current button
+        var currentButton = $(this);
+        idFor.slideToggle(400, function() {
+            //Completed slidetoggle
+            if(idFor.is(':visible'))
+            {
+                currentButton.html('<i class="glyphicon glyphicon-chevron-up text-muted"></i>');
+            }
+            else
+            {
+                currentButton.html('<i class="glyphicon glyphicon-chevron-down text-muted"></i>');
+            }
+        })
+    });
+
+
+    $('[data-toggle="tooltip"]').tooltip();
+
+    $('button').click(function(e) {
+        e.preventDefault();
+        alert("This is a demo.\n :-)");
+    });
+});
+</script>
+</h:body>
+</html>

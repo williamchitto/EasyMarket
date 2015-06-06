@@ -1,0 +1,158 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf" xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+
+	<link
+		href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"
+		rel="stylesheet" />
+
+	<style type="text/css">
+/* Credit to bootsnipp.com for the css for the color graph */
+.ui-autocomplete-input {
+	width: 500px !important;
+}
+
+.colorgraph {
+	height: 5px;
+	border-top: 0;
+	background: #c4e17f;
+	border-radius: 5px;
+	background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%,
+		#f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%,
+		#db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%,
+		#669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+	background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%,
+		#f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%,
+		#db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%,
+		#669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+	background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca
+		25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe
+		50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1
+		87.5%, #62c2e4 87.5%, #62c2e4);
+	background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca
+		25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe
+		50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1
+		87.5%, #62c2e4 87.5%, #62c2e4);
+}
+</style>
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script
+		src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+	
+
+	         <h:outputStylesheet library="css" name="bootstrap.min.css" />
+	         
+
+</h:head>
+
+<h:body>
+
+
+	<ui:composition template="/WEB-INF/restrito/TemplatePadrao.xhtml">
+
+		<ui:define name="titulo">Cadastro de anuncio</ui:define>
+
+
+		<ui:define name="corpo">
+
+			<div class="container">
+
+				<div class="row">
+					<div
+						class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-4 col-md-offset-2">
+						<h:form role="form" id="formCadsPro">
+							<p:messages id="msgs" autoUpdate="true" closable="true" />
+							
+							
+
+							<h2>
+								Cadastrar Anuncio <br /> <small>Informe todos os dados
+									corretamente</small>
+							</h2>
+							<hr class="colorgraph" />
+
+							<div class="form-group ui-fluid">
+								<p:outputLabel for="acMinLength"
+									value="Procure pelo produto que vai ser anunciado:" />
+								<p:autoComplete id="acMinLength" 
+									value="#{cadastrarAnuncioBean.produtoSelecionado}"
+									completeMethod="#{cadastrarAnuncioBean.listProdutoByNome}" 
+									 forceSelection="true" converter="produtoConverter" var="p" itemLabel="#{p.nome}"
+									 minQueryLength="1"
+									 itemValue="#{p}"
+									required="true" requiredMessage="Produto deve ser informado"
+									placeholder="Buscar produto" styleClass="autocomplete"
+									 />
+							</div>
+							<div class="form-group">
+								<p:inputText id="valorproduto"
+									value="#{cadastrarAnuncioBean.anuncio.preco}"
+									placeholder="Valor do produto"
+									required="true" requiredMessage="Valor do produto deve ser informado"
+									styleClass="form-control input-lg  moeda" >
+									<f:convertNumber minFractionDigits="2" />
+									</p:inputText>
+							</div>
+
+							<div class="form-group">
+								<h:outputText value="Pagamento em dinheiro: " />
+								<p:selectBooleanButton id="value1"
+									value="#{cadastrarAnuncioBean.anuncio.pagamentoDinheiro}"
+									onLabel="Sim" offLabel="Não" style="width:60px" />
+							</div>
+
+							<div class="form-group">
+								<h:outputText value="Pagamento com cartão de crédito: " />
+								<p:selectBooleanButton id="value2"
+									value="#{cadastrarAnuncioBean.anuncio.pagamentoCartao}"
+									onLabel="Sim" offLabel="Não" style="width:60px" />
+							</div>
+							<div class="form-group">
+								<h:outputText value="Opções de entrega: " />
+								<p:selectBooleanButton id="value3"
+									value="#{cadastrarAnuncioBean.anuncio.opcaoEntrega}" onLabel="Sim"
+									offLabel="Não" style="width:60px" />
+							</div>
+
+
+							<hr class="colorgraph" />
+							<div class="row">
+								<div class="col-xs-12 col-md-6">
+									<p:commandButton id="salvar"
+										actionListener="#{cadastrarAnuncioBean.salvar}"
+										styleClass="botao   ui-priority-primary" value="Cadastrar" />
+
+								</div>
+								<div class="col-xs-12 col-md-6">
+									<p:commandButton id="sair" ajax="false" immediate="true"  action="/index?faces-redirect=true"
+										styleClass="botao  ui-priority-primary" value="Sair" />
+								</div>
+							</div>
+
+						</h:form>
+
+					</div>
+				</div>
+
+			</div>
+
+
+		</ui:define>
+	</ui:composition>
+
+
+
+
+</h:body>
+
+</html>

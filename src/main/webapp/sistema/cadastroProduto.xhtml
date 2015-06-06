@@ -1,0 +1,241 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf" xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+
+	<link
+		href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"
+		rel="stylesheet" />
+
+	<style type="text/css">
+/* Credit to bootsnipp.com for the css for the color graph */
+.ui-autocomplete-input {
+	width: 500px !important;
+}
+
+.colorgraph {
+	height: 5px;
+	border-top: 0;
+	background: #c4e17f;
+	border-radius: 5px;
+	background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%,
+		#f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%,
+		#db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%,
+		#669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+	background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%,
+		#f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%,
+		#db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%,
+		#669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+	background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca
+		25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe
+		50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1
+		87.5%, #62c2e4 87.5%, #62c2e4);
+	background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca
+		25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe
+		50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1
+		87.5%, #62c2e4 87.5%, #62c2e4);
+}
+</style>
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script
+		src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+
+	<!--  <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet" />
+	       <link href="${pageContext.request.contextPath}/resources/css/sistema.css" rel="stylesheet" />-->
+	     <h:outputStylesheet library="css" name="sistema.css" />
+	     <h:outputStylesheet library="css" name="bootstrap.min.css" />
+  
+</h:head>
+
+<h:body>
+
+
+	<ui:composition template="/WEB-INF/restrito/TemplatePadrao.xhtml">
+	
+	 <ui:define name="titulo">Cadastro de Produto</ui:define>
+		<ui:define name="corpo">
+
+		
+
+
+			<div class="container">       
+
+				<div class="row">
+					<div
+						class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-4 col-md-offset-2">
+						<h:form role="form" id="form">
+                            
+
+
+					        	<p:messages id="msg" autoUpdate="true" closable="true" />
+
+							<h2>
+								Cadastro Produto <br /> <small><a>Antes de
+										cadastrar um novo produto verifique se o mesmo já não se
+										encontra cadastrado.</a></small>
+							</h2>
+							<hr class="colorgraph" />
+
+							<div class="form-group">
+								<p:inputText id="nomeProduto" value="#{cadastroProdutoBean.produto.nome}"
+									placeholder="Nome Produto" required="true"
+									requiredMessage="Nome do Produto deve ser informado"
+									styleClass="form-control  input-lg" >
+								  <p:ajax event="blur" process="@this" update="msg"  />
+									</p:inputText>
+									
+							</div>
+
+							<div class="form-group">
+								<h:selectOneMenu id="categoria" converter="categoriaConverter"
+									value="#{cadastroProdutoBean.categoria}"
+									class="form-control input-lg">
+									<f:selectItem itemLabel="Selecione uma categoria"
+										noSelectionOption="true" />
+									<f:selectItems value="#{cadastroProdutoBean.categorias}"
+										var="categoria" itemValue="#{categoria}"
+										itemLabel="#{categoria.descricao}" />
+									<f:ajax listener="#{cadastroProdutoBean.preencherSubcategoria}"
+										render="@form"    execute="@this" />
+								</h:selectOneMenu>
+							</div>
+
+							<div class="form-group">
+								<h:selectOneMenu id="subcategoria" converter="categoriaConverter"
+									value="#{cadastroProdutoBean.subcategoria}"
+									class="form-control input-lg">
+									<f:selectItem itemLabel="Selecione uma subcategoria"
+										noSelectionOption="true" />
+									<f:selectItems value="#{cadastroProdutoBean.subCategorias}"
+										var="categoria" itemValue="#{categoria}"
+										itemLabel="#{categoria.descricao}" />
+								</h:selectOneMenu>
+
+							</div>
+                           <h4>Imagem Produto:<span class="label label-default"></span></h4>
+						      	<div class="form-group">
+								  <p:fileUpload id="imagem" label="Selecionar" fileUploadListener="#{cadastroProdutoBean.handleFileUpload}" dragDropSupport="true"  mode="advanced" invalidFileMessage="Arquivo inválido." invalidSizeMessage="Tamanho de arquivo inválido."
+                                   update="message"  sizeLimit="6000000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+                                        <p:growl id="message" showDetail="true" />
+							</div>
+
+							<div class="form-group">
+
+								<p:inputTextarea rows="5" value="#{cadastroProdutoBean.produto.descricao}" cols="30" counter="display"
+									maxlength="200"
+									counterTemplate="Você possui {0} caracteres para digitar a descrição do produto."
+									autoResize="false" />
+								<br />
+								<h:outputText id="display" />
+							</div>
+
+
+							<hr class="colorgraph" />
+							<div class="row">
+								<div class="col-xs-12 col-md-6">
+									<p:commandButton id="salvar" process="form" update="form"
+										actionListener="#{cadastroProdutoBean.salvar()}"
+										styleClass="botao   ui-priority-primary" value="Cadastrar" />
+
+								</div>
+								<div class="col-xs-12 col-md-6">
+									<p:commandButton id="sair" ajax="false" immediate="true" action="/index?faces-redirect=true"
+										styleClass="botao  ui-priority-primary" value="Sair" />
+								</div>
+							</div>
+
+						</h:form>
+
+					</div>
+				</div>
+
+			</div>
+
+
+		</ui:define>
+	</ui:composition>
+
+
+
+	<script type="text/javascript">
+$(function () {
+    $('.button-checkbox').each(function () {
+
+        // Settings
+        var $widget = $(this),
+            $button = $widget.find('button'),
+            $checkbox = $widget.find('input:checkbox'),
+            color = $button.data('color'),
+            settings = {
+                on: {
+                    icon: 'glyphicon glyphicon-check'
+                },
+                off: {
+                    icon: 'glyphicon glyphicon-unchecked'
+                }
+            };
+
+        // Event Handlers
+        $button.on('click', function () {
+            $checkbox.prop('checked', !$checkbox.is(':checked'));
+            $checkbox.triggerHandler('change');
+            updateDisplay();
+        });
+        $checkbox.on('change', function () {
+            updateDisplay();
+        });
+
+        // Actions
+        function updateDisplay() {
+            var isChecked = $checkbox.is(':checked');
+
+            // Set the button's state
+            $button.data('state', (isChecked) ? "on" : "off");
+
+            // Set the button's icon
+            $button.find('.state-icon')
+                .removeClass()
+                .addClass('state-icon ' + settings[$button.data('state')].icon);
+
+            // Update the button's color
+            if (isChecked) {
+                $button
+                    .removeClass('btn-default')
+                    .addClass('btn-' + color + ' active');
+            }
+            else {
+                $button
+                    .removeClass('btn-' + color + ' active')
+                    .addClass('btn-default');
+            }
+        }
+
+        // Initialization
+        function init() {
+
+            updateDisplay();
+
+            // Inject the icon if applicable
+            if ($button.find('.state-icon').length == 0) {
+                $button.prepend('<i class="state-icon ' + settings[$button.data('state')].icon + '"></i>');
+            }
+        }
+        init();
+    });
+});
+</script>
+
+
+</h:body>
+
+</html>

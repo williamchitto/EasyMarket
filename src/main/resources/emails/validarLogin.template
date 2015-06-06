@@ -1,0 +1,20 @@
+<html>
+    <body>
+        <table>
+            <tr>
+                <td style="width: 350px;align=center">
+                
+                 <a href=$url>
+                      CLIQUE AQUI PARA CONFIRMAR SUA CONTA 
+                   </a>
+                
+                
+                </td>
+                
+            </tr>
+            
+           
+        </table>
+        
+    </body>
+</html>

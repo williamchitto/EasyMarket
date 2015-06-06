@@ -1,0 +1,325 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html >
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf" xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+
+<h:head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+
+	<style type="text/css">
+/* Credit to bootsnipp.com for the css for the color graph */
+.colorgraph {
+	height: 5px;
+	border-top: 0;
+	background: #c4e17f;
+	border-radius: 5px;
+	background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%,
+		#f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%,
+		#db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%,
+		#669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+	background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%,
+		#f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%,
+		#db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%,
+		#669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+	background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca
+		25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe
+		50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1
+		87.5%, #62c2e4 87.5%, #62c2e4);
+	background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca
+		25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe
+		50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1
+		87.5%, #62c2e4 87.5%, #62c2e4);
+}
+</style>
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script
+		src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+
+</h:head>
+
+<h:body>
+
+	<ui:composition template="/WEB-INF/restrito/TemplatePadrao.xhtml">
+
+		<ui:define name="titulo">Alterar cadastro de empresa</ui:define>
+		<ui:define name="corpo">
+
+
+			<div class="container">
+
+
+				<div class="row">
+					<div
+						class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-4 col-md-offset-2">
+						<h:form role="form" id="formCadsEmpr" prependId="false"
+							enctype="multipart/form-data">
+
+						
+
+							<p:messages id="messages" autoUpdate="true" closable="true" />
+
+
+							<h2>
+								Alterar Empresa <br /> <small>Campos com * são
+									obrigatórios.</small>
+							</h2>
+							<hr class="colorgraph" />
+							<h4>
+								Dados da empresa<span class="label label-default"></span>
+							</h4>
+							<h6>
+								Razão Social:<span class="label label-default"></span>
+							</h6>
+							<div class="form-group">
+								<p:inputText id="razaoSocial" readonly="true"
+									placeholder="* Razão Social" styleClass="form-control input-lg"
+									value="#{alterarEmpresaBean.empresa.razaoSocial}" />
+							</div>
+							<h6>
+								Nome Fantasia:<span class="label label-default"></span>
+							</h6>
+							<div class="form-group">
+								<p:inputText id="nomeFantasia" placeholder="* Nome Fantasia"
+									styleClass="form-control input-lg"
+									value="#{alterarEmpresaBean.empresa.nomeFantasia}" />
+							</div>
+							<h6>
+								CNPJ:<span class="label label-default"></span>
+							</h6>
+							<div class="form-group">
+								<p:inputText id="cnpj" readonly="true" maxlength="14"
+									placeholder="* CNPJ" styleClass="form-control input-lg"
+									value="#{alterarEmpresaBean.empresa.cnpj}">
+
+								</p:inputText>
+							</div>
+							<h6>
+								Telefone:<span class="label label-default"></span>
+							</h6>
+							<div class="form-group">
+								<p:inputText id="telefone" placeholder="* Telefone"
+									styleClass="form-control input-lg"
+									value="#{alterarEmpresaBean.empresa.telefone}" />
+							</div>
+
+							<h4>
+								Endereço:<span class="label label-default"></span>
+							</h4>
+							<h6>
+								CEP:<span class="label label-default"></span>
+							</h6>
+							<div class="row">
+								<div class="col-xs-12 col-sm-6 col-md-6">
+									<div class="form-group">
+										<p:inputText id="cep" maxlength="8" placeholder="* CEP"
+											styleClass="form-control input-lg"
+											value="#{alterarEmpresaBean.empresa.endereco.cep}">
+
+										</p:inputText>
+									</div>
+
+								</div>
+								<div class="col-xs-12 col-md-6">
+									<p:commandButton id="buscaCep"
+										actionListener="#{alterarEmpresaBean.enderecoWebService}"
+										styleClass="botaocep  ui-priority-primary" process="@this,cep"
+										update="cep,cidade,bairro,uf,logradouro,salvar,messages"
+										value="Buscar CEP">
+
+									</p:commandButton>
+								</div>
+
+							</div>
+
+
+							<div class="row">
+								<div class="col-xs-12 col-sm-6 col-md-6">
+									<div class="form-group">
+										<p:inputText id="uf" maxlength="2" placeholder="Estado"
+											styleClass="form-control input-lg"
+											value="#{alterarEmpresaBean.empresa.endereco.uf}" />
+									</div>
+
+								</div>
+
+							</div>
+
+
+							<div class="form-group">
+								<p:inputText id="cidade" placeholder="Cidade"
+									styleClass="form-control input-lg"
+									value="#{alterarEmpresaBean.empresa.endereco.cidade}" />
+							</div>
+
+							<div class="form-group">
+
+
+								<p:inputText id="bairro" placeholder="Bairro"
+									styleClass="form-control input-lg"
+									value="#{alterarEmpresaBean.empresa.endereco.bairro}" />
+							</div>
+
+							<div class="form-group">
+								<p:inputText id="logradouro" placeholder="Logradouro"
+									styleClass="form-control input-lg"
+									value="#{alterarEmpresaBean.empresa.endereco.logradouro}" />
+							</div>
+
+							<h6>
+								Número:<span class="label label-default"></span>
+							</h6>
+							<div class="form-group">
+								<p:inputText id="numero" placeholder="* Número"
+									styleClass="form-control input-lg"
+									value="#{alterarEmpresaBean.empresa.endereco.numero}" />
+							</div>
+
+							<h6>
+								Complemento:<span class="label label-default"></span>
+							</h6>
+							<div class="form-group">
+								<p:inputText id="complemento" placeholder="Complemento"
+									styleClass="form-control input-lg"
+									value="#{alterarEmpresaBean.empresa.endereco.complemento}" />
+							</div>
+							<hr />
+							<h4>
+								Autenticação:<span class="label label-default"></span>
+							</h4>
+							<h6>
+								Email:<span class="label label-default"></span>
+							</h6>
+							<div class="form-group">
+								<p:inputText id="email" placeholder="* Email" readonly="true"
+									styleClass="form-control input-lg"
+									value="#{alterarEmpresaBean.empresa.usuario.email}">
+
+								</p:inputText>
+							</div>
+
+
+
+							<br />
+							<hr />
+							<h4>
+								Logomarca:<span class="label label-default"></span>
+							</h4>
+							<div class="form-group">
+							 <p:fileUpload id="imagem" label="Enviar" fileUploadListener="#{cadastroProdutoBean.handleFileUpload}" dragDropSupport="true"  mode="advanced" invalidFileMessage="Arquivo inválido." invalidSizeMessage="Tamanho de arquivo inválido."
+                                   update="message"   sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+                                        <p:growl id="message" showDetail="true" />
+							</div>
+
+
+							<hr />
+
+
+							<hr class="colorgraph" />
+							<div class="row">
+								<div class="col-xs-12 col-md-6">
+									<p:commandButton id="salvar" 
+										actionListener="#{alterarEmpresaBean.alterar}"
+										styleClass="botao   ui-priority-primary" value="Alterar" />
+
+								</div>
+								<div class="col-xs-12 col-md-6">
+									<p:commandButton id="sair" action="/index?faces-redirect=true"
+										immediate="true" ajax="false"
+										styleClass="botao  ui-priority-primary" value="Sair" />
+								</div>
+							</div>
+						</h:form>
+
+					</div>
+				</div>
+
+				<!-- /.modal -->
+
+			</div>
+
+		</ui:define>
+	</ui:composition>
+
+
+	<script type="text/javascript">
+$(function () {
+    $('.button-checkbox').each(function () {
+
+        // Settings
+        var $widget = $(this),
+            $button = $widget.find('button'),
+            $checkbox = $widget.find('input:checkbox'),
+            color = $button.data('color'),
+            settings = {
+                on: {
+                    icon: 'glyphicon glyphicon-check'
+                },
+                off: {
+                    icon: 'glyphicon glyphicon-unchecked'
+                }
+            };
+
+        // Event Handlers
+        $button.on('click', function () {
+            $checkbox.prop('checked', !$checkbox.is(':checked'));
+            $checkbox.triggerHandler('change');
+            updateDisplay();
+        });
+        $checkbox.on('change', function () {
+            updateDisplay();
+        });
+
+        // Actions
+        function updateDisplay() {
+            var isChecked = $checkbox.is(':checked');
+
+            // Set the button's state
+            $button.data('state', (isChecked) ? "on" : "off");
+
+            // Set the button's icon
+            $button.find('.state-icon')
+                .removeClass()
+                .addClass('state-icon ' + settings[$button.data('state')].icon);
+
+            // Update the button's color
+            if (isChecked) {
+                $button
+                    .removeClass('btn-default')
+                    .addClass('btn-' + color + ' active');
+            }
+            else {
+                $button
+                    .removeClass('btn-' + color + ' active')
+                    .addClass('btn-default');
+            }
+        }
+
+        // Initialization
+        function init() {
+
+            updateDisplay();
+
+            // Inject the icon if applicable
+            if ($button.find('.state-icon').length == 0) {
+                $button.prepend('<i class="state-icon ' + settings[$button.data('state')].icon + '"></i>');
+            }
+        }
+        init();
+    });
+});
+</script>
+
+
+</h:body>
+
+</html>

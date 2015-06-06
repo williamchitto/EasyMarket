@@ -1,0 +1,27 @@
+<html>
+    <body>
+        <table>
+            <tr>
+                <td style="width: 150px;align=center">
+                  Seu email de acesso:
+                </td>
+                <td style="width: 300px;align=center">
+                   $email
+                </td>
+                
+            </tr>
+             <tr>
+                <td style="width: 150px;align=center">
+               Nova senha:
+                </td>
+                <td style="width: 300px;align=center">
+                   $senha
+                </td>
+                
+            </tr>
+            
+           
+        </table>
+        
+    </body>
+</html>

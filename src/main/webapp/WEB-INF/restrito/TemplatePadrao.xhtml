@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf" xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title><ui:insert name="titulo">EasyMarket</ui:insert></title>
+
+	<meta charset="utf-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+     <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+      <h:outputStylesheet library="css" name="sistema.css"/>
+      <h:outputScript   library="js" name="jquery.maskMoney.js"/>
+    
+		  
+	<style type="text/css">
+	
+	.custom-search-form{
+    margin-top:5px;
+}
+	
+.navbar-brand { 
+  width: 100px;
+  height: 50px;
+  background: url('') no-repeat center center;
+  background-size: 50px;  
+}
+
+.nav-tabs {
+  display: inline-block;
+  border-bottom: none;
+  padding-top: 15px;
+  font-weight: bold;
+}
+.nav-tabs > li > a, 
+.nav-tabs > li > a:hover, 
+.nav-tabs > li > a:focus, 
+.nav-tabs > li.active > a, 
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+  border: none;
+  border-radius: 0;
+}
+
+.nav-list { border-bottom: 1px solid #eee; }
+.nav-list > li { 
+  padding: 20px 15px 15px;
+  border-left: 1px solid #eee; 
+}
+.nav-list > li:last-child { border-right: 1px solid #eee; }
+.nav-list > li > a:hover { text-decoration: none; }
+.nav-list > li > a > span {
+  display: block;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.mega-dropdown { position: static !important; }
+.mega-dropdown-menu {
+  padding: 20px 15px 15px;
+  text-align: center;
+  width: 100%;
+}
+	
+	.botao {
+	width: 240px !important;
+	height: 65px !important;
+}
+
+.botaocep {
+	width:130px !important;
+	height: 65px !important;
+}
+
+</style>
+
+	<script
+		src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+</h:head>
+<h:body>
+<h:form id="menu">
+  <nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+        <ul class="nav navbar-nav">
+         <li><h:commandLink  action="/index?faces-redirect=true" value="HOME" /></li>
+            <li><h:commandLink rendered="#{!usuarioLogadoBean.logado}" action="/cadastroEmpresa?faces-redirect=true" value="Criar Conta" /></li>
+            <li><h:commandLink rendered="#{usuarioLogadoBean.logado}" action="/sistema/perfil?faces-redirect=true" value="Meu Perfil" /></li>
+    		<li class="dropdown mega-dropdown active">
+			    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categorias<span class="caret"></span></a>				
+				<div class="dropdown-menu mega-dropdown-menu">
+                    <div class="container-fluid">
+    				    <!-- Tab panes -->
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="men">
+                            <ul class="nav-list list-inline">
+                                <li><a href="#"><h:graphicImage value="/resources/imagens/menu/higiene.png" /><span>Higiene</span></a></li>
+                                <li><a href="#"><h:graphicImage value="/resources/imagens/menu/bazar.png" /><span>Bazar</span></a></li>
+                                <li><a href="#"><h:graphicImage value="/resources/imagens/menu/bebidas.png" /><span>Bebidas</span></a></li>
+                                <li><a href="#"><h:graphicImage value="/resources/imagens/menu/biscoitos.png" /><span>Biscoitos</span></a></li>
+                                <li><a href="#"><h:graphicImage value="/resources/imagens/menu/carnes.png" /><span>Carnes</span></a></li>
+                                <li><a href="#"><h:graphicImage value="/resources/imagens/menu/congelados.png" /><span>Congelados</span></a></li>
+                            </ul>
+                          </div>
+                          <div class="tab-pane" id="women">
+                            <ul class="nav-list list-inline">
+                                <li><a href="#"><h:graphicImage value="/resources/imagens/menu/diet.png" /><span>Diet</span></a></li>
+                                <li><a href="#"><h:graphicImage value="/resources/imagens/menu/frios.png" /><span>Frios</span></a></li>
+                                <li><a href="#"><h:graphicImage value="/resources/imagens/menu/hortifruit.png" /><span>HortiFruit</span></a></li>
+                                <li><a href="#"><h:graphicImage value="/resources/imagens/menu/limpeza.png" /><span>Limpeza</span></a></li>                                
+                            </ul>
+                          </div>
+                          <div class="tab-pane" id="kids">
+                            <ul class="nav-list list-inline">
+                                <li><a href="#"><h:graphicImage value="/resources/imagens/menu/mercearia.png" /><span>Mercearia</span></a></li>
+                                <li><a href="#"><h:graphicImage value="/resources/imagens/menu/paes.png" /><span>Pães</span></a></li>
+                               
+                               
+                            </ul>
+                          </div>
+                          <div class="tab-pane" id="sports">
+                            <ul class="nav-list list-inline">                                
+                                <li><a href="#"><h:graphicImage value="/resources/imagens/menu/petshop.png" /><span>PetShop</span></a></li>
+                                <li><a href="#"><h:graphicImage value="/resources/imagens/menu/vinhos.png" /><span>Vinhos</span></a></li>
+                               
+                            </ul>
+                          </div>
+                        </div>
+                    </div>
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                       <li class="active"><a href="#men" role="tab" data-toggle="tab">1</a></li>
+                       <li><a href="#women" role="tab" data-toggle="tab">2</a></li>
+                       <li><a href="#kids" role="tab" data-toggle="tab">3</a></li>
+                       <li><a href="#sports" role="tab" data-toggle="tab">4</a></li>
+                    </ul>                    
+				</div>				
+			</li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><h:commandLink rendered="#{usuarioLogadoBean.logado}" action="/sistema/cadastroAnuncio?faces-redirect=true" value="Criar Anuncio" /></li>
+            <li class="dropdown">
+              <a href="#"  class="dropdown-toggle" data-toggle="dropdown">Minha Conta<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+               <li><h:commandLink rendered="#{!usuarioLogadoBean.logado}"  action="/login?faces-redirect=true" value="Fazer Login" /></li>
+                <li><h:commandLink rendered="#{usuarioLogadoBean.logado}" action="/sistema/alterarEmpresa?faces-redirect=true" value="Alterar Empresa" /></li>
+                <li><h:commandLink rendered="#{usuarioLogadoBean.logado}" action="/sistema/cadastroProduto?faces-redirect=true" value="Cadastrar Produto" /></li>
+              
+                <li class="divider"></li>
+               
+              </ul>
+            </li>
+              <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><h:commandLink rendered="#{!usuarioLogadoBean.logado}"  action="/login?faces-redirect=true" value="Fazer Login" /></li>
+                <li><h:commandLink rendered="#{usuarioLogadoBean.logado}" action="/sistema/alterarSenha?faces-redirect=true" value="Alterar Senha" /></li>
+                 <li><h:commandLink rendered="#{usuarioLogadoBean.logado}" action="#{usuarioLogadoBean.sairSistema()}" value="Sair" /></li>
+              
+                <li class="divider"></li>
+               
+              </ul>
+            </li>
+        </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $(".dropdown").hover(            
+        function() {
+            $('.dropdown-menu', this).stop( true, true ).slideDown("fast");
+            $(this).toggleClass('open');        
+        },
+        function() {
+            $('.dropdown-menu', this).stop( true, true ).slideUp("fast");
+            $(this).toggleClass('open');       
+        }
+    );
+});
+</script>
+  
+	
+ 
+
+					
+				<p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+ 
+                              <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+                                   <p:graphicImage library="imagens" name="ajax-loader1.gif" />
+                                 </p:dialog>
+			
+			</h:form>
+			
+	
+	
+	<div class="container">
+
+		<!-- conteudo vai ser colocado aqui   class="col-sm-offset-2"   class="col-lg-10" -->
+		<ui:insert name="corpo" />
+
+
+	</div>
+
+
+
+
+	<!-- /.container -->
+
+	<hr  class="colorgraph"/>
+	
+	
+	
+	 
+
+	<ui:insert name="footer">
+
+		<ui:include src="/WEB-INF/restrito/Footer.xhtml"></ui:include>
+
+	</ui:insert>
+	
+	
+	<script>
+			function configurarMoeda() {
+				$(".moeda").maskMoney({ decimal: ",", thousands: ".", allowZero: true });
+			}
+			
+			$(document).ready(function() {
+				configurarMoeda();
+			});
+		</script>
+
+
+	<script type="text/javascript">
+
+</script>
+</h:body>
+</html>

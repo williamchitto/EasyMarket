@@ -1,0 +1,527 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html >
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf" xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+
+<h:head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+
+	<style type="text/css">
+/* Credit to bootsnipp.com for the css for the color graph */
+.colorgraph {
+	height: 5px;
+	border-top: 0;
+	background: #c4e17f;
+	border-radius: 5px;
+	background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%,
+		#f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%,
+		#db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%,
+		#669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+	background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%,
+		#f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%,
+		#db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%,
+		#669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+	background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca
+		25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe
+		50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1
+		87.5%, #62c2e4 87.5%, #62c2e4);
+	background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca
+		25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe
+		50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1
+		87.5%, #62c2e4 87.5%, #62c2e4);
+}
+</style>
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script
+		src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+
+</h:head>
+
+<h:body>
+
+	<ui:composition template="/WEB-INF/restrito/TemplatePadrao.xhtml">
+
+		<ui:define name="titulo">Cadastro de Empresa</ui:define>
+		<ui:define name="corpo">
+
+
+			<div class="container">
+
+				<div class="row">
+					<div
+						class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-4 col-md-offset-2">
+						<h:form role="form" id="formCadsEmpr">
+
+
+							<p:growl id="messages" autoUpdate="true" />
+
+
+							<h2>
+								Cadastro de Empresa <br /> <small>Campos com * são
+									obrigatórios.</small>
+							</h2>
+							<hr class="colorgraph" />
+							<h4>
+								Dados da empresa:<span class="label label-default"></span>
+							</h4>
+							<div class="form-group">
+								<h6>
+									Razão Social:<span class="label label-default"></span>
+								</h6>
+								<p:inputText id="razaoSocial" placeholder="* Razão Social"
+									styleClass="form-control input-lg"
+									value="#{cadastroEmpresaBean.empresa.razaoSocial}" />
+							</div>
+
+							<div class="form-group">
+								<h6>
+									Nome Fantasia:<span class="label label-default"></span>
+								</h6>
+								<p:inputText id="nomeFantasia" placeholder="* Nome Fantasia"
+									styleClass="form-control input-lg"
+									value="#{cadastroEmpresaBean.empresa.nomeFantasia}" />
+							</div>
+
+							<div class="form-group">
+								<h6>
+									CNPJ:<span class="label label-default"></span>
+								</h6>
+								<p:inputText id="cnpj" maxlength="14" placeholder="* CNPJ"
+									styleClass="form-control input-lg"
+									value="#{cadastroEmpresaBean.empresa.cnpj}">
+									<p:ajax event="blur"
+										listener="#{cadastroEmpresaBean.isCnpjUnico}" process="@this"
+										update="messages" />
+								</p:inputText>
+							</div>
+
+							<div class="form-group">
+								<h6>
+									Telefone:<span class="label label-default"></span>
+								</h6>
+								<p:inputMask id="phone" styleClass="form-control input-lg"
+									value="#{cadastroEmpresaBean.empresa.telefone}" placeholder="* Telefone"
+									mask="(99) 9999-9999" />
+							</div>
+
+							<hr />
+							<h4>
+								Endereço:<span class="label label-default"></span>
+							</h4>
+
+							<div class="form-group">
+								<h6>
+									CEP:<span class="label label-default"></span>
+								</h6>
+								<p:inputText id="cep" maxlength="8" placeholder="* CEP"
+									styleClass="form-control input-lg"
+									value="#{cadastroEmpresaBean.endereco.cep}">
+									<p:ajax event="blur"
+										listener="#{cadastroEmpresaBean.preencherEnderecoWebService}"
+										process="@this"
+										update="cep,cidade,bairro,uf,logradouro,salvar,messages" />
+								</p:inputText>
+							</div>
+
+							<div class="row">
+								<div class="col-xs-12 col-sm-6 col-md-6">
+									<div class="form-group">
+										<h6>
+											UF:<span class="label label-default"></span>
+										</h6>
+										<p:inputText id="uf" maxlength="2" placeholder="Estado"
+											styleClass="form-control input-lg"
+											value="#{cadastroEmpresaBean.endereco.uf}" />
+									</div>
+
+								</div>
+							</div>
+
+
+							<div class="form-group">
+								<h6>
+									cidade:<span class="label label-default"></span>
+								</h6>
+								<p:inputText id="cidade" placeholder="Cidade"
+									styleClass="form-control input-lg"
+									value="#{cadastroEmpresaBean.endereco.cidade}" />
+							</div>
+
+							<div class="form-group">
+								<h6>
+									Bairro:<span class="label label-default"></span>
+								</h6>
+								<p:inputText id="bairro" placeholder="Bairro"
+									styleClass="form-control input-lg"
+									value="#{cadastroEmpresaBean.endereco.bairro}" />
+							</div>
+
+							<div class="form-group">
+								<h6>
+									Logradouro:<span class="label label-default"></span>
+								</h6>
+								<p:inputText id="logradouro" placeholder="Logradouro"
+									styleClass="form-control input-lg"
+									value="#{cadastroEmpresaBean.endereco.logradouro}" />
+							</div>
+
+
+							<div class="form-group">
+								<h6>
+									Número:<span class="label label-default"></span>
+								</h6>
+								<p:inputText id="numero" placeholder="* Número"
+									styleClass="form-control input-lg"
+									value="#{cadastroEmpresaBean.endereco.numero}" />
+							</div>
+
+
+							<div class="form-group">
+								<h6>
+									Complemento:<span class="label label-default"></span>
+								</h6>
+								<p:inputText id="complemento" placeholder="Complemento"
+									styleClass="form-control input-lg"
+									value="#{cadastroEmpresaBean.endereco.complemento}" />
+							</div>
+							<hr />
+							<h4>
+								Autenticação:<span class="label label-default"></span>
+							</h4>
+							<div class="form-group">
+								<h6>
+									Email:<span class="label label-default"></span>
+								</h6>
+								<p:inputText id="email" placeholder="* Email"
+									styleClass="form-control input-lg"
+									value="#{cadastroEmpresaBean.user.email}">
+									<p:ajax event="blur"
+										listener="#{cadastroEmpresaBean.isEmailUnico}" process="@this"
+										update="messages" />
+								</p:inputText>
+							</div>
+
+
+							<div class="row">
+								<div class="col-xs-12 col-sm-6 col-md-6">
+
+									<div class="form-group">
+
+										<p:password id="Feedback" placeholder="* Password"
+											required="true" requiredMessage="Senha deve ser informada"
+											validatorMessage="Senhas devem ser iguais"
+											match="confirminlineFeedback"
+											styleClass="form-control input-lg"
+											promptLabel="Digite a senha" weakLabel="Força senha:fraca"
+											goodLabel="Força senha:média" strongLabel="Força senha:forte"
+											value="#{cadastroEmpresaBean.senha}" feedback="true"
+											inline="true" />
+									</div>
+								</div>
+								<div class="col-xs-12 col-sm-6 col-md-6">
+									<div class="form-group">
+										<p:password id="confirminlineFeedback"
+											placeholder="Confirmpassword"
+											styleClass="form-control input-lg"
+											value="#{cadastroEmpresaBean.confirmSenha}" />
+									</div>
+								</div>
+							</div>
+							<br />
+							<hr />
+							<h4>
+								* Logomarca:<span class="label label-default"></span>
+							</h4>
+							<div class="form-group">
+								<p:fileUpload id="imagem" label="Selecionar"
+									fileUploadListener="#{cadastroEmpresaBean.handleFileUpload}"
+									mode="advanced" invalidFileMessage="Arquivo inválido."
+									invalidSizeMessage="Tamanho de arquivo inválido."
+									update="message" sizeLimit="4000000" dragDropSupport="true"
+									allowTypes="/(\.|\/)(gif|jpe?g|png)$/" required="true"
+									requiredMessage="Logomarca deve ser informada." />
+								<p:growl id="message" showDetail="true" />
+							</div>
+
+
+							<hr />
+							<div class="row">
+
+								<div class="col-xs-8 col-sm-9 col-md-9">
+									Ao clicar em <strong class="label label-primary">Registrar</strong>,
+									você concorda com os<a href="#" data-toggle="modal"
+										data-target="#t_and_c_m">Termos e Condições</a> para uso deste
+									sistema, leia os termos antes de registrar.
+								</div>
+							</div>
+
+							<hr class="colorgraph" />
+							<div class="row">
+								<div class="col-xs-12 col-md-6">
+									<p:commandButton id="salvar" process="@form" update="@form"
+										actionListener="#{cadastroEmpresaBean.Salvar()}"
+										styleClass="botao    ui-priority-primary" value="Registrar" />
+
+								</div>
+								<div class="col-xs-12 col-md-6">
+									<p:commandButton id="sair" action="index?faces-redirect=true"
+										immediate="true" ajax="false"
+										styleClass="botao  ui-priority-primary" value="Sair" />
+								</div>
+							</div>
+						</h:form>
+
+					</div>
+				</div>
+				<!-- Modal -->
+				<div class="modal fade" id="t_and_c_m" tabindex="-1" role="dialog"
+					aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-lg">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal"
+									aria-hidden="true">×</button>
+								<h4 class="modal-title" id="myModalLabel">Termos e
+									Condições</h4>
+							</div>
+							<div class="modal-body">
+								<p style="font-weight: bold;">Condições de acesso e uso do
+									site:</p>
+								<p>Estas Condições são impostas a Todos os Usuários do Easy
+									Market, portanto o acesso e a utilização das ferramentas do
+									mesmo resultam na prévia aceitação das condições gerais de uso.
+								</p>
+								<p>O Easy Market não realiza as ofertas dos produtos
+									oferecidos nos anúncios, não é proprietária e nem os armazena
+									em estoque. Também não intervém nos preços ou valores cobrados
+									por entrega, e assim sendo também não se responsabiliza pela
+									disponibilidade ou valores incorretos publicados nos mesmos.</p>
+								<p>O usuário aceita e reconhece que o uso do Easy Market e
+									suas ferramentas será por sua conta e risco, se comprometendo a
+									utilizá-lo conforme a legislação vigente e os termos de uso e
+									privacidade aqui expostos.</p>
+								<p>O usuário se compromete a não fazer uso do site e suas
+									ferramentas de forma ilícita, ou fraudulenta, seguindo a ética
+									e o ordenamento jurídico brasileiro.</p>
+								<p>O usuário “cliente” confirma que seus anúncios são de sua
+									única e exclusiva responsabilidade, e que no caso de reclamação
+									judicial ele usuário assume completa responsabilidade e garante
+									a isenção de quaisquer ônus ao Easy Market.</p>
+								<p>O site Easy Market Tem direito de remover quaisquer
+									anúncios que não sigam rigorosamente os termos e condições de
+									uso.</p>
+								<p style="font-weight: bold;">Propriedade intelectual e
+									industrial:</p>
+								<p>O usuário “cliente” libera o uso de seus anúncios ao site
+									Easy Market para Distribuir e Reproduzir publicamente em
+									Veículos de propaganda, sendo no entanto vedada a terceiros sem
+									prévia autorização deste ou de seus autores a utilização em
+									qualquer outro meio.</p>
+								<p style="font-weight: bold;">Exclusão de garantias e
+									responsabilidade:</p>
+								<p>O Easy Market não garante a disponibilidade contínua do
+									site, podendo haver interrupções no acesso ao mesmo.</p>
+								<p>O Easy Market não se responsabiliza por possíveis danos e
+									prejuízos causados aos usuários pela falta de disponibilidade
+									ou falta de continuidade do site e serviços do mesmo.</p>
+								<p>O Easy Market somente veicula anúncios vindos do segmento
+									de supermercados. Somente presta esse tipo de serviço, portanto
+									não interferimos em negócios dos anunciantes, nem mesmo
+									prestamos consultorias sobre tecnologias e afins nos mesmos.</p>
+								<p>O Easy Market não se responsabiliza por perdas de ofertas
+									ou se algum usuário se sentir lesado.</p>
+								<p>O Easy Market fará uma varredura diária nos anúncios
+									publicados no site, porém não se responsabiliza se caso algum
+									anúncio não for verificado corretamente, seja ele por
+									informações erradas, ou fraude.</p>
+								<p>O Easy Market não se responsabiliza pela parte tributária
+									dos anúncios publicados no site.</p>
+								<p>O Easy Market não garante que os anúncios serão reais e
+									lícitos, isso passa a ser responsabilidade de terceiros
+									(supermercados).</p>
+								<p>O Easy Market não se responsabiliza por possíveis danos e
+									prejuízos causados por terceiros (supermercados).</p>
+								<p>O Easy Market não garante a veracidade nas informações
+									que os usuários “clientes” anunciarem, assim como não garante
+									que os mesmos irão seguir os termos e leis impostas através dos
+									termos de uso</p>
+								<p style="font-weight: bold;">Política de privacidade:</p>
+								<p>O Site Easy Market respeitará sua privacidade.</p>
+								<p>O Site Easy Market protegerá seus dados disponibilizados
+									no site e não os compartilhará, exceto em casos onde ocorra um
+									pedido judicial.</p>
+								<p>Os Dados Pessoais solicitados no Site só serão enviados
+									para terceiros se existir obrigação legal ou se forem
+									necessários para dar continuidade as atividades prestadas pelo
+									site.</p>
+								<p>A Responsabilidade da veracidade dos dados inseridos no
+									site é total do usuário “cliente”. Caso o mesmo insira dados
+									falsos, O Site Easy Market passa a ter direito de proibir seu
+									acesso ao mesmo.</p>
+								<p>O Site Easy Market garante a confidencialidade de todos
+									os dados, no entanto poderá revelar somente as autoridades
+									mediante uma solicitação legal. Os dados poderão permanecer
+									guardados mesmo se a empresa não estiver mais parceria com a O
+									Site Easy Market, neste caso somente para fins de consulta.</p>
+								<p style="font-weight: bold;">Regras de publicação dos
+									anúncios:</p>
+								<p>O Site Easy Market tem o direito de decidir se os
+									anúncios estão de acordo com as regras de publicação de
+									anúncios e com os interesses comerciais da empresa. Estas
+									regras serão atualizadas sempre que necessário, portanto
+									recomendamos a consulta periódica.</p>
+								<p>O Site Easy Market tem o direito de remover quaisquer
+									anúncios que não sigam criteriosamente os termos de uso, e não
+									tem obrigação de notificar o usuário, mas em casos específicos
+									poderá notificá-lo.</p>
+								<p>O Site Easy Market não se responsabiliza que tenha
+									expirado o seu prazo.</p>
+								<p>Somente é permitido anúncios que contenha estoque
+									necessário, assim como serem de produtos, não sendo permitidos
+									nada além disso.</p>
+								<p>Não é permitido anúncios que possa ser entendido como
+									preconceituoso, com apologia ao crime ou religião.</p>
+								<p>Não é permitido postar mais de um produto em um mesmo
+									anúncio, com exceção de produtos compre 1 leve 2.</p>
+								<p>Não é permitido inserir o mesmo anúncio em diferentes
+									categorias, assim como mais de um anúncio de um mesmo produto.
+								</p>
+								<p>A imagem deve representar o produto anunciado, não sendo
+									permitido o uso de imagens com logomarca de outras empresas do
+									mesmo ramo da Easy Market.</p>
+								<p>Não é permitido anúncios de produtos obtidos de forma
+									ilícita, que não seja original ou que esteja danificado e que
+									seja proibida a venda perante a legislação brasileira.</p>
+								<p>O Produto deverá estar localizado no brasil e deverá
+									estar bem claro a sua localização.</p>
+								<p>
+									<span style="font-weight: bold;"> Vários: </span>
+								</p>
+								<p>Este Termo de uso poderá ser alterado a qualquer momento
+									para que mantenha-se em consonância com as leis brasileiras, ou
+									com a estratégia de mercado do Easy Market.</p>
+								<p>O usuário que faça uso do Site Easy Market concorda com
+									tudo que está descrito acima e assume como sua responsabilidade
+									verificar diariamente os termos de uso para manter-se
+									atualizado sobre as mesmas.</p>
+								<p>Os usuários serão sempre notificados sobre quaisquer
+									alterações feitas, através do e-mail informado no cadastro.</p>
+								<p>O Site Easy Market tem o direito de bloquear o acesso
+									imediato do usuário caso não haja pagamento da mensalidade, ou
+									caso algum anúncio tenha infringido a política da empresa.</p>
+								<p>O Site Easy Market tem o direito de decisão sobre
+									encerramento de atividades do Site(Easy Market) sem obrigação
+									de avisar quaisquer pessoas que o visitam diariamente, exceto
+									Terceiros que contrataram serviços. Esses serão informados com
+									antecedência de 1 Mês.</p>
+								<p>Todas as questões sobre o Site serão regidas de acordo
+									com as leis brasileiras.</p>
+								<p>Após utilização das ferramentas do site não será possível
+									pedir cancelamento nem estorno de valores dos planos
+									contratados.</p>
+								<p>Pagamento A forma de pagamento poderá ser por débito em
+									conta corrente, cartão de crédito ou boleto, não havendo
+									possibilidade de efetuar a mesma diretamente no site. Em caso
+									de não pagamento a conta e possíveis anúncios serão cancelados
+									sem aviso prévio.</p>
+
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-primary"
+									data-dismiss="modal">Eu aceito</button>
+							</div>
+						</div>
+						<!-- /.modal-content -->
+					</div>
+					<!-- /.modal-dialog -->
+				</div>
+				<!-- /.modal -->
+
+			</div>
+
+		</ui:define>
+	</ui:composition>
+
+
+	<script type="text/javascript">
+$(function () {
+    $('.button-checkbox').each(function () {
+
+        // Settings
+        var $widget = $(this),
+            $button = $widget.find('button'),
+            $checkbox = $widget.find('input:checkbox'),
+            color = $button.data('color'),
+            settings = {
+                on: {
+                    icon: 'glyphicon glyphicon-check'
+                },
+                off: {
+                    icon: 'glyphicon glyphicon-unchecked'
+                }
+            };
+
+        // Event Handlers
+        $button.on('click', function () {
+            $checkbox.prop('checked', !$checkbox.is(':checked'));
+            $checkbox.triggerHandler('change');
+            updateDisplay();
+        });
+        $checkbox.on('change', function () {
+            updateDisplay();
+        });
+
+        // Actions
+        function updateDisplay() {
+            var isChecked = $checkbox.is(':checked');
+
+            // Set the button's state
+            $button.data('state', (isChecked) ? "on" : "off");
+
+            // Set the button's icon
+            $button.find('.state-icon')
+                .removeClass()
+                .addClass('state-icon ' + settings[$button.data('state')].icon);
+
+            // Update the button's color
+            if (isChecked) {
+                $button
+                    .removeClass('btn-default')
+                    .addClass('btn-' + color + ' active');
+            }
+            else {
+                $button
+                    .removeClass('btn-' + color + ' active')
+                    .addClass('btn-default');
+            }
+        }
+
+        // Initialization
+        function init() {
+
+            updateDisplay();
+
+            // Inject the icon if applicable
+            if ($button.find('.state-icon').length == 0) {
+                $button.prepend('<i class="state-icon ' + settings[$button.data('state')].icon + '"></i>');
+            }
+        }
+        init();
+    });
+});
+</script>
+
+
+</h:body>
+
+</html>
