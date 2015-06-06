@@ -85,6 +85,8 @@ public class AnuncioDaoImpl extends BasicDao<Anuncio> implements AnuncioDao,Seri
 	   }
 		
 	}
+	
+	
 
 	@Override
 	public int numeroAnuncios(Anuncio anuncio) {
@@ -96,6 +98,15 @@ public class AnuncioDaoImpl extends BasicDao<Anuncio> implements AnuncioDao,Seri
 			  
 		  }
 			return result.intValue();
+	}
+
+	@Override
+	public void addLikeAnuncio(Anuncio anuncio) {
+	
+		Anuncio a = em.find(Anuncio.class,anuncio.getCodigo());
+		a.setVisualizacao(a.getVisualizacao());
+		
+		
 	}
 
 }

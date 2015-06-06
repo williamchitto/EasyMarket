@@ -14,4 +14,5 @@ public interface AnuncioDao {
 	public List<Anuncio>listAnunciosRecentes();
 	public void alterarNumeroAnuncios(Anuncio anuncio);
 	public int numeroAnuncios(Anuncio anuncio);
+	public void addLikeAnuncio(Anuncio anuncio);
 }
