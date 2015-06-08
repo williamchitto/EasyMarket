@@ -1,0 +1,175 @@
+﻿insert into categoria (descricao) values ("MERCEARIA");
+insert into categoria (descricao) values ("BISCOITOS");
+insert into categoria (descricao) values ("BEBIDAS");
+insert into categoria (descricao) values ("VINHO E ESPUMANTE");
+insert into categoria (descricao) values ("HIGIENE E PERFUMARIA");
+insert into categoria (descricao) values ("LIMPEZA");
+insert into categoria (descricao) values ("CARNES PEIXE E SALGADOS");
+insert into categoria (descricao) values ("CONGELADOS");
+insert into categoria (descricao) values ("FRIOS E LACTICINIOS");
+insert into categoria (descricao) values ("HORTIFRUTI E OVOS");
+insert into categoria (descricao) values ("PAES E BOLOS");
+insert into categoria (descricao) values ("BAZAR");
+insert into categoria (descricao) values ("PET SHOP");
+insert into categoria (descricao) values ("DIET LIGHT E INTEGRAIS");
+
+insert into categoria (descricao,categoria_pai_id) values ("Sopas",1);
+insert into categoria (descricao,categoria_pai_id) values ("Caldos",1);
+insert into categoria (descricao,categoria_pai_id) values ("Macarrão",1);
+insert into categoria (descricao,categoria_pai_id) values ("Molhos Condimentos",1);
+insert into categoria (descricao,categoria_pai_id) values ("Temperos e Especiarias",1);
+insert into categoria (descricao,categoria_pai_id) values ("Carnes Enlatadas",1);
+insert into categoria (descricao,categoria_pai_id) values ("Peixes Enlatados",1);
+insert into categoria (descricao,categoria_pai_id) values ("Vegetais em Conserva",1);
+insert into categoria (descricao,categoria_pai_id) values ("Farináceos Cereais",1);
+insert into categoria (descricao,categoria_pai_id) values ("Pratos Prontos",1);
+insert into categoria (descricao,categoria_pai_id) values ("Açucar",1);
+insert into categoria (descricao,categoria_pai_id) values ("Leite em Pó",1);
+insert into categoria (descricao,categoria_pai_id) values ("Leites Cremosos",1);
+insert into categoria (descricao,categoria_pai_id) values ("Matinais",1);
+insert into categoria (descricao,categoria_pai_id) values ("Dietéticos Naturais Orgânicos",1);
+insert into categoria (descricao,categoria_pai_id) values ("Produtos Orientais Árabe",1);
+insert into categoria (descricao,categoria_pai_id) values ("Cereais Naturais",1);
+insert into categoria (descricao,categoria_pai_id) values ("Salgadinhos",1);
+insert into categoria (descricao,categoria_pai_id) values ("Geleias",1);
+insert into categoria (descricao,categoria_pai_id) values ("Doces",1);
+insert into categoria (descricao,categoria_pai_id) values ("Compotas",1);
+insert into categoria (descricao,categoria_pai_id) values ("Mistura para Preparo Sobremesa",1);
+insert into categoria (descricao,categoria_pai_id) values ("Mistura para Bolo",1);
+insert into categoria (descricao,categoria_pai_id) values ("Bomboniere",1);
+insert into categoria (descricao,categoria_pai_id) values ("Óleos",1);
+insert into categoria (descricao,categoria_pai_id) values ("Azeites",1);
+
+
+insert into categoria (descricao,categoria_pai_id) values ("Água e Sal",2);
+insert into categoria (descricao,categoria_pai_id) values ("Cream Crack",2);
+insert into categoria (descricao,categoria_pai_id) values ("Diet e Light",2);
+insert into categoria (descricao,categoria_pai_id) values ("Doce",2);
+insert into categoria (descricao,categoria_pai_id) values ("Especial",2);
+insert into categoria (descricao,categoria_pai_id) values ("Recheado",2);
+insert into categoria (descricao,categoria_pai_id) values ("Salgados",2);
+insert into categoria (descricao,categoria_pai_id) values ("Wafer",2);
+
+insert into categoria (descricao,categoria_pai_id) values ("Sucos Concentrados",3);
+insert into categoria (descricao,categoria_pai_id) values ("Sucos Prontos",3);
+insert into categoria (descricao,categoria_pai_id) values ("Chás Prontos",3);
+insert into categoria (descricao,categoria_pai_id) values ("Refresco em Pó",3);
+insert into categoria (descricao,categoria_pai_id) values ("Xaropes",3);
+insert into categoria (descricao,categoria_pai_id) values ("Refrigerantes",3);
+insert into categoria (descricao,categoria_pai_id) values ("Águas",3);
+insert into categoria (descricao,categoria_pai_id) values ("Isotônicos",3);
+insert into categoria (descricao,categoria_pai_id) values ("Energéticos",3);
+insert into categoria (descricao,categoria_pai_id) values ("Cervejas",3);
+insert into categoria (descricao,categoria_pai_id) values ("Destilados",3);
+
+insert into categoria (descricao,categoria_pai_id) values ("Argentino",4);
+insert into categoria (descricao,categoria_pai_id) values ("Chileno",4);
+insert into categoria (descricao,categoria_pai_id) values ("Francês",4);
+insert into categoria (descricao,categoria_pai_id) values ("Italiano",4);
+insert into categoria (descricao,categoria_pai_id) values ("Nacional",4);
+insert into categoria (descricao,categoria_pai_id) values ("Outros",4);
+insert into categoria (descricao,categoria_pai_id) values ("Português",4);
+
+insert into categoria (descricao,categoria_pai_id) values ("Tolha Papel",5);
+insert into categoria (descricao,categoria_pai_id) values ("Papel Higiênico",5);
+insert into categoria (descricao,categoria_pai_id) values ("Absorvente",5);
+insert into categoria (descricao,categoria_pai_id) values ("Banho",5);
+insert into categoria (descricao,categoria_pai_id) values ("Toucador Infantil",5);
+insert into categoria (descricao,categoria_pai_id) values ("Fraldas Descartáveis",5);
+insert into categoria (descricao,categoria_pai_id) values ("Produto Infantil",5);
+insert into categoria (descricao,categoria_pai_id) values ("Shampoo",5);
+insert into categoria (descricao,categoria_pai_id) values ("Pós Shampoo",5);
+insert into categoria (descricao,categoria_pai_id) values ("Desodorante",5);
+insert into categoria (descricao,categoria_pai_id) values ("Sabonete",5);
+insert into categoria (descricao,categoria_pai_id) values ("Barba e Acessórios",5);
+insert into categoria (descricao,categoria_pai_id) values ("Bucal e Acessórios",5);
+insert into categoria (descricao,categoria_pai_id) values ("Bronzeador",5);
+insert into categoria (descricao,categoria_pai_id) values ("Produtos para Unhas",5);
+insert into categoria (descricao,categoria_pai_id) values ("Acessórios para Cabelo",5);
+insert into categoria (descricao,categoria_pai_id) values ("Farmácia",5);
+insert into categoria (descricao,categoria_pai_id) values ("Produto Corporal",5);
+insert into categoria (descricao,categoria_pai_id) values ("Produto para Mãos Pés",5);
+
+insert into categoria (descricao,categoria_pai_id) values ("Amaciantes e Complemento",6);
+insert into categoria (descricao,categoria_pai_id) values ("Alvejantes e Complemento",6);
+insert into categoria (descricao,categoria_pai_id) values ("Limpeza de Roupa",6);
+insert into categoria (descricao,categoria_pai_id) values ("Limpeza da Cozinha",6);
+insert into categoria (descricao,categoria_pai_id) values ("Limpeza de Calçados e Complemento",6);
+insert into categoria (descricao,categoria_pai_id) values ("Limpadores e Complemento",6);
+insert into categoria (descricao,categoria_pai_id) values ("Detergentes",6);
+insert into categoria (descricao,categoria_pai_id) values ("Desinfetantes",6);
+insert into categoria (descricao,categoria_pai_id) values ("Desodorizador de Casa",6);
+insert into categoria (descricao,categoria_pai_id) values ("Desodorizador de Banheiro",6);
+insert into categoria (descricao,categoria_pai_id) values ("Cera e Complemento",6);
+insert into categoria (descricao,categoria_pai_id) values ("Lustra Móveis e complemento",6);
+insert into categoria (descricao,categoria_pai_id) values ("Inseticidas e Complemento",6);
+
+insert into categoria (descricao,categoria_pai_id) values ("Bacalhau",7);
+insert into categoria (descricao,categoria_pai_id) values ("Carne Bovina",7);
+insert into categoria (descricao,categoria_pai_id) values ("Carne Suína",7);
+insert into categoria (descricao,categoria_pai_id) values ("Carnes Salgadas e Defumadas",7);
+insert into categoria (descricao,categoria_pai_id) values ("Frango e Cortes",7);
+insert into categoria (descricao,categoria_pai_id) values ("Peixes Frescos e Congelados",7);
+insert into categoria (descricao,categoria_pai_id) values ("Linguiças",7);
+
+insert into categoria (descricao,categoria_pai_id) values ("Legumes Verduras e Polpas de Frutas Congeladas",8);
+insert into categoria (descricao,categoria_pai_id) values ("Sobremesas Congeladas",8);
+insert into categoria (descricao,categoria_pai_id) values ("Pizza,Hamburger e Empanados",8);
+insert into categoria (descricao,categoria_pai_id) values ("Pratos Prontos Congelados",8);
+insert into categoria (descricao,categoria_pai_id) values ("Sorvetes",8);
+
+insert into categoria (descricao,categoria_pai_id) values ("Fermento Fresco",9);
+insert into categoria (descricao,categoria_pai_id) values ("Frios",9);
+insert into categoria (descricao,categoria_pai_id) values ("Iogurtes",9);
+insert into categoria (descricao,categoria_pai_id) values ("Leites e Achocolatados",9);
+insert into categoria (descricao,categoria_pai_id) values ("Manteiga e Margarina",9);
+insert into categoria (descricao,categoria_pai_id) values ("Massa Frescas",9);
+insert into categoria (descricao,categoria_pai_id) values ("Queijos",9);
+insert into categoria (descricao,categoria_pai_id) values ("Requeijão Catupiry e Cremes",9);
+insert into categoria (descricao,categoria_pai_id) values ("Patê e Outros",9);
+
+insert into categoria (descricao,categoria_pai_id) values ("Alho e Temperos",10);
+insert into categoria (descricao,categoria_pai_id) values ("Frutas",10);
+insert into categoria (descricao,categoria_pai_id) values ("Legumes",10);
+insert into categoria (descricao,categoria_pai_id) values ("Ovos",10);
+insert into categoria (descricao,categoria_pai_id) values ("Verduras",10);
+
+insert into categoria (descricao,categoria_pai_id) values ("Bolos",11);
+insert into categoria (descricao,categoria_pai_id) values ("Pães Diversos",11);
+
+insert into categoria (descricao,categoria_pai_id) values ("Material Elétrico",12);
+insert into categoria (descricao,categoria_pai_id) values ("Iluminação",12);
+insert into categoria (descricao,categoria_pai_id) values ("Pilhas",12);
+insert into categoria (descricao,categoria_pai_id) values ("Automotivos",12);
+insert into categoria (descricao,categoria_pai_id) values ("Lazer",12);
+insert into categoria (descricao,categoria_pai_id) values ("Material Escolar",12);
+insert into categoria (descricao,categoria_pai_id) values ("Copos e Recipientes para Liquídos",12);
+insert into categoria (descricao,categoria_pai_id) values ("Talheres Serviço",12);
+insert into categoria (descricao,categoria_pai_id) values ("Utensílios de Cozinha",12);
+insert into categoria (descricao,categoria_pai_id) values ("Utensílios para Café",12);
+insert into categoria (descricao,categoria_pai_id) values ("Embalagens Conservação e Armazenamento",12);
+insert into categoria (descricao,categoria_pai_id) values ("Artigos para Festa e Descartáveis",12);
+insert into categoria (descricao,categoria_pai_id) values ("Arrumação da Casa",12);
+insert into categoria (descricao,categoria_pai_id) values ("Acessórios para Limpeza",12);
+insert into categoria (descricao,categoria_pai_id) values ("Acessórios para Churrasco",12);
+insert into categoria (descricao,categoria_pai_id) values ("Têxtil e Acessórios",12);
+insert into categoria (descricao,categoria_pai_id) values ("Eletro e Presentes",12);
+
+insert into categoria (descricao,categoria_pai_id) values ("Cães",13);
+insert into categoria (descricao,categoria_pai_id) values ("Gatos",13);
+insert into categoria (descricao,categoria_pai_id) values ("Aves",13);
+
+insert into categoria (descricao,categoria_pai_id) values ("Adoçantes",14);
+insert into categoria (descricao,categoria_pai_id) values ("Bebidas",14);
+insert into categoria (descricao,categoria_pai_id) values ("Biscoitos",14);
+insert into categoria (descricao,categoria_pai_id) values ("Bomboniere",14);
+insert into categoria (descricao,categoria_pai_id) values ("Cereal",14);
+insert into categoria (descricao,categoria_pai_id) values ("Doces",14);
+insert into categoria (descricao,categoria_pai_id) values ("Frios e Congelados",14);
+insert into categoria (descricao,categoria_pai_id) values ("Iogurtes",14);
+insert into categoria (descricao,categoria_pai_id) values ("Leites e Achocolatados",14);
+insert into categoria (descricao,categoria_pai_id) values ("Matinais",14);
+insert into categoria (descricao,categoria_pai_id) values ("Mercearia",14);
+insert into categoria (descricao,categoria_pai_id) values ("Pães",14);
+insert into categoria (descricao,categoria_pai_id) values ("Refrescos",14);
+
