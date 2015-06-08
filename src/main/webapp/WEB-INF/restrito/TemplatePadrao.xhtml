@@ -170,7 +170,10 @@
               <ul class="dropdown-menu" role="menu">
                 <li><h:commandLink rendered="#{!usuarioLogadoBean.logado}"  action="/login?faces-redirect=true" value="Fazer Login" /></li>
                 <li><h:commandLink rendered="#{usuarioLogadoBean.logado}" action="/sistema/alterarSenha?faces-redirect=true" value="Alterar Senha" /></li>
-                 <li><h:commandLink rendered="#{usuarioLogadoBean.logado}" action="#{usuarioLogadoBean.sairSistema()}" value="Sair" /></li>
+                 <li><p:commandLink rendered="#{usuarioLogadoBean.logado}" action="#{usuarioLogadoBean.sairSistema()}" value="Sair" >
+                 
+                 </p:commandLink></li>
+                
               
                 <li class="divider"></li>
                
@@ -197,7 +200,7 @@ $(document).ready(function(){
 });
 </script>
   
-	
+	 
  
 
 					

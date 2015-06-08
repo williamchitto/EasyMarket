@@ -12,7 +12,101 @@
 <h:outputStylesheet library="css" name="sistema.css" />
 <h:outputStylesheet library="css" name="bootstrap.min.css" />
 <STYLE type="text/css">
+@import
+	url(http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css)
+	;
 
+.col-item {
+	border: 1px solid #E1E1E1;
+	border-radius: 5px;
+	background: #FFF;
+}
+
+.col-item .photo img {
+	margin: 0 auto;
+	width: 100%;
+}
+
+.col-item .info {
+	padding: 10px;
+	border-radius: 0 0 5px 5px;
+	margin-top: 1px;
+}
+
+.col-item:hover .info {
+	background-color: #F5F5DC;
+}
+
+.col-item .price {
+	/*width: 50%;*/
+	float: left;
+	margin-top: 5px;
+}
+
+.col-item .price h5 {
+	line-height: 20px;
+	margin: 0;
+}
+
+.price-text-color {
+	color: #219FD1;
+}
+
+.col-item .info .rating {
+	color: #777;
+}
+
+.col-item .rating {
+	/*width: 50%;*/
+	float: left;
+	font-size: 17px;
+	text-align: right;
+	line-height: 52px;
+	margin-bottom: 10px;
+	height: 52px;
+}
+
+.col-item .separator {
+	border-top: 1px solid #E1E1E1;
+}
+
+.clear-left {
+	clear: left;
+}
+
+.col-item .separator p {
+	line-height: 20px;
+	margin-bottom: 0;
+	margin-top: 10px;
+	text-align: center;
+}
+
+.col-item .separator p i {
+	margin-right: 5px;
+}
+
+.col-item .btn-add {
+	width: 50%;
+	float: left;
+}
+
+.col-item .btn-add {
+	border-right: 1px solid #E1E1E1;
+}
+
+.col-item .btn-details {
+	width: 50%;
+	float: left;
+	padding-left: 10px;
+}
+
+.controls {
+	margin-top: 20px;
+}
+
+[data-slide="prev"] {
+	margin-right: 10px;
+}
 </STYLE>
 
 </head>
@@ -42,373 +136,567 @@
 							<img src="resources/imagens/banner.png" class="img-responsive"
 								alt="teste" title="teste" />
 						</div>
+						<hr />
+						<div class="container">
+							<div class="row">
+								<div class="row">
+									<div class="col-md-9">
+										<h3>Últimos Produtos Adicionados</h3>
+									</div>
+									<div class="col-md-3">
+										<!-- Controls -->
+										<div class="controls pull-right ">
+											<a class="left fa fa-chevron-left btn btn-success"
+												href="#carousel-example" data-slide="prev"></a><a
+												class="right fa fa-chevron-right btn btn-success"
+												href="#carousel-example" data-slide="next"></a>
+										</div>
+									</div>
+								</div>
+								<div id="carousel-example" class="carousel slide "
+									data-ride="carousel">
+									<!-- Wrapper for slides -->
+									<div class="carousel-inner">
+										<div class="item active">
+											<div class="row">
+												<div class="col-sm-3">
+													<div class="col-item">
+														<div class="photo">
+															<!--<img src="http://placehold.it/350x260"
+														class="img-responsive" alt="a" />  -->
+															<p:graphicImage width="174" height="230"
+																value="/ImageAnuncio/#{listarAnuncioVisualizacaoBean.anuncios.
+																get(0).produto.produtoImagem.codigo}" />
+
+														</div>
+														<div class="info">
+															<div class="row">
+																<div class="price col-md-10">
+																	<h5><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(0).produto.nome}" /></h5>
+																	<h5 class="price-text-color">R$<h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(0).preco}" /></h5>
+																</div>
+																<div class="rating hidden-sm col-md-6"></div>
+															</div>
+															<div class="separator clear-left">
+																<p class="btn-add">
+																	<span class="label label-info"><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(0).empresa.nomeFantasia}" /></span>
+
+																</p>
+																<p class="btn-add">
+																	<span class="label label-info"><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(0).visualizacao}    "/> visualizações</span>
+
+																</p>
+
+																<p class="btn-details">
+																	<i class="fa fa-list"></i><a
+																		href="" class="hidden-sm">Detalhes
+																	</a>
+																</p>
+															</div>
+															<div class="clearfix"></div>
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-3">
+													<div class="col-item">
+														<div class="photo">
+															<p:graphicImage   width="174" height="230"
+																value="/ImageAnuncio/#{listarAnuncioVisualizacaoBean.anuncios.
+																get(1).produto.produtoImagem.codigo}" />
+														</div>
+														<div class="info">
+															<div class="row">
+																<div class="price col-md-10">
+																	<h5><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(1).produto.nome}" /></h5>
+																	<h5 class="price-text-color">R$<h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(1).preco}" /></h5>
+																</div>
+																<div class="rating hidden-sm col-md-6"></div>
+															</div>
+															<div class="separator clear-left">
+																<p class="btn-add">
+																	<span class="label label-info"><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(1).empresa.nomeFantasia}" /></span>
+
+																</p>
+																<p class="btn-add">
+																	<span class="label label-info"><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(1).visualizacao}    "/> visualizações</span>
+
+																</p>
+																<p class="btn-details">
+																	<i class="fa fa-list"></i><a
+																		href="http://www.jquery2dotnet.com" class="hidden-sm">Detalhes
+																		</a>
+																</p>
+															</div>
+															<div class="clearfix"></div>
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-3">
+													<div class="col-item">
+														<div class="photo">
+																<p:graphicImage  width="174" height="230"
+																value="/ImageAnuncio/#{listarAnuncioVisualizacaoBean.anuncios.
+																get(2).produto.produtoImagem.codigo}" />
+														</div>
+														<div class="info">
+															<div class="row">
+																<div class="price col-md-10">
+																	<h5><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(2).produto.nome}" /></h5>
+																	<h5 class="price-text-color">R$<h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(2).preco}" /></h5>
+																</div>
+																<div class="rating hidden-sm col-md-6">
+																	
+																</div>
+															</div>
+															<div class="separator clear-left">
+																<p class="btn-add">
+																	<span class="label label-info"><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(2).empresa.nomeFantasia}" /></span>
+
+																</p>
+																<p class="btn-add">
+																	<span class="label label-info"><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(2).visualizacao}    "/> visualizações</span>
+
+																</p>
+																<p class="btn-details">
+																	<i class="fa fa-list"></i><a
+																		href="http://www.jquery2dotnet.com" class="hidden-sm">Detalhes
+																		</a>
+																</p>
+															</div>
+															<div class="clearfix"></div>
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-3">
+													<div class="col-item">
+														<div class="photo">
+																<p:graphicImage  width="174" height="230"
+																value="/ImageAnuncio/#{listarAnuncioVisualizacaoBean.anuncios.
+																get(3).produto.produtoImagem.codigo}" />
+														</div>
+														<div class="info">
+															<div class="row">
+																<div class="price col-md-10">
+																	<h5><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(3).produto.nome}" /></h5>
+																	<h5 class="price-text-color">R$<h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(3).preco}" /></h5>
+																</div>
+																<div class="rating hidden-sm col-md-6">
+																	
+																</div>
+															</div>
+															<div class="separator clear-left">
+															<p class="btn-add">
+																	<span class="label label-info"><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(3).empresa.nomeFantasia}" /></span>
+
+																</p>
+																<p class="btn-add">
+																	<span class="label label-info"><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(3).visualizacao}    "/> visualizações</span>
+
+																</p>
+																<p class="btn-details">
+																	<i class="fa fa-list"></i><a
+																		href="http://www.jquery2dotnet.com" class="hidden-sm">Detalhes
+																		</a>
+																</p>
+															</div>
+															<div class="clearfix"></div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="item">
+											<div class="row">
+												<div class="col-sm-3">
+													<div class="col-item">
+														<div class="photo">
+																<p:graphicImage  width="174" height="230"
+																value="/ImageAnuncio/#{listarAnuncioVisualizacaoBean.anuncios.
+																get(4).produto.produtoImagem.codigo}" />
+														</div>
+														<div class="info">
+															<div class="row">
+																<div class="price col-md-10">
+																	<h5><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(4).produto.nome}" /></h5>
+																	<h5 class="price-text-color">R$<h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(4).preco}" /></h5>
+																</div>
+																<div class="rating hidden-sm col-md-6">
+																	
+																</div>
+															</div>
+															<div class="separator clear-left">
+																<p class="btn-add">
+																	<span class="label label-info"><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(4).empresa.nomeFantasia}" /></span>
+
+																</p>
+																<p class="btn-add">
+																	<span class="label label-info"><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(4).visualizacao}    "/> visualizações</span>
+
+																</p>
+																<p class="btn-details">
+																	<i class="fa fa-list"></i><a
+																		href="http://www.jquery2dotnet.com" class="hidden-sm">Detalhes
+																		</a>
+																</p>
+															</div>
+															<div class="clearfix"></div>
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-3">
+													<div class="col-item">
+														<div class="photo">
+															<p:graphicImage  width="174" height="230"
+																value="/ImageAnuncio/#{listarAnuncioVisualizacaoBean.anuncios.
+																get(5).produto.produtoImagem.codigo}" />
+														</div>
+														<div class="info">
+															<div class="row">
+																<div class="price col-md-10">
+																	<h5><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(5).produto.nome}" /></h5>
+																	<h5 class="price-text-color">R$<h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(5).preco}" /></h5>
+																</div>
+																<div class="rating hidden-sm col-md-6"></div>
+															</div>
+															<div class="separator clear-left">
+																<p class="btn-add">
+																	<span class="label label-info"><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(5).empresa.nomeFantasia}" /></span>
+
+																</p>
+																<p class="btn-add">
+																	<span class="label label-info"><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(5).visualizacao}    "/> visualizações</span>
+
+																</p>
+																<p class="btn-details">
+																	<i class="fa fa-list"></i><a
+																		href="http://www.jquery2dotnet.com" class="hidden-sm">Detalhes
+																		</a>
+																</p>
+															</div>
+															<div class="clearfix"></div>
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-3">
+													<div class="col-item">
+														<div class="photo">
+															<p:graphicImage  width="174" height="230"
+																value="/ImageAnuncio/#{listarAnuncioVisualizacaoBean.anuncios.
+																get(6).produto.produtoImagem.codigo}" />
+														</div>
+														<div class="info">
+															<div class="row">
+																<div class="price col-md-10">
+																	<h5><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(6).produto.nome}" /></h5>
+																	<h5 class="price-text-color">R$<h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(6).preco}" /></h5>
+																</div>
+																<div class="rating hidden-sm col-md-6">
+																
+																</div>
+															</div>
+															<div class="separator clear-left">
+																	<p class="btn-add">
+																	<span class="label label-info"><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(6).empresa.nomeFantasia}" /></span>
+
+																</p>
+																<p class="btn-add">
+																	<span class="label label-info"><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(6).visualizacao}    "/> visualizações</span>
+
+																</p>
+																<p class="btn-details">
+																	<i class="fa fa-list"></i><a
+																		href="http://www.jquery2dotnet.com" class="hidden-sm">Detalhes
+																		</a>
+																</p>
+															</div>
+															<div class="clearfix"></div>
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-3">
+													<div class="col-item">
+														<div class="photo">
+															<p:graphicImage  width="174" height="230"
+																value="/ImageAnuncio/#{listarAnuncioVisualizacaoBean.anuncios.
+																get(7).produto.produtoImagem.codigo}" />
+														</div>
+														<div class="info">
+															<div class="row">
+																<div class="price col-md-10">
+																	<h5><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(7).produto.nome}" /></h5>
+																	<h5 class="price-text-color">R$<h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(7).preco}" /></h5>
+																</div>
+																<div class="rating hidden-sm col-md-6">
+																
+																</div>
+															</div>
+															<div class="separator clear-left">
+																<p class="btn-add">
+																	<span class="label label-info"><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(7).empresa.nomeFantasia}" /></span>
+
+																</p>
+																<p class="btn-add">
+																	<span class="label label-info"><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(7).visualizacao}    "/> visualizações</span>
+
+																</p>
+																<p class="btn-details">
+																	<i class="fa fa-list"></i><a
+																		href="http://www.jquery2dotnet.com" class="hidden-sm">Detalhes
+																		</a>
+																</p>
+															</div>
+															<div class="clearfix"></div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="row">
+									<div class="col-md-9">
+										<h3>Mais Visualizados</h3>
+									</div>
+									<div class="col-md-3">
+										<!-- Controls -->
+										<div class="controls pull-right ">
+											<a class="left fa fa-chevron-left btn btn-primary"
+												href="#carousel-example-generic" data-slide="prev"></a><a
+												class="right fa fa-chevron-right btn btn-primary"
+												href="#carousel-example-generic" data-slide="next"></a>
+										</div>
+									</div>
+								</div>
+								<div id="carousel-example-generic" class="carousel slide "
+									data-ride="carousel">
+									<!-- Wrapper for slides -->
+									<div class="carousel-inner">
+										<div class="item active">
+											<div class="row">
+												<div class="col-sm-4">
+													<div class="col-item">
+														<div class="photo">
+															<img src="http://placehold.it/350x260"
+																class="img-responsive" alt="a" />
+														</div>
+														<div class="info">
+															<div class="row">
+																<div class="price col-md-6">
+																	<h5>Sample Product</h5>
+																	<h5 class="price-text-color">$199.99</h5>
+																</div>
+																<div class="rating hidden-sm col-md-6">
+																	<i class="price-text-color fa fa-star"></i><i
+																		class="price-text-color fa fa-star"> </i><i
+																		class="price-text-color fa fa-star"></i><i
+																		class="price-text-color fa fa-star"> </i><i
+																		class="fa fa-star"></i>
+																</div>
+															</div>
+															<div class="separator clear-left">
+																<p class="btn-add">
+																	<i class="fa fa-shopping-cart"></i><a
+																		href="http://www.jquery2dotnet.com" class="hidden-sm">Add
+																		to cart</a>
+																</p>
+																<p class="btn-details">
+																	<i class="fa fa-list"></i><a
+																		href="http://www.jquery2dotnet.com" class="hidden-sm">More
+																		details</a>
+																</p>
+															</div>
+															<div class="clearfix"></div>
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-4">
+													<div class="col-item">
+														<div class="photo">
+															<img src="http://placehold.it/350x260"
+																class="img-responsive" alt="a" />
+														</div>
+														<div class="info">
+															<div class="row">
+																<div class="price col-md-6">
+																	<h5>Product Example</h5>
+																	<h5 class="price-text-color">$249.99</h5>
+																</div>
+																<div class="rating hidden-sm col-md-6"></div>
+															</div>
+															<div class="separator clear-left">
+																<p class="btn-add">
+																	<i class="fa fa-shopping-cart"></i><a
+																		href="http://www.jquery2dotnet.com" class="hidden-sm">Add
+																		to cart</a>
+																</p>
+																<p class="btn-details">
+																	<i class="fa fa-list"></i><a
+																		href="http://www.jquery2dotnet.com" class="hidden-sm">More
+																		details</a>
+																</p>
+															</div>
+															<div class="clearfix"></div>
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-4">
+													<div class="col-item">
+														<div class="photo">
+															<img src="http://placehold.it/350x260"
+																class="img-responsive" alt="a" />
+														</div>
+														<div class="info">
+															<div class="row">
+																<div class="price col-md-6">
+																	<h5>Next Sample Product</h5>
+																	<h5 class="price-text-color">$149.99</h5>
+																</div>
+																<div class="rating hidden-sm col-md-6">
+																	<i class="price-text-color fa fa-star"></i><i
+																		class="price-text-color fa fa-star"> </i><i
+																		class="price-text-color fa fa-star"></i><i
+																		class="price-text-color fa fa-star"> </i><i
+																		class="fa fa-star"></i>
+																</div>
+															</div>
+															<div class="separator clear-left">
+																<p class="btn-add">
+																	<i class="fa fa-shopping-cart"></i><a
+																		href="http://www.jquery2dotnet.com" class="hidden-sm">Add
+																		to cart</a>
+																</p>
+																<p class="btn-details">
+																	<i class="fa fa-list"></i><a
+																		href="http://www.jquery2dotnet.com" class="hidden-sm">More
+																		details</a>
+																</p>
+															</div>
+															<div class="clearfix"></div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="item">
+											<div class="row">
+												<div class="col-sm-4">
+													<div class="col-item">
+														<div class="photo">
+															<img src="http://placehold.it/350x260"
+																class="img-responsive" alt="a" />
+														</div>
+														<div class="info">
+															<div class="row">
+																<div class="price col-md-6">
+																	<h5>Product with Variants</h5>
+																	<h5 class="price-text-color">$199.99</h5>
+																</div>
+																<div class="rating hidden-sm col-md-6">
+																	<i class="price-text-color fa fa-star"></i><i
+																		class="price-text-color fa fa-star"> </i><i
+																		class="price-text-color fa fa-star"></i><i
+																		class="price-text-color fa fa-star"> </i><i
+																		class="fa fa-star"></i>
+																</div>
+															</div>
+															<div class="separator clear-left">
+																<p class="btn-add">
+																	<i class="fa fa-shopping-cart"></i><a
+																		href="http://www.jquery2dotnet.com" class="hidden-sm">Add
+																		to cart</a>
+																</p>
+																<p class="btn-details">
+																	<i class="fa fa-list"></i><a
+																		href="http://www.jquery2dotnet.com" class="hidden-sm">More
+																		details</a>
+																</p>
+															</div>
+															<div class="clearfix"></div>
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-4">
+													<div class="col-item">
+														<div class="photo">
+															<img src="http://placehold.it/350x260"
+																class="img-responsive" alt="a" />
+														</div>
+														<div class="info">
+															<div class="row">
+																<div class="price col-md-6">
+																	<h5>Grouped Product</h5>
+																	<h5 class="price-text-color">$249.99</h5>
+																</div>
+																<div class="rating hidden-sm col-md-6"></div>
+															</div>
+															<div class="separator clear-left">
+																<p class="btn-add">
+																	<i class="fa fa-shopping-cart"></i><a
+																		href="http://www.jquery2dotnet.com" class="hidden-sm">Add
+																		to cart</a>
+																</p>
+																<p class="btn-details">
+																	<i class="fa fa-list"></i><a
+																		href="http://www.jquery2dotnet.com" class="hidden-sm">More
+																		details</a>
+																</p>
+															</div>
+															<div class="clearfix"></div>
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-4">
+													<div class="col-item">
+														<div class="photo">
+															<img src="http://placehold.it/350x260"
+																class="img-responsive" alt="a" />
+														</div>
+														<div class="info">
+															<div class="row">
+																<div class="price col-md-6">
+																	<h5>Product with Variants</h5>
+																	<h5 class="price-text-color">$149.99</h5>
+																</div>
+																<div class="rating hidden-sm col-md-6">
+																	<i class="price-text-color fa fa-star"></i><i
+																		class="price-text-color fa fa-star"> </i><i
+																		class="price-text-color fa fa-star"></i><i
+																		class="price-text-color fa fa-star"> </i><i
+																		class="fa fa-star"></i>
+																</div>
+															</div>
+															<div class="separator clear-left">
+																<p class="btn-add">
+																	<i class="fa fa-shopping-cart"></i><a
+																		href="http://www.jquery2dotnet.com" class="hidden-sm">Add
+																		to cart</a>
+																</p>
+																<p class="btn-details">
+																	<i class="fa fa-list"></i><a
+																		href="http://www.jquery2dotnet.com" class="hidden-sm">More
+																		details</a>
+																</p>
+															</div>
+															<div class="clearfix"></div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
 
 					</div>
 
 				</div>
 
-				<hr />
-				<div class="container" >
-    <div class="row">
-   
-    	<div class="col-md-12">
-    	<div style="margin-left:60px"> 
-    	  <h3>Mais visualizados</h3>
-    	</div>
-    	
-			<div class="col-sm-6 col-md-4">
-			
-				<div class="thumbnail" >
-					<h4 class="text-center"><span class="label label-info">Mercado bom preço</span></h4>
-					<img src="http://placehold.it/650x450" class="img-responsive"/>
-					<div class="caption">
-						<div class="row">
-							<div class="col-md-6 col-xs-6">
-								<h3>Galaxy S5</h3>
-							</div>
-							<div class="col-md-6 col-xs-6 price">
-								<h3>
-								<label style="font-size: 18px">$649.99</label></h3>
-							</div>
-						</div>
-						<p></p>
-						<div class="row">
-							<div class="col-md-6">
-								<a class="btn btn-primary btn-product"><span class="glyphicon glyphicon-thumbs-up"></span> Like</a> 
-							</div>
-							<div class="col-md-6">
-								<a href="#" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span> Buy</a></div>
-						</div>
 
-						<p> </p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-6 col-md-4">
-				<div class="thumbnail" >
-					<h4 class="text-center"><span class="label label-info">Apple</span></h4>
-					<img src="http://placehold.it/650x450" class="img-responsive"/>
-					<div class="caption">
-						<div class="row">
-							<div class="col-md-6 col-xs-6">
-								<h3>iPhone 6</h3>
-							</div>
-							<div class="col-md-6 col-xs-6 price">
-								<h3>
-								<label style="font-size: 18px" >$749.99</label></h3>
-							</div>
-						</div>
-						<p></p>
-						<div class="row">
-							<div class="col-md-6">
-								<a class="btn btn-primary btn-product"><span class="glyphicon glyphicon-thumbs-up"></span> Like</a> 
-							</div>
-							<div class="col-md-6">
-								<a href="#" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span> Buy</a></div>
-						</div>
 
-						<p> </p>
-					</div>
-				</div>
-			</div>
-            <div class="col-sm-6 col-md-4">
-				<div class="thumbnail" >
-					<h4 class="text-center"><span class="label label-info">Nokia</span></h4>
-					<img src="http://placehold.it/650x450" class="img-responsive"/>
-					<div class="caption">
-						<div class="row">
-							<div class="col-md-6 col-xs-6">
-								<h3>Lumia 1520</h3>
-							</div>
-							<div class="col-md-6 col-xs-6 price">
-								<h3>
-								<label style="font-size: 18px">$749.00</label></h3>
-							</div>
-						</div>
-						<p></p>
-						<div class="row">
-							<div class="col-md-6">
-								<a class="btn btn-primary btn-product"><span class="glyphicon glyphicon-thumbs-up"></span> Like</a> 
-							</div>
-							<div class="col-md-6">
-								<a href="#" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span> Buy</a></div>
-						</div>
-
-						<p> </p>
-					</div>
-				</div>
-			</div>
-            
-        </div> 
-
-	</div>
-	  <div class="row">
-    	<div class="col-md-12">
-    	<div style="margin-left:60px"> 
-    	  <h3>Últimos adicionados</h3>
-    	</div>
-			<div class="col-sm-6 col-md-4">
-				<div class="thumbnail" >
-					<h4 class="text-center"><span class="label label-info">Samsung</span></h4>
-					<img src="http://placehold.it/650x450" class="img-responsive"/>
-					<div class="caption">
-						<div class="row">
-							<div class="col-md-6 col-xs-6">
-								<h3>Galaxy S5</h3>
-							</div>
-							<div class="col-md-6 col-xs-6 price">
-								<h3>
-								<label style="font-size: 18px">$649.99</label></h3>
-							</div>
-						</div>
-						<p></p>
-						<div class="row">
-							<div class="col-md-6">
-								<a class="btn btn-primary btn-product"><span class="glyphicon glyphicon-thumbs-up"></span> Like</a> 
-							</div>
-							<div class="col-md-6">
-								<a href="#" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span> Buy</a></div>
-						</div>
-
-						<p> </p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-6 col-md-4">
-				<div class="thumbnail" >
-					<h4 class="text-center"><span class="label label-info">Apple</span></h4>
-					<img src="http://placehold.it/650x450" class="img-responsive"/>
-					<div class="caption">
-						<div class="row">
-							<div class="col-md-6 col-xs-6">
-								<h3>iPhone 6</h3>
-							</div>
-							<div class="col-md-6 col-xs-6 price">
-								<h3>
-								<label style="font-size: 18px" >$749.99</label></h3>
-							</div>
-						</div>
-						<p></p>
-						<div class="row">
-							<div class="col-md-6">
-								<a class="btn btn-primary btn-product"><span class="glyphicon glyphicon-thumbs-up"></span> Like</a> 
-							</div>
-							<div class="col-md-6">
-								<a href="#" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span> Buy</a></div>
-						</div>
-
-						<p> </p>
-					</div>
-				</div>
-			</div>
-            <div class="col-sm-6 col-md-4">
-				<div class="thumbnail" >
-					<h4 class="text-center"><span class="label label-info">Nokia</span></h4>
-					<img src="http://placehold.it/650x450" class="img-responsive"/>
-					<div class="caption">
-						<div class="row">
-							<div class="col-md-6 col-xs-6">
-								<h3>Lumia 1520</h3>
-							</div>
-							<div class="col-md-6 col-xs-6 price">
-								<h3>
-								<label style="font-size: 18px">$749.00</label></h3>
-							</div>
-						</div>
-						<p></p>
-						<div class="row">
-							<div class="col-md-6">
-								<a class="btn btn-primary btn-product"><span class="glyphicon glyphicon-thumbs-up"></span> Like</a> 
-							</div>
-							<div class="col-md-6">
-								<a href="#" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span> Buy</a></div>
-						</div>
-
-						<p> </p>
-					</div>
-				</div>
-			</div>
-            
-        </div> 
-
-	</div>
-	
-	  <div class="row">
-    	<div class="col-md-12">
-			<div class="col-sm-6 col-md-4">
-				<div class="thumbnail" >
-					<h4 class="text-center"><span class="label label-info">Samsung</span></h4>
-					<img src="http://placehold.it/650x450" class="img-responsive"/>
-					<div class="caption">
-						<div class="row">
-							<div class="col-md-6 col-xs-6">
-								<h3>Galaxy S5</h3>
-							</div>
-							<div class="col-md-6 col-xs-6 price">
-								<h3>
-								<label style="font-size: 18px">$649.99</label></h3>
-							</div>
-						</div>
-						<p></p>
-						<div class="row">
-							<div class="col-md-6">
-								<a class="btn btn-primary btn-product"><span class="glyphicon glyphicon-thumbs-up"></span> Like</a> 
-							</div>
-							<div class="col-md-6">
-								<a href="#" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span> Buy</a></div>
-						</div>
-
-						<p> </p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-6 col-md-4">
-				<div class="thumbnail" >
-					<h4 class="text-center"><span class="label label-info">Apple</span></h4>
-					<img src="http://placehold.it/650x450" class="img-responsive"/>
-					<div class="caption">
-						<div class="row">
-							<div class="col-md-6 col-xs-6">
-								<h3>iPhone 6</h3>
-							</div>
-							<div class="col-md-6 col-xs-6 price">
-								<h3>
-								<label style="font-size: 18px" >$749.99</label></h3>
-							</div>
-						</div>
-						<p></p>
-						<div class="row">
-							<div class="col-md-6">
-								<a class="btn btn-primary btn-product"><span class="glyphicon glyphicon-thumbs-up"></span> Like</a> 
-							</div>
-							<div class="col-md-6">
-								<a href="#" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span> Buy</a></div>
-						</div>
-
-						<p> </p>
-					</div>
-				</div>
-			</div>
-            <div class="col-sm-6 col-md-4">
-				<div class="thumbnail" >
-					<h4 class="text-center"><span class="label label-info">Nokia</span></h4>
-					<img src="http://placehold.it/650x450" class="img-responsive"/>
-					<div class="caption">
-						<div class="row">
-							<div class="col-md-6 col-xs-6">
-								<h3>Lumia 1520</h3>
-							</div>
-							<div class="col-md-6 col-xs-6 price">
-								<h3>
-								<label style="font-size: 18px">$749.00</label></h3>
-							</div>
-						</div>
-						<p></p>
-						<div class="row">
-							<div class="col-md-6">
-								<a class="btn btn-primary btn-product"><span class="glyphicon glyphicon-thumbs-up"></span> Like</a> 
-							</div>
-							<div class="col-md-6">
-								<a href="#" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span> Buy</a></div>
-						</div>
-
-						<p> </p>
-					</div>
-				</div>
-			</div>
-            
-        </div> 
-
-	</div>
-	  <div class="row">
-    	<div class="col-md-12">
-			<div class="col-sm-6 col-md-4">
-				<div class="thumbnail" >
-					<h4 class="text-center"><span class="label label-info">Samsung</span></h4>
-					<img src="http://placehold.it/650x450" class="img-responsive"/>
-					<div class="caption">
-						<div class="row">
-							<div class="col-md-6 col-xs-6">
-								<h3>Galaxy S5</h3>
-							</div>
-							<div class="col-md-6 col-xs-6 price">
-								<h3>
-								<label style="font-size: 18px">$649.99</label></h3>
-							</div>
-						</div>
-						<p></p>
-						<div class="row">
-							<div class="col-md-6">
-								<a class="btn btn-primary btn-product"><span class="glyphicon glyphicon-thumbs-up"></span> Like</a> 
-							</div>
-							<div class="col-md-6">
-								<a href="#" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span> Buy</a></div>
-						</div>
-
-						<p> </p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-6 col-md-4">
-				<div class="thumbnail" >
-					<h4 class="text-center"><span class="label label-info">Apple</span></h4>
-					<img src="http://placehold.it/650x450" class="img-responsive"/>
-					<div class="caption">
-						<div class="row">
-							<div class="col-md-6 col-xs-6">
-								<h3>iPhone 6</h3>
-							</div>
-							<div class="col-md-6 col-xs-6 price">
-								<h3>
-								<label style="font-size: 18px" >$749.99</label></h3>
-							</div>
-						</div>
-						<p></p>
-						<div class="row">
-							<div class="col-md-6">
-								<a class="btn btn-primary btn-product"><span class="glyphicon glyphicon-thumbs-up"></span> Like</a> 
-							</div>
-							<div class="col-md-6">
-								<a href="#" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span> Buy</a></div>
-						</div>
-
-						<p> </p>
-					</div>
-				</div>
-			</div>
-            <div class="col-sm-6 col-md-4">
-				<div class="thumbnail" >
-					<h4 class="text-center"><span class="label label-info">Nokia</span></h4>
-					<img src="http://placehold.it/650x450" class="img-responsive"/>
-					<div class="caption">
-						<div class="row">
-							<div class="col-md-6 col-xs-6">
-								<h3>Lumia 1520</h3>
-							</div>
-							<div class="col-md-6 col-xs-6 price">
-								<h3>
-								<label style="font-size: 18px">$749.00</label></h3>
-							</div>
-						</div>
-						<p></p>
-						<div class="row">
-							<div class="col-md-6">
-								<a class="btn btn-primary btn-product"><span class="glyphicon glyphicon-thumbs-up"></span> Like</a> 
-							</div>
-							<div class="col-md-6">
-								<a href="#" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span> Buy</a></div>
-						</div>
-
-						<p> </p>
-					</div>
-				</div>
-			</div>
-            
-        </div> 
-
-	</div>
-</div>
-				
 			</h:form>
 
 		</ui:define>
