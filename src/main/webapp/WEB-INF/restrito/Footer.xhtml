@@ -177,6 +177,7 @@
 		rel="stylesheet" />
 </h:head>
 <h:body>
+<h:form id="rodape">
 <footer>
     <div class="footer" id="footer">
         <div class="container">
@@ -184,15 +185,15 @@
                 <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
                     <h3> Institucional </h3>
                     <ul>
-                        <li> <a href="#"> Sobre o Easy Market </a> </li>
-                        <li> <a href="#"> Informações Adicionais </a> </li>
+                        <li><h:commandLink action="/sobre?faces-redirect=true" value="Sobre o Easy Market" /></li>
+                        <li><h:commandLink action="/informacoesAdicionais?faces-redirect=true" value="Informaçõe Adicionais"/> </li>
                     </ul>
                 </div>
                 <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
                     <h3> Dúvidas </h3>
                     <ul>
-                        <li> <a href="#"> Politica de Privacidade </a> </li>
-                        <li> <a href="#"> Condições de Acesso </a> </li>
+                        <li><h:commandLink action="/politicadePrivacidade?faces-redirect=true" value="Politica de Privacidade" /> </li>
+                        <li><h:commandLink action="/condAcesso?faces-redirect=true" value="Condições de Acesso" /></li>
                     </ul>
                 </div>
                 <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
@@ -200,8 +201,8 @@
 </h3>
                     <ul>
                         <li> <a href="#"> Cadastre-se! </a> </li>
-                        <li> <a href="#"> Regras para Anúncios</a> </li>
-                        <li> <a href="#"> Propriedade Intelectual </a> </li>
+                        <li><h:commandLink action="/regras?faces-redirect=true" value="Regras para Anúncios" />   </li>
+                        <li> <h:commandLink action="/propriedadeIntelectual?faces-redirect=true" value="Propriedade Intelectual" /> </li>
                     </ul>
                 </div>
                 <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
@@ -244,7 +245,7 @@
     </div>
     <!--/.footer-bottom--> 
 </footer>
-	
+	</h:form>
 
 
 	<script type="text/javascript">

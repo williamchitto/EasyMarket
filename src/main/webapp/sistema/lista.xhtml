@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+
+<h:head>
+	
+	
+
+</h:head>
+<body>
+ 
+ 
+ <ui:composition template="/WEB-INF/restrito/TemplatePadrao.xhtml">
+	
+	 <ui:define name="titulo">Cadastro de Produto</ui:define>
+		<ui:define name="corpo">
+	<h:form>
+	
+	
+
+		<p:dataTable value="teste" id="table" paginator="true" rows="10"
+			paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}">
+			<f:facet name="header">
+             Produtos 
+        </f:facet>
+			<p:column style="width:16px">
+				<p:rowToggler />
+			</p:column>
+			<p:column headerText="Id">
+				<h:outputText value="teste" />
+			</p:column>
+			<p:column headerText="Year">
+				<h:outputText value="teste" />
+			</p:column>
+
+			<p:rowExpansion>
+				<p:panelGrid columns="2" columnClasses="label,value"
+					style="width:300px">
+					<f:facet name="header">
+
+					</f:facet>
+
+					<h:outputText value="Id:" />
+					<h:outputText value="#{car.id}" />
+
+					<h:outputText value="Year" />
+					<h:outputText value="teste" />
+
+					<h:outputText value="Color:" />
+					<h:outputText value="teste" />
+
+					<h:outputText value="Price" />
+					<h:outputText value="teste" />
+				</p:panelGrid>
+			</p:rowExpansion>
+		</p:dataTable>
+	</h:form>
+
+		</ui:define>
+	</ui:composition>
+
+	
+</body>
+</html>

@@ -31,7 +31,6 @@ AnuncioService service;
 	  this.Anuncios = service.listarAnuncioVisualizacaoService(); 
 	  this.anunciosPorData = service.listarAnuncioRecentesService();
 	   
-	
    }
 
    
