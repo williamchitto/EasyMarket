@@ -3,6 +3,7 @@ package br.com.easy.dao;
 import java.util.List;
 
 import br.com.easy.model.Anuncio;
+import br.com.easy.model.Categoria;
 
 public interface AnuncioDao {
 	
@@ -15,4 +16,5 @@ public interface AnuncioDao {
 	public void alterarNumeroAnuncios(Anuncio anuncio);
 	public int numeroAnuncios(Anuncio anuncio);
 	public void addLikeAnuncio(Anuncio anuncio);
+	public List<Anuncio>listAnunOrderByCategoria(Categoria categoria);
 }

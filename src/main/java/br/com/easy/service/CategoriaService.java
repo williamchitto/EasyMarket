@@ -18,6 +18,8 @@ public class CategoriaService extends BasicService implements Serializable {
 		return dao.findCategoria(id);
 
 	}
+	
+	
 
 	public CategoriaDao getDao() {
 		return dao;

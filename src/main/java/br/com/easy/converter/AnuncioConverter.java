@@ -19,7 +19,7 @@ public class AnuncioConverter  implements Converter{
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component,
 			String value) {
-		
+		 System.out.println("Converter anuncio");
 		Anuncio anuncio = null;
 		if(value!=null){
 		
@@ -27,7 +27,6 @@ public class AnuncioConverter  implements Converter{
 			anuncio = service.buscarAnuncioServiceById(id);
 	
 		}
-		
 		
 		
 		

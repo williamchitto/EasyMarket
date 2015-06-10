@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -39,15 +40,13 @@ public class Anuncio  implements Serializable{
 	private Empresa empresa;
 	@ManyToOne
 	@JoinColumn(name="produto_id")
-	private Produto produto;
+	private Produto produto = new Produto();
 	private int visualizacao;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataAnuncio;
 	private int statusAnuncio;
+
    		
-	
-	
-	
 
 	public Date getDataAnuncio() {
 		return dataAnuncio;
@@ -61,12 +60,7 @@ public class Anuncio  implements Serializable{
 
 
 
-	public int addVisualizacao(int valor){
-		
-	  valor++;	
-
-		return valor;
-	}
+	
 	
 	
 

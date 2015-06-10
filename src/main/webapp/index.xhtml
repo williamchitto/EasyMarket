@@ -118,7 +118,7 @@
 
 			<h:form id="carousel">
 				<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-			    <h:outputScript library="js" name="bootstrap.min.js"/>
+				<h:outputScript library="js" name="bootstrap.min.js" />
 
 				<ui:insert name="footer">
 
@@ -171,25 +171,37 @@
 														<div class="info">
 															<div class="row">
 																<div class="price col-md-10">
-																	<h5><h:outputText value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(0).produto.nome}" /></h5>
-																	<h5 class="price-text-color">R$<h:outputText value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(0).preco}" /></h5>
+																	<h5>
+																		<h:outputText
+																			value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(0).produto.nome}" />
+																	</h5>
+																	<h5 class="price-text-color">
+																		R$
+																		<h:outputText
+																			value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(0).preco}" />
+																	</h5>
 																</div>
 																<div class="rating hidden-sm col-md-6"></div>
 															</div>
 															<div class="separator clear-left">
 																<p class="btn-add">
-																	<span class="label label-info"><h:outputText value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(0).empresa.nomeFantasia}" /></span>
+																	<span class="label label-info"><h:outputText
+																			value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(0).empresa.nomeFantasia}" /></span>
 
 																</p>
 																<p class="btn-add">
-																	<span class="label label-info"><h:outputText value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(0).visualizacao}    "/> visualizações</span>
+																	<a class="btn btn-xs btn-primary"><span
+																		class="glyphicon glyphicon-thumbs-up"></span><h:outputText value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(0).visualizacao}  " />
+																		Visualizações</a>
 
 																</p>
 
 																<p class="btn-details">
-																	<i class="fa fa-list"></i><a
-																		href="" class="hidden-sm">Detalhes
-																	</a>
+																	<i class="fa fa-list"></i>
+																	<p:commandLink value="Detalhes" action="#{visualizarProdutoBean.Visualizacao()}">
+																		<f:setPropertyActionListener  value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(0)}"
+																			target="#{visualizarProdutoBean.anuncio}" />
+																	</p:commandLink>
 																</p>
 															</div>
 															<div class="clearfix"></div>
@@ -199,31 +211,42 @@
 												<div class="col-sm-3">
 													<div class="col-item">
 														<div class="photo">
-															<p:graphicImage   width="174" height="230"
+															<p:graphicImage width="174" height="230"
 																value="/ImageAnuncio/#{listarAnuncioVisualizacaoBean.anunciosPorData.
 																get(1).produto.produtoImagem.codigo}" />
 														</div>
 														<div class="info">
 															<div class="row">
 																<div class="price col-md-10">
-																	<h5><h:outputText value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(1).produto.nome}" /></h5>
-																	<h5 class="price-text-color">R$<h:outputText value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(1).preco}" /></h5>
+																	<h5>
+																		<h:outputText
+																			value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(1).produto.nome}" />
+																	</h5>
+																	<h5 class="price-text-color">
+																		R$
+																		<h:outputText
+																			value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(1).preco}" />
+																	</h5>
 																</div>
 																<div class="rating hidden-sm col-md-6"></div>
 															</div>
 															<div class="separator clear-left">
 																<p class="btn-add">
-																	<span class="label label-info"><h:outputText value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(1).empresa.nomeFantasia}" /></span>
+																	<span class="label label-info"><h:outputText
+																			value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(1).empresa.nomeFantasia}" /></span>
 
 																</p>
 																<p class="btn-add">
-																	<span class="label label-info"><h:outputText value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(1).visualizacao}    "/> visualizações</span>
-
+																	<a class="btn btn-xs btn-primary"><span
+																		class="glyphicon glyphicon-thumbs-up"></span><h:outputText value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(1).visualizacao}  " />
+																		Visualizações</a>
 																</p>
 																<p class="btn-details">
-																	<i class="fa fa-list"></i><a
-																		href="http://www.jquery2dotnet.com" class="hidden-sm">Detalhes
-																		</a>
+																	<i class="fa fa-list"></i>
+																		<p:commandLink value="Detalhes" action="#{visualizarProdutoBean.Visualizacao()}">
+																		<f:setPropertyActionListener  value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(1)}"
+																			target="#{visualizarProdutoBean.anuncio}" />
+																	</p:commandLink>
 																</p>
 															</div>
 															<div class="clearfix"></div>
@@ -233,33 +256,43 @@
 												<div class="col-sm-3">
 													<div class="col-item">
 														<div class="photo">
-																<p:graphicImage  width="174" height="230"
+															<p:graphicImage width="174" height="230"
 																value="/ImageAnuncio/#{listarAnuncioVisualizacaoBean.anunciosPorData.
 																get(2).produto.produtoImagem.codigo}" />
 														</div>
 														<div class="info">
 															<div class="row">
 																<div class="price col-md-10">
-																	<h5><h:outputText value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(2).produto.nome}" /></h5>
-																	<h5 class="price-text-color">R$<h:outputText value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(2).preco}" /></h5>
+																	<h5>
+																		<h:outputText
+																			value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(2).produto.nome}" />
+																	</h5>
+																	<h5 class="price-text-color">
+																		R$
+																		<h:outputText
+																			value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(2).preco}" />
+																	</h5>
 																</div>
-																<div class="rating hidden-sm col-md-6">
-																	
-																</div>
+																<div class="rating hidden-sm col-md-6"></div>
 															</div>
 															<div class="separator clear-left">
 																<p class="btn-add">
-																	<span class="label label-info"><h:outputText value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(2).empresa.nomeFantasia}" /></span>
+																	<span class="label label-info"><h:outputText
+																			value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(2).empresa.nomeFantasia}" /></span>
 
 																</p>
 																<p class="btn-add">
-																	<span class="label label-info"><h:outputText value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(2).visualizacao}    "/> visualizações</span>
+																	<a class="btn btn-xs btn-primary"><span
+																		class="glyphicon glyphicon-thumbs-up"></span><h:outputText value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(2).visualizacao}  " />
+																		Visualizações</a>
 
 																</p>
 																<p class="btn-details">
-																	<i class="fa fa-list"></i><a
-																		href="http://www.jquery2dotnet.com" class="hidden-sm">Detalhes
-																		</a>
+																	<i class="fa fa-list"></i>
+																		<p:commandLink value="Detalhes" action="#{visualizarProdutoBean.Visualizacao()}">
+																		<f:setPropertyActionListener  value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(2)}"
+																			target="#{visualizarProdutoBean.anuncio}" />
+																	</p:commandLink>
 																</p>
 															</div>
 															<div class="clearfix"></div>
@@ -269,33 +302,42 @@
 												<div class="col-sm-3">
 													<div class="col-item">
 														<div class="photo">
-																<p:graphicImage  width="174" height="230"
+															<p:graphicImage width="174" height="230"
 																value="/ImageAnuncio/#{listarAnuncioVisualizacaoBean.anunciosPorData.
 																get(3).produto.produtoImagem.codigo}" />
 														</div>
 														<div class="info">
 															<div class="row">
 																<div class="price col-md-10">
-																	<h5><h:outputText value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(3).produto.nome}" /></h5>
-																	<h5 class="price-text-color">R$<h:outputText value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(3).preco}" /></h5>
+																	<h5>
+																		<h:outputText
+																			value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(3).produto.nome}" />
+																	</h5>
+																	<h5 class="price-text-color">
+																		R$
+																		<h:outputText
+																			value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(3).preco}" />
+																	</h5>
 																</div>
-																<div class="rating hidden-sm col-md-6">
-																	
-																</div>
+																<div class="rating hidden-sm col-md-6"></div>
 															</div>
 															<div class="separator clear-left">
-															<p class="btn-add">
-																	<span class="label label-info"><h:outputText value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(3).empresa.nomeFantasia}" /></span>
+																<p class="btn-add">
+																	<span class="label label-info"><h:outputText
+																			value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(3).empresa.nomeFantasia}" /></span>
 
 																</p>
 																<p class="btn-add">
-																	<span class="label label-info"><h:outputText value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(3).visualizacao}    "/> visualizações</span>
-
+																<a class="btn btn-xs btn-primary"><span
+																		class="glyphicon glyphicon-thumbs-up"></span><h:outputText value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(3).visualizacao}  " />
+																		Visualizações</a>
 																</p>
 																<p class="btn-details">
-																	<i class="fa fa-list"></i><a
-																		href="http://www.jquery2dotnet.com" class="hidden-sm">Detalhes
-																		</a>
+																	<i class="fa fa-list"></i>
+																		<p:commandLink value="Detalhes" action="#{visualizarProdutoBean.Visualizacao()}">
+																		<f:setPropertyActionListener  value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(3)}"
+																			target="#{visualizarProdutoBean.anuncio}" />
+																	</p:commandLink>
 																</p>
 															</div>
 															<div class="clearfix"></div>
@@ -309,33 +351,43 @@
 												<div class="col-sm-3">
 													<div class="col-item">
 														<div class="photo">
-																<p:graphicImage  width="174" height="230"
+															<p:graphicImage width="174" height="230"
 																value="/ImageAnuncio/#{listarAnuncioVisualizacaoBean.anunciosPorData.
 																get(4).produto.produtoImagem.codigo}" />
 														</div>
 														<div class="info">
 															<div class="row">
 																<div class="price col-md-10">
-																	<h5><h:outputText value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(4).produto.nome}" /></h5>
-																	<h5 class="price-text-color">R$<h:outputText value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(4).preco}" /></h5>
+																	<h5>
+																		<h:outputText
+																			value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(4).produto.nome}" />
+																	</h5>
+																	<h5 class="price-text-color">
+																		R$
+																		<h:outputText
+																			value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(4).preco}" />
+																	</h5>
 																</div>
-																<div class="rating hidden-sm col-md-6">
-																	
-																</div>
+																<div class="rating hidden-sm col-md-6"></div>
 															</div>
 															<div class="separator clear-left">
 																<p class="btn-add">
-																	<span class="label label-info"><h:outputText value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(4).empresa.nomeFantasia}" /></span>
+																	<span class="label label-info"><h:outputText
+																			value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(4).empresa.nomeFantasia}" /></span>
 
 																</p>
 																<p class="btn-add">
-																	<span class="label label-info"><h:outputText value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(4).visualizacao}    "/> visualizações</span>
+																	<a class="btn btn-xs btn-primary"><span
+																		class="glyphicon glyphicon-thumbs-up"></span><h:outputText value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(4).visualizacao}  " />
+																		Visualizações</a>
 
 																</p>
 																<p class="btn-details">
-																	<i class="fa fa-list"></i><a
-																		href="http://www.jquery2dotnet.com" class="hidden-sm">Detalhes
-																		</a>
+																	<i class="fa fa-list"></i>
+																		<p:commandLink value="Detalhes" action="#{visualizarProdutoBean.Visualizacao()}">
+																		<f:setPropertyActionListener  value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(4)}"
+																			target="#{visualizarProdutoBean.anuncio}" />
+																	</p:commandLink>
 																</p>
 															</div>
 															<div class="clearfix"></div>
@@ -345,31 +397,43 @@
 												<div class="col-sm-3">
 													<div class="col-item">
 														<div class="photo">
-															<p:graphicImage  width="174" height="230"
+															<p:graphicImage width="174" height="230"
 																value="/ImageAnuncio/#{listarAnuncioVisualizacaoBean.anunciosPorData.
 																get(5).produto.produtoImagem.codigo}" />
 														</div>
 														<div class="info">
 															<div class="row">
 																<div class="price col-md-10">
-																	<h5><h:outputText value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(5).produto.nome}" /></h5>
-																	<h5 class="price-text-color">R$<h:outputText value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(5).preco}" /></h5>
+																	<h5>
+																		<h:outputText
+																			value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(5).produto.nome}" />
+																	</h5>
+																	<h5 class="price-text-color">
+																		R$
+																		<h:outputText
+																			value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(5).preco}" />
+																	</h5>
 																</div>
 																<div class="rating hidden-sm col-md-6"></div>
 															</div>
 															<div class="separator clear-left">
 																<p class="btn-add">
-																	<span class="label label-info"><h:outputText value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(5).empresa.nomeFantasia}" /></span>
+																	<span class="label label-info"><h:outputText
+																			value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(5).empresa.nomeFantasia}" /></span>
 
 																</p>
 																<p class="btn-add">
-																	<span class="label label-info"><h:outputText value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(5).visualizacao}    "/> visualizações</span>
+																	<a class="btn btn-xs btn-primary"><span
+																		class="glyphicon glyphicon-thumbs-up"></span><h:outputText value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(5).visualizacao}  " />
+																		Visualizações</a>
 
 																</p>
 																<p class="btn-details">
-																	<i class="fa fa-list"></i><a
-																		href="http://www.jquery2dotnet.com" class="hidden-sm">Detalhes
-																		</a>
+																	<i class="fa fa-list"></i>
+																	<p:commandLink value="Detalhes" action="#{visualizarProdutoBean.Visualizacao()}">
+																		<f:setPropertyActionListener  value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(5)}"
+																			target="#{visualizarProdutoBean.anuncio}" />
+																	</p:commandLink>
 																</p>
 															</div>
 															<div class="clearfix"></div>
@@ -379,33 +443,43 @@
 												<div class="col-sm-3">
 													<div class="col-item">
 														<div class="photo">
-															<p:graphicImage  width="174" height="230"
+															<p:graphicImage width="174" height="230"
 																value="/ImageAnuncio/#{listarAnuncioVisualizacaoBean.anunciosPorData.
 																get(6).produto.produtoImagem.codigo}" />
 														</div>
 														<div class="info">
 															<div class="row">
 																<div class="price col-md-10">
-																	<h5><h:outputText value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(6).produto.nome}" /></h5>
-																	<h5 class="price-text-color">R$<h:outputText value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(6).preco}" /></h5>
+																	<h5>
+																		<h:outputText
+																			value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(6).produto.nome}" />
+																	</h5>
+																	<h5 class="price-text-color">
+																		R$
+																		<h:outputText
+																			value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(6).preco}" />
+																	</h5>
 																</div>
-																<div class="rating hidden-sm col-md-6">
-																
-																</div>
+																<div class="rating hidden-sm col-md-6"></div>
 															</div>
 															<div class="separator clear-left">
-																	<p class="btn-add">
-																	<span class="label label-info"><h:outputText value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(6).empresa.nomeFantasia}" /></span>
+																<p class="btn-add">
+																	<span class="label label-info"><h:outputText
+																			value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(6).empresa.nomeFantasia}" /></span>
 
 																</p>
 																<p class="btn-add">
-																	<span class="label label-info"><h:outputText value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(6).visualizacao}    "/> visualizações</span>
+																<a class="btn btn-xs btn-primary"><span
+																		class="glyphicon glyphicon-thumbs-up"></span><h:outputText value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(6).visualizacao}  " />
+																		Visualizações</a>
 
 																</p>
 																<p class="btn-details">
-																	<i class="fa fa-list"></i><a
-																		href="http://www.jquery2dotnet.com" class="hidden-sm">Detalhes
-																		</a>
+																	<i class="fa fa-list"></i>
+																	<p:commandLink value="Detalhes" action="#{visualizarProdutoBean.Visualizacao()}">
+																		<f:setPropertyActionListener  value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(6)}"
+																			target="#{visualizarProdutoBean.anuncio}" />
+																	</p:commandLink>
 																</p>
 															</div>
 															<div class="clearfix"></div>
@@ -415,33 +489,43 @@
 												<div class="col-sm-3">
 													<div class="col-item">
 														<div class="photo">
-															<p:graphicImage  width="174" height="230"
+															<p:graphicImage width="174" height="230"
 																value="/ImageAnuncio/#{listarAnuncioVisualizacaoBean.anunciosPorData.
 																get(7).produto.produtoImagem.codigo}" />
 														</div>
 														<div class="info">
 															<div class="row">
 																<div class="price col-md-10">
-																	<h5><h:outputText value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(7).produto.nome}" /></h5>
-																	<h5 class="price-text-color">R$<h:outputText value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(7).preco}" /></h5>
+																	<h5>
+																		<h:outputText
+																			value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(7).produto.nome}" />
+																	</h5>
+																	<h5 class="price-text-color">
+																		R$
+																		<h:outputText
+																			value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(7).preco}" />
+																	</h5>
 																</div>
-																<div class="rating hidden-sm col-md-6">
-																
-																</div>
+																<div class="rating hidden-sm col-md-6"></div>
 															</div>
 															<div class="separator clear-left">
 																<p class="btn-add">
-																	<span class="label label-info"><h:outputText value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(7).empresa.nomeFantasia}" /></span>
+																	<span class="label label-info"><h:outputText
+																			value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(7).empresa.nomeFantasia}" /></span>
 
 																</p>
 																<p class="btn-add">
-																	<span class="label label-info"><h:outputText value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(7).visualizacao}    "/> visualizações</span>
+																	<a class="btn btn-xs btn-primary"><span
+																		class="glyphicon glyphicon-thumbs-up"></span><h:outputText value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(7).visualizacao}  " />
+																		Visualizações</a>
 
 																</p>
 																<p class="btn-details">
-																	<i class="fa fa-list"></i><a
-																		href="http://www.jquery2dotnet.com" class="hidden-sm">Detalhes
-																		</a>
+																	<i class="fa fa-list"></i>
+																		<p:commandLink value="Detalhes" action="#{visualizarProdutoBean.Visualizacao()}">
+																		<f:setPropertyActionListener  value="#{listarAnuncioVisualizacaoBean.anunciosPorData.get(7)}"
+																			target="#{visualizarProdutoBean.anuncio}" />
+																	</p:commandLink>
 																</p>
 															</div>
 															<div class="clearfix"></div>
@@ -477,33 +561,43 @@
 												<div class="col-sm-4">
 													<div class="col-item">
 														<div class="photo">
-															<p:graphicImage  width="174" height="230"
+															<p:graphicImage width="174" height="230"
 																value="/ImageAnuncio/#{listarAnuncioVisualizacaoBean.anuncios.
 																get(0).produto.produtoImagem.codigo}" />
 														</div>
 														<div class="info">
 															<div class="row">
-																	<div class="price col-md-10">
-																	<h5><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(0).produto.nome}" /></h5>
-																	<h5 class="price-text-color">R$<h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(0).preco}" /></h5>
+																<div class="price col-md-10">
+																	<h5>
+																		<h:outputText
+																			value="#{listarAnuncioVisualizacaoBean.anuncios.get(0).produto.nome}" />
+																	</h5>
+																	<h5 class="price-text-color">
+																		R$
+																		<h:outputText
+																			value="#{listarAnuncioVisualizacaoBean.anuncios.get(0).preco}" />
+																	</h5>
 																</div>
-																<div class="rating hidden-sm col-md-6">
-																	
-																</div>
+																<div class="rating hidden-sm col-md-6"></div>
 															</div>
 															<div class="separator clear-left">
 																<p class="btn-add">
-																	<span class="label label-info"><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(0).empresa.nomeFantasia}" /></span>
+																	<span class="label label-info"><h:outputText
+																			value="#{listarAnuncioVisualizacaoBean.anuncios.get(0).empresa.nomeFantasia}" /></span>
 
 																</p>
 																<p class="btn-add">
-																	<span class="label label-info"><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(0).visualizacao}    "/> visualizações</span>
+																		<a class="btn btn-xs btn-primary"><span
+																		class="glyphicon glyphicon-thumbs-up"></span><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(0).visualizacao}  " />
+																		Visualizações</a>
 
 																</p>
 																<p class="btn-details">
-																	<i class="fa fa-list"></i><a
-																		href="http://www.jquery2dotnet.com" class="hidden-sm">Detalhes
-																		</a>
+																	<i class="fa fa-list"></i>
+																	<p:commandLink value="Detalhes" action="#{visualizarProdutoBean.Visualizacao()}">
+																		<f:setPropertyActionListener  value="#{listarAnuncioVisualizacaoBean.anuncios.get(0)}"
+																			target="#{visualizarProdutoBean.anuncio}" />
+																	</p:commandLink>
 																</p>
 															</div>
 															<div class="clearfix"></div>
@@ -513,31 +607,43 @@
 												<div class="col-sm-4">
 													<div class="col-item">
 														<div class="photo">
-															<p:graphicImage  width="174" height="230"
+															<p:graphicImage width="174" height="230"
 																value="/ImageAnuncio/#{listarAnuncioVisualizacaoBean.anuncios.
 																get(1).produto.produtoImagem.codigo}" />
 														</div>
 														<div class="info">
 															<div class="row">
 																<div class="price col-md-10">
-																	<h5><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(1).produto.nome}" /></h5>
-																	<h5 class="price-text-color">R$<h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(1).preco}" /></h5>
+																	<h5>
+																		<h:outputText
+																			value="#{listarAnuncioVisualizacaoBean.anuncios.get(1).produto.nome}" />
+																	</h5>
+																	<h5 class="price-text-color">
+																		R$
+																		<h:outputText
+																			value="#{listarAnuncioVisualizacaoBean.anuncios.get(1).preco}" />
+																	</h5>
 																</div>
 																<div class="rating hidden-sm col-md-6"></div>
 															</div>
 															<div class="separator clear-left">
 																<p class="btn-add">
-																	<span class="label label-info"><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(1).empresa.nomeFantasia}" /></span>
+																	<span class="label label-info"><h:outputText
+																			value="#{listarAnuncioVisualizacaoBean.anuncios.get(1).empresa.nomeFantasia}" /></span>
 
 																</p>
 																<p class="btn-add">
-																	<span class="label label-info"><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(1).visualizacao}    "/> visualizações</span>
+																	<a class="btn btn-xs btn-primary"><span
+																		class="glyphicon glyphicon-thumbs-up"></span><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(1).visualizacao}  " />
+																		Visualizações</a>
 
 																</p>
 																<p class="btn-details">
-																	<i class="fa fa-list"></i><a
-																		href="http://www.jquery2dotnet.com" class="hidden-sm">Detalhes
-																		</a>
+																	<i class="fa fa-list"></i>
+																	<p:commandLink value="Detalhes" action="#{visualizarProdutoBean.Visualizacao()}">
+																		<f:setPropertyActionListener  value="#{listarAnuncioVisualizacaoBean.anuncios.get(1)}"
+																			target="#{visualizarProdutoBean.anuncio}" />
+																	</p:commandLink>
 																</p>
 															</div>
 															<div class="clearfix"></div>
@@ -547,33 +653,43 @@
 												<div class="col-sm-4">
 													<div class="col-item">
 														<div class="photo">
-														<p:graphicImage  width="174" height="230"
+															<p:graphicImage width="174" height="230"
 																value="/ImageAnuncio/#{listarAnuncioVisualizacaoBean.anuncios.
 																get(2).produto.produtoImagem.codigo}" />
 														</div>
 														<div class="info">
 															<div class="row">
 																<div class="price col-md-10">
-																	<h5><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(2).produto.nome}" /></h5>
-																	<h5 class="price-text-color">R$<h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(2).preco}" /></h5>
+																	<h5>
+																		<h:outputText
+																			value="#{listarAnuncioVisualizacaoBean.anuncios.get(2).produto.nome}" />
+																	</h5>
+																	<h5 class="price-text-color">
+																		R$
+																		<h:outputText
+																			value="#{listarAnuncioVisualizacaoBean.anuncios.get(2).preco}" />
+																	</h5>
 																</div>
-																<div class="rating hidden-sm col-md-6">
-																	
-																</div>
+																<div class="rating hidden-sm col-md-6"></div>
 															</div>
 															<div class="separator clear-left">
 																<p class="btn-add">
-																	<span class="label label-info"><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(2).empresa.nomeFantasia}" /></span>
+																	<span class="label label-info"><h:outputText
+																			value="#{listarAnuncioVisualizacaoBean.anuncios.get(2).empresa.nomeFantasia}" /></span>
 
 																</p>
 																<p class="btn-add">
-																	<span class="label label-info"><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(2).visualizacao}    "/> visualizações</span>
+																		<a class="btn btn-xs btn-primary"><span
+																		class="glyphicon glyphicon-thumbs-up"></span><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(2).visualizacao}  " />
+																		Visualizações</a>
 
 																</p>
 																<p class="btn-details">
-																	<i class="fa fa-list"></i><a
-																		href="http://www.jquery2dotnet.com" class="hidden-sm">Detalhes
-																		</a>
+																	<i class="fa fa-list"></i>
+																	<p:commandLink value="Detalhes" action="#{visualizarProdutoBean.Visualizacao()}">
+																		<f:setPropertyActionListener  value="#{listarAnuncioVisualizacaoBean.anuncios.get(2)}"
+																			target="#{visualizarProdutoBean.anuncio}" />
+																	</p:commandLink>
 																</p>
 															</div>
 															<div class="clearfix"></div>
@@ -587,33 +703,43 @@
 												<div class="col-sm-4">
 													<div class="col-item">
 														<div class="photo">
-																<p:graphicImage  width="174" height="230"
+															<p:graphicImage width="174" height="230"
 																value="/ImageAnuncio/#{listarAnuncioVisualizacaoBean.anuncios.
 																get(3).produto.produtoImagem.codigo}" />
 														</div>
 														<div class="info">
 															<div class="row">
 																<div class="price col-md-10">
-																	<h5><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(3).produto.nome}" /></h5>
-																	<h5 class="price-text-color">R$<h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(3).preco}" /></h5>
+																	<h5>
+																		<h:outputText
+																			value="#{listarAnuncioVisualizacaoBean.anuncios.get(3).produto.nome}" />
+																	</h5>
+																	<h5 class="price-text-color">
+																		R$
+																		<h:outputText
+																			value="#{listarAnuncioVisualizacaoBean.anuncios.get(3).preco}" />
+																	</h5>
 																</div>
-																<div class="rating hidden-sm col-md-6">
-																	
-																</div>
+																<div class="rating hidden-sm col-md-6"></div>
 															</div>
 															<div class="separator clear-left">
 																<p class="btn-add">
-																	<span class="label label-info"><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(3).empresa.nomeFantasia}" /></span>
+																	<span class="label label-info"><h:outputText
+																			value="#{listarAnuncioVisualizacaoBean.anuncios.get(3).empresa.nomeFantasia}" /></span>
 
 																</p>
 																<p class="btn-add">
-																	<span class="label label-info"><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(3).visualizacao}    "/> visualizações</span>
+																		<a class="btn btn-xs btn-primary"><span
+																		class="glyphicon glyphicon-thumbs-up"></span><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(3).visualizacao}  " />
+																		Visualizações</a>
 
 																</p>
 																<p class="btn-details">
-																	<i class="fa fa-list"></i><a
-																		href="http://www.jquery2dotnet.com" class="hidden-sm">Detalhes
-																		</a>
+																	<i class="fa fa-list"></i>
+																	<p:commandLink value="Detalhes" action="#{visualizarProdutoBean.Visualizacao()}">
+																		<f:setPropertyActionListener  value="#{listarAnuncioVisualizacaoBean.anuncios.get(3)}"
+																			target="#{visualizarProdutoBean.anuncio}" />
+																	</p:commandLink>
 																</p>
 															</div>
 															<div class="clearfix"></div>
@@ -623,31 +749,43 @@
 												<div class="col-sm-4">
 													<div class="col-item">
 														<div class="photo">
-														<p:graphicImage  width="174" height="230"
+															<p:graphicImage width="174" height="230"
 																value="/ImageAnuncio/#{listarAnuncioVisualizacaoBean.anuncios.
 																get(4).produto.produtoImagem.codigo}" />
 														</div>
 														<div class="info">
 															<div class="row">
-															<div class="price col-md-10">
-																	<h5><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(4).produto.nome}" /></h5>
-																	<h5 class="price-text-color">R$<h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(4).preco}" /></h5>
+																<div class="price col-md-10">
+																	<h5>
+																		<h:outputText
+																			value="#{listarAnuncioVisualizacaoBean.anuncios.get(4).produto.nome}" />
+																	</h5>
+																	<h5 class="price-text-color">
+																		R$
+																		<h:outputText
+																			value="#{listarAnuncioVisualizacaoBean.anuncios.get(4).preco}" />
+																	</h5>
 																</div>
 																<div class="rating hidden-sm col-md-6"></div>
 															</div>
 															<div class="separator clear-left">
-																	<p class="btn-add">
-																	<span class="label label-info"><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(4).empresa.nomeFantasia}" /></span>
+																<p class="btn-add">
+																	<span class="label label-info"><h:outputText
+																			value="#{listarAnuncioVisualizacaoBean.anuncios.get(4).empresa.nomeFantasia}" /></span>
 
 																</p>
 																<p class="btn-add">
-																	<span class="label label-info"><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(4).visualizacao}    "/> visualizações</span>
+																		<a class="btn btn-xs btn-primary"><span
+																		class="glyphicon glyphicon-thumbs-up"></span><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(4).visualizacao}  " />
+																		Visualizações</a>
 
 																</p>
 																<p class="btn-details">
-																	<i class="fa fa-list"></i><a
-																		href="http://www.jquery2dotnet.com" class="hidden-sm">Detalhes
-																		</a>
+																	<i class="fa fa-list"></i>
+																	<p:commandLink value="Detalhes" action="#{visualizarProdutoBean.Visualizacao()}">
+																		<f:setPropertyActionListener  value="#{listarAnuncioVisualizacaoBean.anuncios.get(4)}"
+																			target="#{visualizarProdutoBean.anuncio}" />
+																	</p:commandLink>
 																</p>
 															</div>
 															<div class="clearfix"></div>
@@ -657,33 +795,43 @@
 												<div class="col-sm-4">
 													<div class="col-item">
 														<div class="photo">
-																<p:graphicImage  width="174" height="230"
+															<p:graphicImage width="174" height="230"
 																value="/ImageAnuncio/#{listarAnuncioVisualizacaoBean.anuncios.
 																get(5).produto.produtoImagem.codigo}" />
 														</div>
 														<div class="info">
 															<div class="row">
 																<div class="price col-md-10">
-																	<h5><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(5).produto.nome}" /></h5>
-																	<h5 class="price-text-color">R$<h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(5).preco}" /></h5>
+																	<h5>
+																		<h:outputText
+																			value="#{listarAnuncioVisualizacaoBean.anuncios.get(5).produto.nome}" />
+																	</h5>
+																	<h5 class="price-text-color">
+																		R$
+																		<h:outputText
+																			value="#{listarAnuncioVisualizacaoBean.anuncios.get(5).preco}" />
+																	</h5>
 																</div>
-																<div class="rating hidden-sm col-md-6">
-																	
-																</div>
+																<div class="rating hidden-sm col-md-6"></div>
 															</div>
 															<div class="separator clear-left">
 																<p class="btn-add">
-																	<span class="label label-info"><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(5).empresa.nomeFantasia}" /></span>
+																	<span class="label label-info"><h:outputText
+																			value="#{listarAnuncioVisualizacaoBean.anuncios.get(5).empresa.nomeFantasia}" /></span>
 
 																</p>
 																<p class="btn-add">
-																	<span class="label label-info"><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(5).visualizacao}    "/> visualizações</span>
+																		<a class="btn btn-xs btn-primary"><span
+																		class="glyphicon glyphicon-thumbs-up"></span><h:outputText value="#{listarAnuncioVisualizacaoBean.anuncios.get(5).visualizacao}  " />
+																		Visualizações</a>
 
 																</p>
 																<p class="btn-details">
-																	<i class="fa fa-list"></i><a
-																		href="http://www.jquery2dotnet.com" class="hidden-sm">Detalhes
-																		</a>
+																	<i class="fa fa-list"></i>
+																	<p:commandLink value="Detalhes" action="#{visualizarProdutoBean.Visualizacao()}">
+																		<f:setPropertyActionListener  value="#{listarAnuncioVisualizacaoBean.anuncios.get(5)}"
+																			target="#{visualizarProdutoBean.anuncio}" />
+																	</p:commandLink>
 																</p>
 															</div>
 															<div class="clearfix"></div>

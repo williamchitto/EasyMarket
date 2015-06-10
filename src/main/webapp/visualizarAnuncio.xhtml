@@ -6,7 +6,11 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
-
+<!--<f:metadata>
+ 
+    <f:viewParam name="id" value="#{visualizarProdutoBean.anuncio}" converter="anuncioConverter" />
+  
+</f:metadata>  -->
 
 </h:head>
 <h:body>
@@ -14,20 +18,25 @@
 
 		<ui:define name="titulo">Descrição Anuncio</ui:define>
 		<ui:define name="corpo">
-   
+		
+      
  <p:accordionPanel  style="margin-top:50px">
         <p:tab title="Produto:">
             <p:panelGrid columns="2" columnClasses="ui-grid-col-3,ui-grid-col-7" layout="grid" styleClass="ui-panelgrid-blank">
-                <p:graphicImage height="200px" width="250px"   value="/resources/imagens/Easy400p.png"/>
+                <p:graphicImage  width="174" height="230" value="/ImageAnuncio/#{visualizarProdutoBean.anuncio.produto.produtoImagem.codigo}"/>
                <p:panelGrid columns="2" style="margin-top:60px">
                  <h:outputLabel for="nome" value="Nome:" />
-               <h:outputText value="Produto" />
+               <h:outputText id="nome" value="#{visualizarProdutoBean.anuncio.produto.nome}" />
                <h:outputLabel for="preco" value="Preço:" />
-               <h:outputText value="R$34.34" />
-                 <h:outputLabel for="pagamento" value="Pagamento:" />
-               <h:outputText value="tipo" />
+               <h:outputText id="preco" value="#{visualizarProdutoBean.anuncio.preco}" >
+               <f:convertNumber type="currency" currencySymbol="R$" />  
+               </h:outputText  >
+                 <h:outputLabel for="Pagdinheiro" value="Pagamento em dinheiro:" />
+               <h:outputText id="pagdinheiro" value="#{visualizarProdutoBean.anuncio.pagamentoDinheiro==true?'SIM' : 'NÃO'}" />
+                <h:outputLabel for="Pagcartao" value="Pagamento com cartão:" />
+               <h:outputText id="pagcartao" value="#{visualizarProdutoBean.anuncio.pagamentoCartao==true?'SIM' : 'NÃO'}" />
                 <h:outputLabel for="empresa" value="Empresa:" />
-               <h:outputText value="Empresa" />
+               <h:outputText id="empresa" value="#{visualizarProdutoBean.anuncio.empresa.nomeFantasia}" />
                
                </p:panelGrid>
             </p:panelGrid>
@@ -36,6 +45,7 @@
             <p:panelGrid columns="1" columnClasses="ui-grid-col-2,ui-grid-col-10" layout="grid" styleClass="ui-panelgrid-blank">
                
                <h4>Descrição</h4>
+                 <h:outputText id="descricao" value="#{visualizarProdutoBean.anuncio.produto.descricao==''?'Sem Descrição' : visualizarProdutoBean.anuncio.produto.descricao}" />
               
             </p:panelGrid>
         </p:tab>

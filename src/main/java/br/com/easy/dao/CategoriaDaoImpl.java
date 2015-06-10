@@ -39,5 +39,8 @@ public class CategoriaDaoImpl extends BasicDao<Categoria> implements
 						Categoria.class).setParameter("raiz", categoriaPai)
 				.getResultList();
 	}
+	
+	
+	
 
 }

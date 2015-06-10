@@ -33,6 +33,7 @@ public class AnuncioService extends BasicService implements Serializable {
 	
 	public void addVisualizacaoAnuncio(Anuncio anuncio){
 		
+		
 		anuncioDao.addLikeAnuncio(anuncio);
 		
 	}
@@ -56,6 +57,13 @@ public class AnuncioService extends BasicService implements Serializable {
 		
 		
 		anuncioDao.alterarNumeroAnuncios(anuncio);
+		
+	}
+	
+	public List<Anuncio>listAllAnunciosService(){
+		return anuncioDao.anuncios();
+		
+		
 		
 	}
 	

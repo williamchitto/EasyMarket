@@ -10,6 +10,7 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
 
 import br.com.easy.model.Anuncio;
+import br.com.easy.model.Categoria;
 import br.com.easy.model.Empresa;
 
 @Stateless
@@ -52,12 +53,14 @@ public class AnuncioDaoImpl extends BasicDao<Anuncio> implements AnuncioDao,Seri
 		return list();
 	}
 
+	
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Anuncio> listAnunciosVisualizacao() {
 	
 		Criteria criteria = createCriteria();
-		criteria.addOrder(Order.asc("visualizacao"));
+		criteria.addOrder(Order.desc("visualizacao"));
 		criteria.setMaxResults(8);
 		return criteria.list();
 	}
@@ -87,7 +90,8 @@ public class AnuncioDaoImpl extends BasicDao<Anuncio> implements AnuncioDao,Seri
 	}
 	
 	
-
+	
+	
 	@Override
 	public int numeroAnuncios(Anuncio anuncio) {
 		String consulta = "SELECT COUNT(a) FROM Anuncio a where empresa=:empresa";
@@ -102,11 +106,18 @@ public class AnuncioDaoImpl extends BasicDao<Anuncio> implements AnuncioDao,Seri
 
 	@Override
 	public void addLikeAnuncio(Anuncio anuncio) {
-	
-		Anuncio a = em.find(Anuncio.class,anuncio.getCodigo());
-		a.setVisualizacao(a.getVisualizacao());
+	  em.merge(anuncio);
 		
 		
+	}
+
+	@Override
+	public List<Anuncio> listAnunOrderByCategoria(Categoria categoria) {
+
+	 	return em
+				.createQuery("from Anuncio where produto.categoria.categoriaPai =:raiz",
+						Anuncio.class).setParameter("raiz", categoria)
+				.getResultList();
 	}
 
 }

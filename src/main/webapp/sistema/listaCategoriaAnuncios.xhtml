@@ -19,10 +19,10 @@
  
 	<h:form  id="form" style="font-size:12px">
 
-		<p:dataTable var="anuncio"  value="#{listAllAnunciosBean.anuncios}" id="table" paginator="true" rows="15"
-		    selectionMode="single" selection="#{listAllAnunciosBean.anuncioSelected}" rowKey="#{anuncio.codigo}"
+		<p:dataTable var="anuncio"  value="#{listAnunciosPorCategoria.anunciosCategoria}" id="table" paginator="true" rows="15"
+		    selectionMode="single" selection="#{listAnunciosPorCategoria.anuncioSelected}" rowKey="#{anuncio.codigo}"
 			paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}">
-			  <p:ajax event="rowSelect" listener="#{listAllAnunciosBean.onRowSelect}" update=":form:Detail" oncomplete="PF('Dialog').show()" />
+			  <p:ajax event="rowSelect" listener="#{listAnunciosPorCategoria.onRowSelect}" update=":form:Detail" oncomplete="PF('Dialog').show()" />
 			<f:facet name="header">
              Produtos 
           </f:facet>
@@ -52,22 +52,22 @@
 		</p:dataTable>
 		 <p:dialog header="Detalhes " widgetVar="Dialog" modal="true" showEffect="fade" hideEffect="fade" resizable="true">
         <p:outputPanel id="Detail" style="text-align:center;">
-            <p:panelGrid  columns="2" rendered="#{not empty listAllAnunciosBean.anuncioSelected}" >
+            <p:panelGrid  columns="2" rendered="#{not empty listAnunciosPorCategoria.anuncioSelected}" >
                 <f:facet name="header">
-                       <p:graphicImage  width="174" height="210" value="/ImageAnuncio/#{listAllAnunciosBean.anuncioSelected.produto.produtoImagem.codigo}"/>
+                       <p:graphicImage  width="174" height="210" value="/ImageAnuncio/#{listAnunciosPorCategoria.anuncioSelected.produto.produtoImagem.codigo}"/>
                 </f:facet>
                 
                  <h:outputText value="Codigo:"  />
-                <h:outputText id="codigo" value="#{listAllAnunciosBean.anuncioSelected.codigo}" />
+                <h:outputText id="codigo" value="#{listAnunciosPorCategoria.anuncioSelected.codigo}" />
                 
                    <h:outputText value="produto:"  />
-                <h:outputText id="produto" value="#{listAllAnunciosBean.anuncioSelected.produto.nome}" />
+                <h:outputText id="produto" value="#{listAnunciosPorCategoria.anuncioSelected.produto.nome}" />
  
                 <h:outputText value="Empresa:"  />
-                <h:outputText value="#{listAllAnunciosBean.anuncioSelected.empresa.nomeFantasia}" />
+                <h:outputText value="#{listAnunciosPorCategoria.anuncioSelected.empresa.nomeFantasia}" />
  
                 <h:outputText value="Preço:" />
-                <h:outputText value="#{listAllAnunciosBean.anuncioSelected.preco}">
+                <h:outputText value="#{listAnunciosPorCategoria.anuncioSelected.preco}">
                     <f:convertNumber type="currency" currencySymbol="R$" />
                 </h:outputText>
             </p:panelGrid>

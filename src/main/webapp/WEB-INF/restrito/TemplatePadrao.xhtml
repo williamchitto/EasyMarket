@@ -109,34 +109,36 @@
                         <div class="tab-content">
                           <div class="tab-pane active" id="men">
                             <ul class="nav-list list-inline">
-                                <li><a href="#"><h:graphicImage value="/resources/imagens/menu/higiene.png" /><span>Higiene</span></a></li>
-                                <li><a href="#"><h:graphicImage value="/resources/imagens/menu/bazar.png" /><span>Bazar</span></a></li>
-                                <li><a href="#"><h:graphicImage value="/resources/imagens/menu/bebidas.png" /><span>Bebidas</span></a></li>
-                                <li><a href="#"><h:graphicImage value="/resources/imagens/menu/biscoitos.png" /><span>Biscoitos</span></a></li>
-                                <li><a href="#"><h:graphicImage value="/resources/imagens/menu/carnes.png" /><span>Carnes</span></a></li>
-                                <li><a href="#"><h:graphicImage value="/resources/imagens/menu/congelados.png" /><span>Congelados</span></a></li>
+                                 <li><h:commandLink value="" action="#{listAnunciosPorCategoria.preencher()}" >
+                                   	<f:setPropertyActionListener  value="#{listCategorias.categorias.get(0)}"
+																			target="#{listAnunciosPorCategoria.categoria}" />
+                                  <h:graphicImage value="/resources/imagens/menu/mercearia.png" /><span><h:outputText value="#{listCategorias.categorias.get(0).descricao}" /></span></h:commandLink></li>
+                                  <li><h:commandLink value="" ><h:graphicImage value="/resources/imagens/menu/biscoitos.png" /><span><h:outputText value="#{listCategorias.categorias.get(1).descricao}" /></span></h:commandLink></li>
+                                   <li><h:commandLink value="" ><h:graphicImage value="/resources/imagens/menu/bebidas.png" /><span><h:outputText value="#{listCategorias.categorias.get(2).descricao}" /></span></h:commandLink></li>
+                                 <li><h:commandLink value="" ><h:graphicImage value="/resources/imagens/menu/vinhos.png" /><span><h:outputText value="#{listCategorias.categorias.get(3).descricao}" /></span></h:commandLink></li>
+                                 <li><h:commandLink value="" ><h:graphicImage value="/resources/imagens/menu/higiene.png" /><span><h:outputText value="#{listCategorias.categorias.get(4).descricao}" /></span></h:commandLink></li>
+                                    <li><h:commandLink value="" ><h:graphicImage value="/resources/imagens/menu/limpeza.png" /><span><h:outputText value="#{listCategorias.categorias.get(5).descricao}" /></span></h:commandLink></li>
                             </ul>
                           </div>
                           <div class="tab-pane" id="women">
                             <ul class="nav-list list-inline">
-                                <li><a href="#"><h:graphicImage value="/resources/imagens/menu/diet.png" /><span>Diet</span></a></li>
-                                <li><a href="#"><h:graphicImage value="/resources/imagens/menu/frios.png" /><span>Frios</span></a></li>
-                                <li><a href="#"><h:graphicImage value="/resources/imagens/menu/hortifruit.png" /><span>HortiFruit</span></a></li>
-                                <li><a href="#"><h:graphicImage value="/resources/imagens/menu/limpeza.png" /><span>Limpeza</span></a></li>                                
+                                 <li><h:commandLink value="" ><h:graphicImage value="/resources/imagens/menu/carnes.png" /><span><h:outputText value="#{listCategorias.categorias.get(6).descricao}" /></span></h:commandLink></li>
+                                  <li><h:commandLink value="" ><h:graphicImage value="/resources/imagens/menu/congelados.png" /><span><h:outputText value="#{listCategorias.categorias.get(7).descricao}" /></span></h:commandLink></li>
+                                    <li><h:commandLink value="" ><h:graphicImage value="/resources/imagens/menu/frios.png" /><span><h:outputText value="#{listCategorias.categorias.get(8).descricao}" /></span></h:commandLink></li>
+                                     <li><h:commandLink value="" ><h:graphicImage value="/resources/imagens/menu/hortifruit.png" /><span><h:outputText value="#{listCategorias.categorias.get(9).descricao}" /></span></h:commandLink></li>                                
                             </ul>
                           </div>
                           <div class="tab-pane" id="kids">
                             <ul class="nav-list list-inline">
-                                <li><a href="#"><h:graphicImage value="/resources/imagens/menu/mercearia.png" /><span>Mercearia</span></a></li>
-                                <li><a href="#"><h:graphicImage value="/resources/imagens/menu/paes.png" /><span>Pães</span></a></li>
-                               
+                                 <li><h:commandLink value="" ><h:graphicImage value="/resources/imagens/menu/paes.png" /><span><h:outputText value="#{listCategorias.categorias.get(10).descricao}" /></span></h:commandLink></li>
+                                   <li><h:commandLink value="" ><h:graphicImage value="/resources/imagens/menu/bazar.png" /><span><h:outputText value="#{listCategorias.categorias.get(11).descricao}" /></span></h:commandLink></li>
                                
                             </ul>
                           </div>
                           <div class="tab-pane" id="sports">
                             <ul class="nav-list list-inline">                                
-                                <li><a href="#"><h:graphicImage value="/resources/imagens/menu/petshop.png" /><span>PetShop</span></a></li>
-                                <li><a href="#"><h:graphicImage value="/resources/imagens/menu/vinhos.png" /><span>Vinhos</span></a></li>
+                                  <li><h:commandLink value="" ><h:graphicImage value="/resources/imagens/menu/petshop.png" /><span><h:outputText value="#{listCategorias.categorias.get(12).descricao}" /></span></h:commandLink></li>
+                                    <li><h:commandLink value="" ><h:graphicImage value="/resources/imagens/menu/diet.png" /><span><h:outputText value="#{listCategorias.categorias.get(13).descricao}" /></span></h:commandLink></li>
                                
                             </ul>
                           </div>
