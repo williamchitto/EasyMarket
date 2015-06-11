@@ -41,9 +41,9 @@ public class EmpresaDaoImpl extends BasicDao<Empresa> implements EmpresaDao ,Ser
 	}
 
 	@Override
-	public void listEmpresa() {
+	public List<Empresa> listEmpresa() {
 	
-		 list();
+		 return list();
 		
 	}
 

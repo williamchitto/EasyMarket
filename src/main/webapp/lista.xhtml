@@ -63,13 +63,23 @@
                    <h:outputText value="produto:"  />
                 <h:outputText id="produto" value="#{listAllAnunciosBean.anuncioSelected.produto.nome}" />
  
-                <h:outputText value="Empresa:"  />
-                <h:outputText value="#{listAllAnunciosBean.anuncioSelected.empresa.nomeFantasia}" />
  
                 <h:outputText value="Preço:" />
                 <h:outputText value="#{listAllAnunciosBean.anuncioSelected.preco}">
                     <f:convertNumber type="currency" currencySymbol="R$" />
                 </h:outputText>
+                
+                   <h:outputText value="Empresa:"  />
+                <h:outputText value="#{listAllAnunciosBean.anuncioSelected.empresa.nomeFantasia}" />
+                
+                   <h:outputText value="Bairro:"  />
+                <h:outputText value="#{listAllAnunciosBean.anuncioSelected.empresa.endereco.bairro}" />
+                
+                   <h:outputText value="Cidade:"  />
+                <h:outputText value="#{listAllAnunciosBean.anuncioSelected.empresa.endereco.cidade}" />
+                
+                   <h:outputText value="Logradouro:"  />
+                <h:outputText value="#{listAllAnunciosBean.anuncioSelected.empresa.endereco.logradouro}" />
             </p:panelGrid>
         </p:outputPanel>
     </p:dialog>

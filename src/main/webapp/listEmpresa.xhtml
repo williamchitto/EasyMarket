@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      	xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<h:head></h:head> 
+<body> 
+
+<ui:composition template="/WEB-INF/restrito/TemplatePadrao.xhtml">
+		<ui:define name="corpo">
+		
+<h:form id="form" style="font-size:12px">
+    <p:dataGrid var="empresa" value="#{listEmpresaBean.empresas}" columns="2" layout="grid"
+        rows="12" paginator="true" id="empresas"
+        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+        rowsPerPageTemplate="6,12,16">
+ 
+        <f:facet name="header">
+            Empresas Parceiras da EasyMarket
+        </f:facet>
+ 
+        <p:panel header="Código:#{empresa.codigo}" style="text-align:center">
+            <h:panelGrid columns="1" style="width:100%">
+               <p:graphicImage  width="174" height="150" value="/Image/#{empresa.imagemEmpresa.codigo}"/>
+ 
+                <h:outputText value="#{empresa.nomeFantasia}" />
+ 
+                <p:commandLink update=":form:Detail" oncomplete="PF('Dialog').show()" title="View Detail">
+                    <h:outputText styleClass="ui-icon ui-icon-search"  style="margin:0 auto;" />
+                    <f:setPropertyActionListener value="#{empresa}" target="#{listEmpresaBean.empresaSelected}" />
+                </p:commandLink>
+            </h:panelGrid>
+        </p:panel>
+ 
+    </p:dataGrid>
+ 
+    <p:dialog header="Detalhes Empresa" widgetVar="Dialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+        <p:outputPanel id="Detail" style="text-align:center;">
+            <p:panelGrid  columns="2" rendered="#{not empty listEmpresaBean.empresaSelected}" >
+                <f:facet name="header">
+                   <p:graphicImage  width="174" height="210" value="/Image/#{listEmpresaBean.empresaSelected.imagemEmpresa.codigo}"/>
+                
+                </f:facet>
+ 
+                <h:outputText value="Nome:" />
+                <h:outputText value="#{listEmpresaBean.empresaSelected.nomeFantasia}" />
+ 
+                <h:outputText value="Razão social" />
+                <h:outputText value="#{listEmpresaBean.empresaSelected.razaoSocial}" />
+ 
+                <h:outputText value="Bairro:" />
+                <h:outputText value="#{listEmpresaBean.empresaSelected.endereco.bairro}" />
+ 
+                <h:outputText value="Cidade:" />
+                <h:outputText value="#{listEmpresaBean.empresaSelected.endereco.cidade}" />
+                
+                  <h:outputText value="Número de anuncios:" />
+                <h:outputText value="#{listEmpresaBean.empresaSelected.numeroAnuncios}" />
+            </p:panelGrid>
+        </p:outputPanel>
+    </p:dialog>
+</h:form>
+
+	</ui:define>
+	</ui:composition>
+
+</body> 
+</html>

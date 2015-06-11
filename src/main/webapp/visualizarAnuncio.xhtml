@@ -20,11 +20,11 @@
 		<ui:define name="corpo">
 		
       
- <p:accordionPanel  style="margin-top:50px">
+ <p:accordionPanel  style="margin-top:40px">
         <p:tab title="Produto:">
             <p:panelGrid columns="2" columnClasses="ui-grid-col-3,ui-grid-col-7" layout="grid" styleClass="ui-panelgrid-blank">
                 <p:graphicImage  width="174" height="230" value="/ImageAnuncio/#{visualizarProdutoBean.anuncio.produto.produtoImagem.codigo}"/>
-               <p:panelGrid columns="2" style="margin-top:60px">
+               <p:panelGrid columns="2" style="margin-top:30px">
                  <h:outputLabel for="nome" value="Nome:" />
                <h:outputText id="nome" value="#{visualizarProdutoBean.anuncio.produto.nome}" />
                <h:outputLabel for="preco" value="Preço:" />
@@ -35,8 +35,16 @@
                <h:outputText id="pagdinheiro" value="#{visualizarProdutoBean.anuncio.pagamentoDinheiro==true?'SIM' : 'NÃO'}" />
                 <h:outputLabel for="Pagcartao" value="Pagamento com cartão:" />
                <h:outputText id="pagcartao" value="#{visualizarProdutoBean.anuncio.pagamentoCartao==true?'SIM' : 'NÃO'}" />
+                 <h:outputLabel for="entrega" value="Entrega:" />
+               <h:outputText id="entrega" value="#{visualizarProdutoBean.anuncio.opcaoEntrega==true?'SIM' : 'NÃO'}" />
                 <h:outputLabel for="empresa" value="Empresa:" />
                <h:outputText id="empresa" value="#{visualizarProdutoBean.anuncio.empresa.nomeFantasia}" />
+                 <h:outputLabel for="bairro" value="Bairro:" />
+               <h:outputText id="bairro" value="#{visualizarProdutoBean.anuncio.empresa.endereco.bairro}" />
+                 <h:outputLabel for="Cidade" value="cidade:" />
+               <h:outputText id="cidade" value="#{visualizarProdutoBean.anuncio.empresa.endereco.cidade}" />
+                 <h:outputLabel for="logradouro" value="Logradouro:" />
+               <h:outputText id="logradouro" value="#{visualizarProdutoBean.anuncio.empresa.endereco.logradouro}" />
                
                </p:panelGrid>
             </p:panelGrid>

@@ -20,7 +20,7 @@
 	<h:form  id="form" style="font-size:12px">
 
 		<p:dataTable var="anuncio"  value="#{listAnunciosPorCategoria.anunciosCategoria}" id="table" paginator="true" rows="15"
-		    selectionMode="single" selection="#{listAnunciosPorCategoria.anuncioSelected}" rowKey="#{anuncio.codigo}"
+		    selectionMode="single" selection="#{listAnunciosPorCategoria.anuncioSelected}" rowKey="#{anuncio.codigo}" emptyMessage="Não foram encontrados anuncios nesta categoria"
 			paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}">
 			  <p:ajax event="rowSelect" listener="#{listAnunciosPorCategoria.onRowSelect}" update=":form:Detail" oncomplete="PF('Dialog').show()" />
 			<f:facet name="header">
@@ -62,14 +62,23 @@
                 
                    <h:outputText value="produto:"  />
                 <h:outputText id="produto" value="#{listAnunciosPorCategoria.anuncioSelected.produto.nome}" />
- 
-                <h:outputText value="Empresa:"  />
-                <h:outputText value="#{listAnunciosPorCategoria.anuncioSelected.empresa.nomeFantasia}" />
- 
+                 
                 <h:outputText value="Preço:" />
                 <h:outputText value="#{listAnunciosPorCategoria.anuncioSelected.preco}">
                     <f:convertNumber type="currency" currencySymbol="R$" />
                 </h:outputText>
+                     <h:outputText value="Empresa:"  />
+                <h:outputText value="#{listAnunciosPorCategoria.anuncioSelected.empresa.nomeFantasia}" />
+                
+                  <h:outputText value="Bairro:"  />
+                <h:outputText value="#{listAnunciosPorCategoria.anuncioSelected.empresa.endereco.bairro}" />
+                
+                     <h:outputText value="Cidade:"  />
+                <h:outputText value="#{listAnunciosPorCategoria.anuncioSelected.empresa.endereco.cidade}" />
+                
+                     <h:outputText value="Logradouro:"  />
+                <h:outputText value="#{listAnunciosPorCategoria.anuncioSelected.empresa.endereco.logradouro}" />
+ 
             </p:panelGrid>
         </p:outputPanel>
     </p:dialog>

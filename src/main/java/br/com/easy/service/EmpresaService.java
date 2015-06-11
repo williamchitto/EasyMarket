@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -30,29 +31,25 @@ public class EmpresaService extends BasicService implements Serializable {
 		
 	}
 	
-
-	
+	public List<Empresa>listEmpresaService(){
+		return dao.listEmpresa();
+			
+	}
 	
      public Empresa buscarEmpresaById(int id){
     	 
     	 
 		return dao.findEmpresa(id);
-    	 
-    	 
-    	 
+    	  
      }
      
      
-  
-	
 	public void salvarEmpresaService(Empresa empresa){
 		
 	  if(validarCnpjUnico(empresa.getCnpj()) && validarEmailUnico(empresa.getUsuario().getEmail()) ){
 		      
 		       dao.addEmpresa(empresa);
-		       
-		     
-		       
+		      	       
 		  
 	  }else{
 		  

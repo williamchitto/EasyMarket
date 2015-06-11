@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
 import javax.faces.application.FacesMessage;
@@ -37,7 +38,7 @@ public class ListAnunciosPorCategoria extends BasicBean implements Serializable 
 	public String preencher() {
 		System.out.println("executou");
 		this.anunciosCategoria = dao.listAnunOrderByCategoria(categoria);
-		return "/sistema/listaCategoriaAnuncios?faces-redirect=true";
+		return "/listaCategoriaAnuncios?faces-redirect=true";
 
 	}
 	
@@ -45,14 +46,16 @@ public class ListAnunciosPorCategoria extends BasicBean implements Serializable 
 	
 	@PostConstruct
 	public void init(){
+		System.out.println("inicio");
 		beginConvesation();
 		
 		
 	}
 	
 	
+	@PreDestroy
 	public void destroy(){
-		
+		System.out.println("fim");
 		endConversation();
 		
 	}
