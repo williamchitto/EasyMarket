@@ -44,7 +44,9 @@ public class Usuario implements Serializable {
     private List<UsuarioAutenticacao>userAutenticacoes = new ArrayList<UsuarioAutenticacao>();
     @Enumerated(EnumType.STRING)
     @Column(name="tipo_user")
-    private TipoUser tipoUser;;
+    private TipoUser tipoUser;
+    @OneToOne(mappedBy="usuario")
+    private Pessoa pessoa;
     
    
 	public TipoUser getTipoUser() {
@@ -109,6 +111,12 @@ public class Usuario implements Serializable {
 	}
 	public void setUsuarioAutenticado(int usuarioAutenticado) {
 		this.usuarioAutenticado = usuarioAutenticado;
+	}
+	public Pessoa getPessoa() {
+		return pessoa;
+	}
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
 	}
 	
 	

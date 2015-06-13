@@ -54,7 +54,7 @@ public class UsuarioService extends BasicService implements Serializable {
 
 	public Usuario buscarUserByEmailService(String email) {
 
-		Usuario user = usuarioDao.pesquisarUserByemail(email);
+		Usuario user = usuarioDao.pesquisarUserEmailLogin(email);
 		if (user == null) {
 
 			throw new NegocioException(

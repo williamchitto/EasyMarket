@@ -43,7 +43,7 @@ public class Anuncio  implements Serializable{
 	private int visualizacao;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataAnuncio;
-	private int statusAnuncio;
+	private boolean statusAnuncio;
 
    		
 
@@ -56,13 +56,7 @@ public class Anuncio  implements Serializable{
 	public void setDataAnuncio(Date dataAnuncio) {
 		this.dataAnuncio = dataAnuncio;
 	}
-
-
-
 	
-	
-	
-
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -139,15 +133,18 @@ public class Anuncio  implements Serializable{
 
 
 
-	public int getStatusAnuncio() {
+	public boolean isStatusAnuncio() {
 		return statusAnuncio;
 	}
 
 
 
-	public void setStatusAnuncio(int statusAnuncio) {
+	public void setStatusAnuncio(boolean statusAnuncio) {
 		this.statusAnuncio = statusAnuncio;
 	}
 
+
+
+	
 
 }

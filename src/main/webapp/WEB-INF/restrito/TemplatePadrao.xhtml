@@ -88,7 +88,7 @@
 	<script
 		src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 </h:head>
-<h:body>
+<h:body style="font-size:13px">
 	<h:form id="menu">
 		<nav class="navbar navbar-default" role="navigation">
 			<div class="container-fluid">
@@ -106,12 +106,12 @@
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 					<ul class="nav navbar-nav">
-						<li><h:commandLink action="/index?faces-redirect=true"
+						<li><p:commandLink action="/index?faces-redirect=true"
 								value="HOME" /></li>
-						<li><h:commandLink rendered="#{!usuarioLogadoBean.logado}"
+						<li><p:commandLink rendered="#{!usuarioLogadoBean.logado}"
 								action="/cadastroEmpresa?faces-redirect=true"
 								value="Criar Conta" /></li>
-						<li><h:commandLink rendered="#{usuarioLogadoBean.logado}"
+						<li><p:commandLink rendered="#{usuarioLogadoBean.logado}"
 								action="/sistema/perfil?faces-redirect=true" value="Meu Perfil" /></li>
 						<li class="dropdown mega-dropdown active"><a href="#"
 							class="dropdown-toggle" data-toggle="dropdown">Categorias<span
@@ -173,7 +173,7 @@
 																value="#{listCategorias.categorias.get(4).descricao}" /></span>
 													</h:commandLink></li>
 													
-												<li><h:commandLink value="" action="#{listAnunciosPorCategoria.preencher()}">
+												<li><p:commandLink value="" action="#{listAnunciosPorCategoria.preencher()}">
 												 <f:setPropertyActionListener
 															value="#{listCategorias.categorias.get(5)}"
 															target="#{listAnunciosPorCategoria.categoria}" />
@@ -181,7 +181,7 @@
 															value="/resources/imagens/menu/limpeza.png" />
 														<span><h:outputText
 																value="#{listCategorias.categorias.get(5).descricao}" /></span>
-													</h:commandLink></li>
+													</p:commandLink></li>
 											</ul>
 										</div>
 										<div class="tab-pane" id="women">
@@ -282,27 +282,33 @@
 							</div></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><h:commandLink 
+					<li><p:commandLink  rendered="#{!usuarioLogadoBean.logado}"
+								value="Você não esta logado!" /></li>
+						<li><p:commandLink 
 								action="/listEmpresa?faces-redirect=true"
 								value="Parceiros" /></li>
-						<li><h:commandLink 
+						<li><p:commandLink 
 								action="/lista?faces-redirect=true"
 								value="Todos os produtos" /></li>
+									
 								
-						<li><h:commandLink rendered="#{usuarioLogadoBean.logado}"
+						<li><p:commandLink rendered="#{usuarioLogadoBean.logado}"
 								action="/sistema/cadastroAnuncio?faces-redirect=true"
 								value="Criar Anuncio" /></li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown">Minha Conta<span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
-								<li><h:commandLink rendered="#{!usuarioLogadoBean.logado}"
+								<li><p:commandLink rendered="#{!usuarioLogadoBean.logado}"
 										action="/login?faces-redirect=true" value="Fazer Login" /></li>
-								<li><h:commandLink rendered="#{usuarioLogadoBean.logado}"
+								<li><p:commandLink rendered="#{usuarioLogadoBean.logado}"
 										action="/sistema/alterarEmpresa?faces-redirect=true"
 										value="Alterar Empresa" /></li>
-								<li><h:commandLink rendered="#{usuarioLogadoBean.logado}"
+								<li><p:commandLink rendered="#{usuarioLogadoBean.logado}"
 										action="/sistema/cadastroProduto?faces-redirect=true"
 										value="Cadastrar Produto" /></li>
+											<li><p:commandLink rendered="#{usuarioLogadoBean.logado}"
+										action="/sistema/anunciosEmpresa?faces-redirect=true"
+										value="Meus Produtos" /></li>
 
 								<li class="divider"></li>
 
@@ -310,9 +316,9 @@
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown">Login <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
-								<li><h:commandLink rendered="#{!usuarioLogadoBean.logado}"
+								<li><p:commandLink rendered="#{!usuarioLogadoBean.logado}"
 										action="/login?faces-redirect=true" value="Fazer Login" /></li>
-								<li><h:commandLink rendered="#{usuarioLogadoBean.logado}"
+								<li><p:commandLink rendered="#{usuarioLogadoBean.logado}"
 										action="/sistema/alterarSenha?faces-redirect=true"
 										value="Alterar Senha" /></li>
 								<li><p:commandLink rendered="#{usuarioLogadoBean.logado}"
@@ -324,6 +330,9 @@
 								<li class="divider"></li>
 
 							</ul></li>
+							<li><p:commandLink 
+								action="/admin/buscaEmpresa?faces-redirect=true"
+								value="Admin" /></li>
 					</ul>
 				</div>
 				<!-- /.navbar-collapse -->
@@ -389,15 +398,7 @@ $(document).ready(function(){
 	</ui:insert>
 
 
-	<script>
-			function configurarMoeda() {
-				$(".moeda").maskMoney({ decimal: ",", thousands: ".", allowZero: true });
-			}
-			
-			$(document).ready(function() {
-				configurarMoeda();
-			});
-		</script>
+	
 
 
 	<script type="text/javascript">

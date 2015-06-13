@@ -15,6 +15,7 @@
 		<class>br.com.easy.model.Usuario</class>
 		<class>br.com.easy.model.UsuarioAutenticacao</class>
 		<class>br.com.easy.model.Planos</class>
+		<class>br.com.easy.model.Pessoa</class>
 	
 		
 		<properties>

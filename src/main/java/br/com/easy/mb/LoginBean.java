@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import br.com.easy.dominio.StatusValidacaoAutenticacao;
+import br.com.easy.dominio.TipoUser;
 import br.com.easy.model.Usuario;
 import br.com.easy.service.UsuarioService;
 @Named
@@ -40,6 +41,12 @@ public class LoginBean extends BasicBean implements Serializable {
     	  
     	  System.out.println("Usuario encontrado");
     	  this.usuarioLogado.logar(usuarioEncontrado);
+    	  
+    	  if(usuarioEncontrado.getTipoUser().equals(TipoUser.ADMIN)){
+    		  
+    		  return "/admin/buscaEmpresa?faces-redirect=true";
+    		  
+    	  }
     	 
     	  return "index?faces-redirect=true";
     	  

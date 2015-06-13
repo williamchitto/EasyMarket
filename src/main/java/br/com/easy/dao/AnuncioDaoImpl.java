@@ -8,6 +8,7 @@ import javax.persistence.TypedQuery;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 
 import br.com.easy.model.Anuncio;
 import br.com.easy.model.Categoria;
@@ -50,7 +51,9 @@ public class AnuncioDaoImpl extends BasicDao<Anuncio> implements AnuncioDao,Seri
 	@Override
 	public List<Anuncio> anuncios() {
 	
-		return list();
+		return  em
+				.createQuery("from Anuncio where statusAnuncio=:status",
+						Anuncio.class).setParameter("status",true).getResultList();
 	}
 
 	
@@ -60,6 +63,7 @@ public class AnuncioDaoImpl extends BasicDao<Anuncio> implements AnuncioDao,Seri
 	public List<Anuncio> listAnunciosVisualizacao() {
 	
 		Criteria criteria = createCriteria();
+		criteria.add(Restrictions.eq("statusAnuncio",true));
 		criteria.addOrder(Order.desc("visualizacao"));
 		criteria.setMaxResults(8);
 		return criteria.list();
@@ -70,6 +74,7 @@ public class AnuncioDaoImpl extends BasicDao<Anuncio> implements AnuncioDao,Seri
 	public List<Anuncio> listAnunciosRecentes() {
 	
 		Criteria criteria = createCriteria();
+		criteria.add(Restrictions.eq("statusAnuncio",true));
 		criteria.addOrder(Order.desc("dataAnuncio"));
 		criteria.setMaxResults(15);
 		return criteria.list();
@@ -117,6 +122,15 @@ public class AnuncioDaoImpl extends BasicDao<Anuncio> implements AnuncioDao,Seri
 	 	return em
 				.createQuery("from Anuncio where produto.categoria.categoriaPai =:raiz",
 						Anuncio.class).setParameter("raiz", categoria)
+				.getResultList();
+	}
+
+	@Override
+	public List<Anuncio> listAnuncioByEmpresa(Empresa empresa) {
+	
+		return em
+				.createQuery("from Anuncio where empresa =:empresa",
+						Anuncio.class).setParameter("empresa",empresa)
 				.getResultList();
 	}
 

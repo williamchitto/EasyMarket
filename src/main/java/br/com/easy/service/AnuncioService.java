@@ -7,6 +7,7 @@ import javax.inject.Inject;
 
 import br.com.easy.dao.AnuncioDao;
 import br.com.easy.model.Anuncio;
+import br.com.easy.model.Empresa;
 
 public class AnuncioService extends BasicService implements Serializable {
 
@@ -64,6 +65,17 @@ public class AnuncioService extends BasicService implements Serializable {
 		return anuncioDao.anuncios();
 		
 		
+		
+	}
+	
+	public List<Anuncio>listAnuncioByEmpresaService(Empresa empresa){
+		return anuncioDao.listAnuncioByEmpresa(empresa);
+		
+	}
+	
+	public void alterarAnuncio(Anuncio anuncio){
+		
+		anuncioDao.updateAnuncio(anuncio);
 		
 	}
 	

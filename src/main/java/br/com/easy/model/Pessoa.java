@@ -27,8 +27,6 @@ public class Pessoa implements Serializable {
 	private String cpf;
 	@OneToOne(cascade=CascadeType.PERSIST)
 	private Usuario usuario;
-	
-	
 	public int getCodigo() {
 		return codigo;
 	}

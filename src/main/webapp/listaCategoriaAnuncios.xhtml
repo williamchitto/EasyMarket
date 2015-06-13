@@ -17,7 +17,7 @@
 		<ui:define name="corpo">
  
  
-	<h:form  id="form" style="font-size:12px">
+	<h:form  id="form" style="font-size:12px;min-height:700px;">
 
 		<p:dataTable var="anuncio"  value="#{listAnunciosPorCategoria.anunciosCategoria}" id="table" paginator="true" rows="15"
 		    selectionMode="single" selection="#{listAnunciosPorCategoria.anuncioSelected}" rowKey="#{anuncio.codigo}" emptyMessage="Não foram encontrados anuncios nesta categoria"

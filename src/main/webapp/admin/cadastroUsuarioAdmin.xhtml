@@ -9,20 +9,43 @@
 <ui:decorate template="/admin/templateAdmin.xhtml">
 	<ui:define name="centro">
 	
+	<h:form id="form">
+	
+	<p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+ 
+                              <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+                                   <p:graphicImage library="imagens" name="ajax-loader1.gif" />
+                                 </p:dialog>
+	
+		<p:growl id="messages" autoUpdate="true" />
+		
   	<p:panel header="Cadastro de Usuários">
   	<p:panelGrid columns="2"  id="panel" style="margin-top:20px" >
   	  
-  	  <p:outputLabel for="email" value="Nome Produto:" />
-	  <p:inputText id="nome" value="#{cadastroProdutoAdminBean.produto.nome}" size="30" />
-  	  
+  	  <p:outputLabel for="nome" value="Nome:" />
+	  <p:inputText id="nome" required="true" requiredMessage="Nome deve ser informado." value="#{cadastrarPessoaBean.pessoa.nome}" size="30" />
+	  
+	    <p:outputLabel for="cpf" value="CPF:" />
+	    <p:inputText id="cpf" required="true" requiredMessage="CPF deve ser informado." maxlength="11" value="#{cadastrarPessoaBean.pessoa.cpf}" size="20" />
+	 
+  	      <p:outputLabel for="email" value="Email:" />
+	      <p:inputText id="email" required="true" requiredMessage="Email deve ser informado." value="#{cadastrarPessoaBean.usuario.email}" size="50" />
+	      
+	       
+	        <h:outputLabel for="pwd1" value="Senha: *" />
+           <p:password id="pwd1" value="#{cadastrarPessoaBean.usuario.senha}" validatorMessage="Senhas devem ser iguais."  match="pwd2" label="Password 1" requiredMessage="Senha deve ser informada." required="true" />
+ 
+        <h:outputLabel for="pwd2" value="Repita sua senha: *" />
+        <p:password id="pwd2" value="#{cadastrarPessoaBean.usuario.senha}" label="Password 2" requiredMessage="Repita sua senha." required="true" />
   	   
-  	 
-  	 
-  	 
-  	 
+  	    	<br />
+  	     <p:commandButton id="salvar" process="form" update="form" actionListener="#{cadastrarPessoaBean.salvar()}" value="Cadastrar"/>
   	</p:panelGrid>
+  
 
 	</p:panel>
+	
+	</h:form>
 
 	</ui:define>
 </ui:decorate>

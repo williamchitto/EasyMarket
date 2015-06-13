@@ -13,7 +13,7 @@ public interface EmpresaDao {
 	public Empresa findEmpresa(int id);
 	public Empresa buscarEmpresaPorCnpj(String cnpj);
 	public Empresa buscarEmpresaPorEmail(String email);
-	
+		
 	
 	
 

@@ -10,12 +10,14 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.easy.dominio.TipoUser;
 import br.com.easy.mb.UsuarioLogadoBean;
 
 
-@WebFilter(urlPatterns = "/sistema/*")
+@WebFilter(urlPatterns = "/*")
 public class FilterLogin implements Filter {
 	
    @Inject	
@@ -33,13 +35,43 @@ public class FilterLogin implements Filter {
 		
 	}
 
-	
+	//((HttpServletResponse)response).sendRedirect("/EasyMarket/login.xhtml");
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-	
-		System.out.println("....Filtro Login executando....");
+	    
+		 String requestPath = ((HttpServletRequest)request).getRequestURI().toLowerCase();
+		 System.out.println(requestPath);
+		
 		if(!this.usuarioLogado.isLogado()){
+	
+			if(requestPath.contains("sistema") || requestPath.contains("admin")){
+				
+				((HttpServletResponse)response).sendRedirect("/EasyMarket/login.xhtml");
+				
+				
+			}
 			
-			// ((HttpServletResponse)response).sendRedirect("/EasyMarket/login.xhtml");
+			
+		
+		
+		}
+		
+		if(this.usuarioLogado.isLogado()){
+			
+			if(this.usuarioLogado.getUsuario().getTipoUser().equals(TipoUser.COMUM)){
+				
+
+				if(requestPath.contains("admin")){
+					
+					((HttpServletResponse)response).sendRedirect("/EasyMarket/acessoNegado.xhtml");
+					
+					
+				}
+				
+				
+				
+			}
+			
+			
 			
 		}
 		

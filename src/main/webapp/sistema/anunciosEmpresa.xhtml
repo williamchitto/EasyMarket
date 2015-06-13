@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head></h:head>
+<body>
+
+	<ui:composition template="/WEB-INF/restrito/TemplatePadrao.xhtml">
+		<ui:define name="corpo">
+
+
+			<h:form id="form" style="font-size:12px;min-height:700px;">
+
+				<p:dataTable var="anuncio" style="margin-top:20px"
+					value="#{listAnunciosEmpresaBean.anunciosByEmpresa}" id="table"
+					paginator="true" rows="15" selectionMode="single"
+					selection="#{listAnunciosEmpresaBean.anuncioSelected}"
+					rowKey="#{anuncio.codigo}"
+					paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}">
+					<p:ajax event="rowSelect"
+						listener="#{listAnunciosEmpresaBean.onRowSelect}"
+						update=":form:Detail" oncomplete="PF('Dialog').show()" />
+					<f:facet name="header">
+             Produtos 
+          </f:facet>
+
+
+					<p:column headerText="Nome do Produto"
+						filterBy="#{anuncio.produto.nome}"
+						sortBy="#{anuncio.produto.nome}">
+						<h:outputText value="#{anuncio.produto.nome}" />
+					</p:column>
+
+					<p:column headerText="Supermercado"
+						filterBy="#{anuncio.empresa.nomeFantasia}"
+						sortBy="#{anuncio.empresa.nomeFantasia}" width="20%">
+						<h:outputText value="#{anuncio.empresa.nomeFantasia}" />
+					</p:column>
+
+					<p:column headerText="Preço" filterBy="#{anuncio.preco}"
+						sortBy="#{anuncio.preco}" style="width:10%;">
+						<h:outputText value="#{anuncio.preco}">
+							<f:convertNumber type="currency" currencySymbol="R$" />
+						</h:outputText>
+					</p:column>
+
+					<p:column headerText="Categoria"
+						sortBy="#{anuncio.produto.categoria.categoriaPai.descricao}"
+						style="width:15%;">
+						<h:outputText
+							value="#{anuncio.produto.categoria.categoriaPai.descricao}" />
+					</p:column>
+					<p:column headerText="Telefone empresa" style="width:15%;">
+						<h:outputText value="#{anuncio.empresa.telefone}" />
+					</p:column>
+					
+					<p:column headerText="Exibir" style="width:10%;">
+						<h:outputText value="#{anuncio.statusAnuncio==true?'Sim' :'Não'}" />
+					</p:column>
+
+				</p:dataTable>
+				<p:dialog header="Detalhes " widgetVar="Dialog" modal="true"
+					showEffect="fade" hideEffect="fade" resizable="true">
+					<p:outputPanel id="Detail" style="text-align:center;">
+						<p:panelGrid columns="2"
+							rendered="#{not empty listAnunciosEmpresaBean.anuncioSelected}">
+							<f:facet name="header">
+								<p:graphicImage width="174" height="210"
+									value="/ImageAnuncio/#{listAnunciosEmpresaBean.anuncioSelected.produto.produtoImagem.codigo}" />
+							</f:facet>
+
+							<h:outputText value="Codigo:" />
+							<h:outputText id="codigo"
+								value="#{listAnunciosEmpresaBean.anuncioSelected.codigo}" />
+
+							<h:outputText value="produto:" />
+							<h:outputText id="produto"
+								value="#{listAnunciosEmpresaBean.anuncioSelected.produto.nome}" />
+
+
+							<h:outputText value="Preço:" />
+							<h:outputText
+								value="#{listAnunciosEmpresaBean.anuncioSelected.preco}">
+								<f:convertNumber type="currency" currencySymbol="R$" />
+							</h:outputText>
+
+							<h:outputText value="Empresa:" />
+							<h:outputText
+								value="#{listAnunciosEmpresaBean.anuncioSelected.empresa.nomeFantasia}" />
+
+							<h:outputText value="Bairro:" />
+							<h:outputText
+								value="#{listAnunciosEmpresaBean.anuncioSelected.empresa.endereco.bairro}" />
+
+							<h:outputText value="Cidade:" />
+							<h:outputText
+								value="#{listAnunciosEmpresaBean.anuncioSelected.empresa.endereco.cidade}" />
+
+							<h:outputText value="Logradouro:" />
+							<h:outputText
+								value="#{listAnunciosEmpresaBean.anuncioSelected.empresa.endereco.logradouro}" />
+								
+								<h:outputText value="Exibir:" />	
+								<p:column style="width:12%;text-align: center" headerText="Exibir">
+						   <p:selectBooleanButton id="value"
+							value="#{listAnunciosEmpresaBean.anuncioSelected.statusAnuncio}" onLabel="true" offLabel="false"
+							onIcon="ui-icon-check" offIcon="ui-icon-close" style="width:65px">
+							<p:ajax update="table" listener="#{listAnunciosEmpresaBean.alterarStatusAnuncio}" />
+							
+						</p:selectBooleanButton>
+					</p:column>
+						</p:panelGrid>
+					</p:outputPanel>
+				</p:dialog>
+			</h:form>
+
+		</ui:define>
+	</ui:composition>
+
+
+
+</body>
+</html>

@@ -207,15 +207,13 @@
 								</p:inputText>
 							</div>
 
-
-
 							<br />
 							<hr />
 							<h4>
 								Logomarca:<span class="label label-default"></span>
 							</h4>
 							<div class="form-group">
-							 <p:fileUpload id="imagem" label="Enviar" fileUploadListener="#{cadastroProdutoBean.handleFileUpload}" dragDropSupport="true"  mode="advanced" invalidFileMessage="Arquivo inválido." invalidSizeMessage="Tamanho de arquivo inválido."
+							 <p:fileUpload id="imagem" cancelLabel="Cancelar" uploadLabel="Enviar" label="Selecionar" fileUploadListener="#{cadastroProdutoBean.handleFileUpload}" dragDropSupport="true"  mode="advanced" invalidFileMessage="Arquivo inválido." invalidSizeMessage="Tamanho de arquivo inválido."
                                    update="message"   sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
                                         <p:growl id="message" showDetail="true" />
 							</div>

@@ -38,7 +38,7 @@ public class PessoaDaoImpl extends BasicDao<Pessoa> implements PessoaDao,Seriali
 	@Override
 	public Pessoa pessoaByEmail(String email) {
 	       List<Pessoa>list = new ArrayList<Pessoa>();
-		     list = em.createQuery("from Pessoa where usuario.email= :email",Pessoa.class).setParameter("email",email).getResultList();
+		     list = em.createQuery("from Pessoa where usuario.email = :email",Pessoa.class).setParameter("email",email).getResultList();
 		     if(list==null || list.size()==0){
 		    	 
 		    	 return null;
@@ -51,7 +51,7 @@ public class PessoaDaoImpl extends BasicDao<Pessoa> implements PessoaDao,Seriali
 	@Override
 	public Pessoa pessoaByCpf(String cpf) {
 		  List<Pessoa>list = new ArrayList<Pessoa>();
-		     list = em.createQuery("from Pessoa where cpf=:cpf",Pessoa.class).setParameter("cpf",cpf).getResultList();
+		     list = em.createQuery("from Pessoa where cpf = :cpf",Pessoa.class).setParameter("cpf",cpf).getResultList();
 		     if(list==null || list.size()==0){
 		    	 
 		    	 return null;

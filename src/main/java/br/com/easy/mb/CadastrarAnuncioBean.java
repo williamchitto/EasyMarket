@@ -37,18 +37,19 @@ public class CadastrarAnuncioBean extends BasicBean implements Serializable {
 	@Inject
 	private UsuarioLogadoBean usuarioLogado;
 
-	public void salvar() {
+	public String salvar() {
    
 	System.out.println("metodo salvar anuncio executando");
 	this.empresa = empresaService.buscarEmpresaById(this.usuarioLogado.getUsuario().getEmpresa().getCodigo());
 	this.anuncio.setEmpresa(this.empresa);
     this.anuncio.setDataAnuncio(new Date()); 
-    this.anuncio.setStatusAnuncio(StatusAnuncio.ATIVO.getValor());
+    this.anuncio.setStatusAnuncio(true);
 	this.anuncio.setProduto(this.produtoSelecionado);
 	anuncioService.salvaAnuncioService(this.anuncio);
 	anuncioService.atualizarNumeroAnuncios(this.anuncio);
 	limparCampos();
 	info("Anuncio cadastrado com sucesso");
+	return "/sistema/cadastroAnuncio?faces-redirect=true";
 	
 	}
 	

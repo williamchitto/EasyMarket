@@ -5,8 +5,10 @@ import java.io.Serializable;
 import javax.inject.Inject;
 
 import br.com.easy.dao.PessoaDao;
+import br.com.easy.dao.UsuarioDao;
 import br.com.easy.exception.NegocioException;
 import br.com.easy.model.Pessoa;
+import br.com.easy.model.Usuario;
 
 public class PessoaService extends BasicService implements Serializable {
 
@@ -14,12 +16,17 @@ public class PessoaService extends BasicService implements Serializable {
 	
 	@Inject
 	PessoaDao dao;
+	@Inject
+	EmpresaService empresaService;
+	@Inject
+	UsuarioDao usuarioDao;
 	
 	
 	
 	public void salvarPessoaService(Pessoa pessoa){
 		
 		cadastroPessoaValido(pessoa);
+		pessoa.getUsuario().setSenha(empresaService.convertMD5(pessoa.getUsuario().getSenha()));
 		dao.salvarPessoa(pessoa);
 		
 		
@@ -28,22 +35,42 @@ public class PessoaService extends BasicService implements Serializable {
 	}
 	
 	
+	
+
+	
+	
 	public void cadastroPessoaValido(Pessoa pessoaParam){
 	
 	   if(pessoaByCpfService(pessoaParam.getCpf())!=null){
 		   
-		   throw new NegocioException("CPF ja cadastrado no sistema.");
+		   throw new NegocioException("CPF já foi cadastrado no sistema.");
 		   
 	   }
-	   if(pessoaByemailService(pessoaParam.getUsuario().getEmail())!=null){
+	   if(UsuarioByPessoaServiceEmail(pessoaParam.getUsuario().getEmail())!=null){
 		   
-		   throw new NegocioException("EMAIL ja cadastrado no sistema.");
+		   throw new NegocioException("EMAIL já foi cadastrado no sistema.");
 		   
 	   }
 		
 		
 		
 	}
+	
+	
+	public Usuario UsuarioByPessoaServiceEmail(String email){
+		
+		Usuario usuario = usuarioDao.pesquisarUserEmailLogin(email);
+		if(usuario!=null){
+			
+			  return usuario;
+			
+		}
+		
+		
+		return null;
+		
+	}
+	
 	
 	
 	public Pessoa pessoaByemailService(String email){
