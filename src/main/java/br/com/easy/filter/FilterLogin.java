@@ -41,39 +41,40 @@ public class FilterLogin implements Filter {
 		 String requestPath = ((HttpServletRequest)request).getRequestURI().toLowerCase();
 		 System.out.println(requestPath);
 		
-		if(!this.usuarioLogado.isLogado()){
+		//if(!this.usuarioLogado.isLogado()){
 	
-			if(requestPath.contains("sistema") || requestPath.contains("admin")){
-				
-				((HttpServletResponse)response).sendRedirect("/EasyMarket/login.xhtml");
+			//if(requestPath.contains("sistema") || requestPath.contains("admin")){
 				
 				
-			}
+				//((HttpServletResponse)response).sendRedirect("/EasyMarket/login.xhtml");
+				
+				
+			//}
 			
 			
 		
 		
-		}
+		//}
 		
-		if(this.usuarioLogado.isLogado()){
+		//if(this.usuarioLogado.isLogado()){
 			
-			if(this.usuarioLogado.getUsuario().getTipoUser().equals(TipoUser.COMUM)){
+			//if(this.usuarioLogado.getUsuario().getTipoUser().equals(TipoUser.COMUM)){
 				
 
-				if(requestPath.contains("admin")){
+			//	if(requestPath.contains("admin")){
 					
-					((HttpServletResponse)response).sendRedirect("/EasyMarket/acessoNegado.xhtml");
+				//	((HttpServletResponse)response).sendRedirect("/EasyMarket/acessoNegado.xhtml");
 					
 					
-				}
+				//}
 				
 				
 				
-			}
+			//}
 			
 			
 			
-		}
+		//}
 		
 		
 		

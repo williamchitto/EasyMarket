@@ -98,6 +98,10 @@
 							<h:outputText value="Cidade:" />
 							<h:outputText
 								value="#{listAnunciosEmpresaBean.anuncioSelected.empresa.endereco.cidade}" />
+								
+								<h:outputText value="Estado:" />
+							<h:outputText
+								value="#{listAnunciosEmpresaBean.anuncioSelected.empresa.endereco.uf}" />
 
 							<h:outputText value="Logradouro:" />
 							<h:outputText
@@ -106,7 +110,7 @@
 								<h:outputText value="Exibir:" />	
 								<p:column style="width:12%;text-align: center" headerText="Exibir">
 						   <p:selectBooleanButton id="value"
-							value="#{listAnunciosEmpresaBean.anuncioSelected.statusAnuncio}" onLabel="true" offLabel="false"
+							value="#{listAnunciosEmpresaBean.anuncioSelected.statusAnuncio}" onLabel="SIM" offLabel="NÃO"
 							onIcon="ui-icon-check" offIcon="ui-icon-close" style="width:65px">
 							<p:ajax update="table" listener="#{listAnunciosEmpresaBean.alterarStatusAnuncio}" />
 							

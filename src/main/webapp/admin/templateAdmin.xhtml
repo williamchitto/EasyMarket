@@ -56,8 +56,7 @@
                             <p:menu style="width: 200px">
                                 <p:submenu label="Menu">
                                     <p:menuitem value="Pesquisar empresa" action="#{planoEmpresaBean.retornarBuscaEmpresa()}" icon="ui-icon-person" />
-                                    <p:menuitem value="Lista cadastros" icon="ui-icon-contact" /> 
-                                      <p:menuitem value="Cadastrar produto" icon="ui-icon-plusthick" />         
+                                      <p:menuitem value="Cadastrar produto" action="/admin/produto?faces-redirect=true" icon="ui-icon-plusthick" />         
                                 </p:submenu>
                             </p:menu>
                         </h:form>

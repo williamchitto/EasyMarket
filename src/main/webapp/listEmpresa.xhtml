@@ -21,13 +21,13 @@
             Empresas Parceiras da EasyMarket
         </f:facet>
  
-        <p:panel header="Código:#{empresa.codigo}" style="text-align:center">
+        <p:panel header="#REF.:#{empresa.codigo}" style="text-align:center">
             <h:panelGrid columns="1" style="width:100%">
                <p:graphicImage  width="174" height="150" value="/Image/#{empresa.imagemEmpresa.codigo}"/>
  
                 <h:outputText value="#{empresa.nomeFantasia}" />
  
-                <p:commandLink update=":form:Detail" oncomplete="PF('Dialog').show()" title="View Detail">
+                <p:commandLink update=":form:Detail" oncomplete="PF('Dialog').show()" title="Detalhes">
                     <h:outputText styleClass="ui-icon ui-icon-search"  style="margin:0 auto;" />
                     <f:setPropertyActionListener value="#{empresa}" target="#{listEmpresaBean.empresaSelected}" />
                 </p:commandLink>
@@ -55,6 +55,17 @@
  
                 <h:outputText value="Cidade:" />
                 <h:outputText value="#{listEmpresaBean.empresaSelected.endereco.cidade}" />
+                
+                  <h:outputText value="Estado:" />
+                <h:outputText value="#{listEmpresaBean.empresaSelected.endereco.uf}" />
+                
+                
+                  <h:outputText value="Logradouro:" />
+                <h:outputText value="#{listEmpresaBean.empresaSelected.endereco.logradouro}" />
+                
+                
+                  <h:outputText value="Número:" />
+                <h:outputText value="#{listEmpresaBean.empresaSelected.endereco.numero}" />
                 
                   <h:outputText value="Número de anuncios:" />
                 <h:outputText value="#{listEmpresaBean.empresaSelected.numeroAnuncios}" />
