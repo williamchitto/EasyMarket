@@ -228,25 +228,27 @@ body {
 		<ui:define name="corpo">
 <div class="container-fluid"  >
 	<div class="row">
-    			
+    	
+    	<h:form >	
 				
 				<div class="col-md-6 col-lg-6">
 				
 					<!-- PRICE ITEM -->
 					<div class="panel price panel-blue">
 						<div class="panel-heading arrow_box text-center">
-						<h3>DEV PLAN</h3>
+						<h3><h:outputText value="#{planosBean.planos.get(0).nome}" /></h3>
 						</div>
 						<div class="panel-body text-center">
-							<p class="lead" style="font-size:40px"><strong> month</strong></p>
+							<p class="lead" style="font-size:40px"><strong>Anual</strong></p>
 						</div>
 						<ul class="list-group list-group-flush text-center">
-							<li class="list-group-item"><i class="icon-ok text-info"></i> Personal use</li>
-							<li class="list-group-item"><i class="icon-ok text-info"></i> Unlimited projects</li>
-							<li class="list-group-item"><i class="icon-ok text-info"></i> 27/7 support</li>
+							<li class="list-group-item"><i class="icon-ok text-info"></i>60 anuncios </li>
+							<li class="list-group-item"><i class="icon-ok text-info"></i>limitado</li>
+							<li class="list-group-item"><i class="icon-ok text-info"></i>R$300 por ano</li>
 						</ul>
 						<div class="panel-footer">
-							<a class="btn btn-lg btn-block btn-info" href="#">BUY NOW!</a>
+						
+							<h:commandLink  class="btn btn-lg btn-block btn-info" action="cadastroEmpresa?faces-redirect=true" value="Cadastrar sua empresa" />
 						</div>
 					</div>
 					<!-- /PRICE ITEM -->
@@ -259,18 +261,20 @@ body {
 					<!-- PRICE ITEM -->
 					<div class="panel price panel-green">
 						<div class="panel-heading arrow_box text-center">
-						<h3>FREE PLAN</h3>
+					<h3><h:outputText value="#{planosBean.planos.get(1).nome}" /></h3>
 						</div>
 						<div class="panel-body text-center">
-							<p class="lead" style="font-size:40px"><strong>/ month</strong></p>
+							<p class="lead" style="font-size:40px"><strong>Anual</strong></p>
 						</div>
 						<ul class="list-group list-group-flush text-center">
-							<li class="list-group-item"><i class="icon-ok text-success"></i> Personal use</li>
-							<li class="list-group-item"><i class="icon-ok text-success"></i> Unlimited projects</li>
-							<li class="list-group-item"><i class="icon-ok text-success"></i> 27/7 support</li>
+							<li class="list-group-item"><i class="icon-ok text-success"></i>Anuncios ilimitados</li>
+							<li class="list-group-item"><i class="icon-ok text-success"></i>ilimitado</li>
+							<li class="list-group-item"><i class="icon-ok text-success"></i>R$ 500 por ano</li>
 						</ul>
 						<div class="panel-footer">
-							<a class="btn btn-lg btn-block btn-success" href="#">BUY NOW!</a>
+							
+							
+							<h:commandLink  class="btn btn-lg btn-block btn-success" action="cadastroEmpresa?faces-redirect=true" value="Cadastrar sua empresa" />
 						</div>
 					</div>
 					<!-- /PRICE ITEM -->
@@ -279,7 +283,7 @@ body {
 				</div>
 				
 				
-			
+			</h:form>	
 			
 			</div>
             
